@@ -25,7 +25,9 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "vue-router": "^4.0.15",
+        "autoprefixer": "10.4.5",
+        "node-sass": "^7.0.1",
+        "vue-router": "^3.5.3",
         "vue-sweetalert2": "^5.0.5",
         "vuetify": "^2.6.5"
     }

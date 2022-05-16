@@ -19,7 +19,6 @@ window.Vue = require('vue').default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('Nav-Bar', require('./Cliente/components/NavBar.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -27,6 +26,105 @@ Vue.component('Nav-Bar', require('./Cliente/components/NavBar.vue').default);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-    el: '#app',
-});
+ import Vue from 'vue'
+ import App from './view/App.vue'
+ import VueRouter from 'vue-router'
+ import routes from './routes'
+ import Vuetify from './plugins/vuetify'
+ 
+ // import './plugins/validation/vee-validate.js'
+ // import './plugins/vuetify-money.js'
+ // import './plugins/vuetify-mask.js'
+ 
+ import VueSweetalert2 from 'vue-sweetalert2'
+ import 'sweetalert2/dist/sweetalert2.min.css'
+ require('./bootstrap');
+ 
+ // ---------------------------------------------------------------------------------------------------------------------/
+ // Vuex
+ // ---------------------------------------------------------------------------------------------------------------------/
+//  import store from './store/store.js'
+ 
+ // ---------------------------------------------------------------------------------------------------------------------/
+ // Axios
+ // ---------------------------------------------------------------------------------------------------------------------/
+ import axios from 'axios'
+ 
+ Vue.use(VueSweetalert2)
+ Vue.component('app', App)
+// Add a request interceptor
+//  axios.interceptors.request.use(function (config) {
+//    if (!config.headers['No-Loading']) {
+//      store.commit('loadingScreen/openLoading')
+//    }
+//
+//    const token = store.getters['auth/isAuthenticated']
+//
+//    if (token) {
+//      config.headers.Authorization = `Bearer ${token}`
+//    }
+//
+//    return config
+//  })
+//
+// Add a response interceptor
+//  axios.interceptors.response.use(
+//    function (response) {
+//      store.commit('loadingScreen/closeLoading')
+//      return response
+//    },
+//    function (error) {
+//      store.commit('loadingScreen/closeLoading')
+//      return Promise.reject(error)
+//    }
+//  )
+ 
+ Vue.prototype.$axios = axios
+ 
+ // ---------------------------------------------------------------------------------------------------------------------/
+ // Vue Router
+ // ---------------------------------------------------------------------------------------------------------------------/
+ Vue.use(VueRouter)
+ 
+ const router = new VueRouter({
+   mode: 'history',
+   base:process.env.BASE_URL,
+   routes,
+   scrollBehavior (to, from, savedPosition) {
+     return { x: 0, y: 0 }
+   }
+ });
+ 
+//  router.beforeEach((to, from, next) => {
+//    if (to.matched.some((record) => record.meta.forVisitors)) {
+//      if (store.getters['auth/isAuthenticated']) {
+//        if (store.getters['user/getUser'].perfil === 'agente de atendimento') {
+//          next({
+//            path: '/admin/orcamentos'
+//          })
+//        } else {
+//          next({
+//            path: '/admin/clientes'
+//          })
+//        }
+//      } else next()
+//    } else if (to.matched.some((record) => record.meta.forAuth)) {
+//      if (!store.getters['auth/isAuthenticated']) {
+//        next({
+//          path: '/admin/'
+//        })
+//      } else next()
+//    } else next()
+//  })
+ 
+ // ---------------------------------------------------------------------------------------------------------------------/
+ // Vue
+ // ------- --------------------------------------------------------------------------------------------------------------/
+  new Vue({
+   el: '#app',
+   router,
+   // store,
+   vuetify: Vuetify,
+   components: { App },
+   render: h => h(App)
+ }).$mount('#app')
