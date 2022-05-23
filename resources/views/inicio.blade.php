@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="PT-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bem Vindo</title>
+    <title>GoFight</title>
     <link rel="stylesheet" href="{{mix('css/app.css')}}">
 </head>
 <body>
+
     <div id="app">
-        <App></App>
+        <app></app>
     </div>
 
     <script src=" {{ mix('js/app.js') }} "></script>
