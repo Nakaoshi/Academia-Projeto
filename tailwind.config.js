@@ -17,7 +17,9 @@ module.exports = {
     colors:{
       'primary' : '#313131',
       'rosa': '#F72585',
-      'preto': "#313131"
+      'preto': "#313131",
+      'transparent': 'transparent',
+      'azul':'#4361EE',
     },
     screens: {
       'sm': '640px',

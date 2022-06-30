@@ -14,7 +14,7 @@ window.Vue = require('vue').default;
  import routes from './routes'
  import Vuetify from '../plugins/vuetify'
  
- // import './plugins/validation/vee-validate.js'
+ import './plugins/validation/vee-validate.js'
  // import './plugins/vuetify-money.js'
  // import './plugins/vuetify-mask.js'
  

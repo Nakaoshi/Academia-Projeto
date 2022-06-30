@@ -1,18 +1,6 @@
 <template>
   <div >
-  <div class="flex flex-col">
-  <h1>Sobre nos</h1>
-  <h1>Sobre nos</h1>
-  <h1>Sobre nos</h1><h1>Sobre nos</h1>
-  <h1>Sobre nos</h1>
-  <h1>Sobre nos</h1>
-  <h1>Sobre nos</h1>
-  <h1>Sobre nos</h1>
-  <h1>Sobre nos</h1>
-  <h1>Sobre nos</h1>
-  <h1>Sobre nos</h1>
-  <h1>Sobre nos</h1>
-  </div>
+    <h1>Sobre nos</h1>
   </div>
 </template>
 
