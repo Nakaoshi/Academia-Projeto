@@ -29,8 +29,11 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "@mdi/font": "^6.7.96",
         "@mdi/js": "^6.7.96",
         "node-sass": "^7.0.1",
+        "vee-validate": "^3.4.14",
+        "vue-feather-icons": "^5.1.0",
         "vue-router": "^3.5.3",
         "vue-sweetalert2": "^5.0.5",
         "vuetify": "^2.6.5",

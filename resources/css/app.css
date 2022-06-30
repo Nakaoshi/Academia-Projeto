@@ -2,9 +2,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.button__txt--font {
+body {
+    overflow: hidden;
+}
+* {
     font-family: "Poppins";
+}
+.button__txt--font {
     font-style: italic;
     font-weight: 700;
     font-size: 14px;
@@ -13,7 +17,6 @@
 }
 .navbar__desktop p,
 .navbar__mobile p {
-    font-family: "Poppins";
     font-style: italic;
     font-weight: 600;
     font-size: 12px;
@@ -24,36 +27,42 @@
     @apply mr-5;
 }
 
-@media screen and (min-width: 1024px) {
-    p {
-        font-size: 17px;
+/* config universal dos titulos */
+
+
+/* config universal dos inputs */
+.input {
+    &__label {
+        &--blue {
+            color: #4361ee;
+        }
     }
+}
+
+@media screen and (min-width: 1024px) {
+   
     .navbar__desktop {
         @apply block;
     }
     .navbar__mobile {
         @apply hidden;
     }
-    .navbar__desktop--links{
-        @apply flex items-center space-x-3 mr-5
+    .navbar__desktop--links {
+        @apply flex items-center space-x-3 mr-5;
     }
 }
 @media screen and (max-width: 1024px) {
-    p {
-        font-size: 14px;
-    }
+    
     .navbar__mobile {
         @apply block;
     }
     .navbar__desktop {
         @apply hidden;
     }
-    .navbar__desktop--links{
-        @apply hidden
+    .navbar__desktop--links {
+        @apply hidden;
     }
 }
 @media screen and (max-width: 768px) {
-    p {
-        font-size: 12px;
-    }
+   
 }
