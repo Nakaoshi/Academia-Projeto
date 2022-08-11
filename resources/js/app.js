@@ -14,7 +14,7 @@ window.Vue = require('vue').default;
  import routes from './routes'
  import Vuetify from '../plugins/vuetify'
  
- import './plugins/validation/vee-validate.js'
+ import '../plugins/vee-validate'
  // import './plugins/vuetify-money.js'
  // import './plugins/vuetify-mask.js'
  
@@ -22,20 +22,18 @@ window.Vue = require('vue').default;
  import 'sweetalert2/dist/sweetalert2.min.css'
  require('./bootstrap');
 
+ Vue.use(VueSweetalert2)
  
  // ---------------------------------------------------------------------------------------------------------------------/
  // Vuex
  // ---------------------------------------------------------------------------------------------------------------------/
-//  import store from './store/store.js'
+ import store from './store'
  
  // ---------------------------------------------------------------------------------------------------------------------/
  // Axios
  // ---------------------------------------------------------------------------------------------------------------------/
- import axios from 'axios'
- 
- Vue.use(VueSweetalert2)
-
-
+ import axios from 'axios';
+import { error } from 'laravel-mix/src/Log';
  
  Vue.prototype.$axios = axios
  
@@ -52,6 +50,10 @@ window.Vue = require('vue').default;
      return { x: 0, y: 0 }
    }
  });
+ router.beforeEach((to,from,next)=>{
+    localStorage.setItem('route',to.name)
+  next()
+ })
  
  
  // ---------------------------------------------------------------------------------------------------------------------/
@@ -60,7 +62,7 @@ window.Vue = require('vue').default;
  new Vue({
    el: '#app',
    router,
-   // store,
+   store,
    vuetify: Vuetify,
    components: { App },
    render: h => h(App)
