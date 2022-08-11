@@ -46,7 +46,7 @@
                             <!-- matricule-se  -->
                             <div>
                                 <v-card>
-                                    <v-btn color="#F72585" class="btn__matricula depressed">
+                                    <v-btn color="#F72585" class="btn__matricula depressed" to="/login">
                                         <p class="button__txt--font">
                                             MATRICULE-SE
                                         </p>
@@ -82,13 +82,13 @@
                             active-class="deep-purple--text text--accent-4"
                         >
                             <!-- inicio  -->
-                            <v-list-item @click="retornaIndex()">
+                            <v-list-item>
                                 <v-list-item-icon>
                                     <v-icon class="navbar__menu--icon">
                                     {{ icons.mdiHome }}
                                     </v-icon>
                                 </v-list-item-icon>
-                                <router-link :to="{ name: 'inicio' }">
+                                <router-link to="/">
                                     <p>Inicio</p>
                                 </router-link>
                             </v-list-item>
@@ -100,7 +100,7 @@
                                     {{ icons.mdiFencing}}
                                         </v-icon>
                                 </v-list-item-icon>
-                                <router-link :to="{ path: '/modalidades' }">
+                                <router-link to="/vendormodalidades">
                                     <p>Modalidades</p>
                                 </router-link>
                             </v-list-item>
@@ -112,7 +112,7 @@
                                         {{ icons.mdiAccountSchoolOutline }}
                                     </v-icon>
                                 </v-list-item-icon>
-                                <router-link :to="{ path: '/area-do-aluno' }">
+                                <router-link to="/area-do-aluno">
                                     <p>Área do Aluno</p>
                                 </router-link>
                             </v-list-item>
@@ -123,7 +123,7 @@
                                         {{ icons.mdiHomeCity }}
                                     </v-icon>
                                 </v-list-item-icon>
-                                <router-link :to="{ path: '/academia' }">
+                                <router-link to="/academia">
                                     <p>A Academia</p>
                                 </router-link>
                             </v-list-item>
@@ -134,7 +134,7 @@
                                         {{ icons.mdiAccountGroup }}
                                     </v-icon>
                                 </v-list-item-icon>
-                                <router-link :to="{ path: '/sobrenos' }">
+                                <router-link to="/sobrenos">
                                     <p>Sobre Nós</p>
                                 </router-link>
                             </v-list-item>
@@ -192,6 +192,33 @@ export default {
             group: null,
         };
     },
+    methods:{
+        anoAtual(){
+            let data = Date()
+            let ano = data.getNewYear()
+            return ano
+        },
+        validate(){
+
+            this.$axios.get('Usuario').then((response)=>{
+                console.log(response)
+                if(response.data.status == "Token is Invalid"){
+                    this.$router.push('/')
+                }
+            })
+
+        }
+    },
+    created(){
+
+        var list = ['about']
+        
+        if(!list.includes(localStorage.getItem('route'))){
+
+        }
+        
+        this.validate()
+    }
 };
 </script>
 

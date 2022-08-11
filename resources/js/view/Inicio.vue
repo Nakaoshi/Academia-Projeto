@@ -13,10 +13,10 @@
 
         <!-- carrosel de modalidades -->
         <section>
-            <div class="title__font my-3">
-                <p class="title__font-dark">
+            <div class="title__ my-3">
+                <p class="title__-dark">
                     ESCOLHA SEU ESTILO DE
-                    <span class="title__font-pink">LUTA</span>
+                    <span class="title__-pink">LUTA</span>
                 </p>
             </div>
             <carrousel-Modalidades />
@@ -24,9 +24,9 @@
 
         <!-- a academia  -->
         <section class="bg-preto">
-            <div class="title__font">
-                <p class="title__font-light">
-                    A <span class="title__font-pink">ACADEMIA</span>
+            <div class="title__">
+                <p class="title__-light">
+                    A <span class="title__-pink">ACADEMIA</span>
                 </p>
             </div>
 
@@ -34,11 +34,23 @@
                 <!-- card Muay Thai -->
                 <v-card class="academia__card" flat raised>
                     <v-row>
-                        <v-col sm="12" md="12" lg="6" class="academia__card--image">
+                        <v-col
+                            sm="12"
+                            md="12"
+                            lg="6"
+                            class="academia__card--image"
+                        >
                             <v-img :src="images.locais.salaMuay">
                                 <template v-slot:placeholder>
-                                    <v-row class="fill-height ma-0" align="center" justify="center">
-                                        <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                                    <v-row
+                                        class="fill-height ma-0"
+                                        align="center"
+                                        justify="center"
+                                    >
+                                        <v-progress-circular
+                                            indeterminate
+                                            color="grey lighten-5"
+                                        ></v-progress-circular>
                                     </v-row>
                                 </template>
                             </v-img>
@@ -59,22 +71,40 @@
                             <v-divider class="my-3 bg-red-600"></v-divider>
 
                             <v-card-actions class="flex justify-around my-2">
-                                <v-btn color="#4361ee" class="academia__button--btn" max-heigth="250" height="50" tile
-                                    btn-rounded-border-radius>
+                                <v-btn
+                                    color="#4361ee"
+                                    class="academia__button--btn"
+                                    max-heigth="250"
+                                    height="50"
+                                    tile
+                                    btn-rounded-border-radius
+                                >
                                     <p class="academia__button--text">
                                         AMPLO ESPAÇO
                                     </p>
                                 </v-btn>
 
-                                <v-btn color="#4361ee" class="academia__button--btn" max-heigth="250" height="50" tile
-                                    btn-rounded-border-radius>
+                                <v-btn
+                                    color="#4361ee"
+                                    class="academia__button--btn"
+                                    max-heigth="250"
+                                    height="50"
+                                    tile
+                                    btn-rounded-border-radius
+                                >
                                     <p class="academia__button--text">
                                         EQUIPAMENTOS NOVOS
                                     </p>
                                 </v-btn>
 
-                                <v-btn color="#4361ee" class="academia__button--btn" max-heigth="250" height="50" tile
-                                    btn-rounded-border-radius>
+                                <v-btn
+                                    color="#4361ee"
+                                    class="academia__button--btn"
+                                    max-heigth="250"
+                                    height="50"
+                                    tile
+                                    btn-rounded-border-radius
+                                >
                                     <p class="academia__button--text">
                                         AULAS DIÁRIAS
                                     </p>
@@ -90,14 +120,23 @@
                         <v-col sm="12" lg="6" class="academia__card--image">
                             <v-img :src="images.locais.salaBox">
                                 <template v-slot:placeholder>
-                                    <v-row class="fill-height ma-0" align="center" justify="center">
-                                        <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                                    <v-row
+                                        class="fill-height ma-0"
+                                        align="center"
+                                        justify="center"
+                                    >
+                                        <v-progress-circular
+                                            indeterminate
+                                            color="grey lighten-5"
+                                        ></v-progress-circular>
                                     </v-row>
                                 </template>
                             </v-img>
                         </v-col>
                         <v-col sm="12" lg="6" align-self="center">
-                            <v-card-title class="academia__card--title">Sala Boxe</v-card-title>
+                            <v-card-title class="academia__card--title"
+                                >Sala Boxe</v-card-title
+                            >
                             <v-card-text class="academia__card--text my-3">
                                 Não acredite em algo simplesmente porque ouviu.
                                 Não acredite em algo simplesmente porque todos
@@ -110,22 +149,40 @@
                             <v-divider class="my-3 bg-red-600"></v-divider>
 
                             <v-card-actions class="flex justify-around my-2">
-                                <v-btn color="#4361ee" class="academia__button--btn" max-heigth="250" height="50" tile
-                                    btn-rounded-border-radius>
+                                <v-btn
+                                    color="#4361ee"
+                                    class="academia__button--btn"
+                                    max-heigth="250"
+                                    height="50"
+                                    tile
+                                    btn-rounded-border-radius
+                                >
                                     <p class="academia__button--text">
                                         AMPLO ESPAÇO
                                     </p>
                                 </v-btn>
 
-                                <v-btn color="#4361ee" class="academia__button--btn" max-heigth="250" height="50" tile
-                                    btn-rounded-border-radius>
+                                <v-btn
+                                    color="#4361ee"
+                                    class="academia__button--btn"
+                                    max-heigth="250"
+                                    height="50"
+                                    tile
+                                    btn-rounded-border-radius
+                                >
                                     <p class="academia__button--text">
                                         EQUIPAMENTOS NOVOS
                                     </p>
                                 </v-btn>
 
-                                <v-btn color="#4361ee" class="academia__button--btn" max-heigth="250" height="50" tile
-                                    btn-rounded-border-radius>
+                                <v-btn
+                                    color="#4361ee"
+                                    class="academia__button--btn"
+                                    max-heigth="250"
+                                    height="50"
+                                    tile
+                                    btn-rounded-border-radius
+                                >
                                     <p class="academia__button--text">
                                         AULAS DIÁRIAS
                                     </p>
@@ -141,14 +198,23 @@
                         <v-col sm="12" lg="6" class="academia__card--image">
                             <v-img :src="images.locais.salaJudo">
                                 <template v-slot:placeholder>
-                                    <v-row class="fill-height ma-0" align="center" justify="center">
-                                        <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                                    <v-row
+                                        class="fill-height ma-0"
+                                        align="center"
+                                        justify="center"
+                                    >
+                                        <v-progress-circular
+                                            indeterminate
+                                            color="grey lighten-5"
+                                        ></v-progress-circular>
                                     </v-row>
                                 </template>
                             </v-img>
                         </v-col>
                         <v-col sm="12" lg="6" align-self="center">
-                            <v-card-title class="academia__card--title">Sala Judô</v-card-title>
+                            <v-card-title class="academia__card--title"
+                                >Sala Judô</v-card-title
+                            >
                             <v-card-text class="academia__card--text my-3">
                                 Não acredite em algo simplesmente porque ouviu.
                                 Não acredite em algo simplesmente porque todos
@@ -161,22 +227,40 @@
                             <v-divider class="my-3 bg-red-600"></v-divider>
 
                             <v-card-actions class="flex justify-around my-2">
-                                <v-btn color="#4361ee" class="academia__button--btn" max-heigth="250" height="50" tile
-                                    btn-rounded-border-radius>
+                                <v-btn
+                                    color="#4361ee"
+                                    class="academia__button--btn"
+                                    max-heigth="250"
+                                    height="50"
+                                    tile
+                                    btn-rounded-border-radius
+                                >
                                     <p class="academia__button--text">
                                         AMPLO ESPAÇO
                                     </p>
                                 </v-btn>
 
-                                <v-btn color="#4361ee" class="academia__button--btn" max-heigth="250" height="50" tile
-                                    btn-rounded-border-radius>
+                                <v-btn
+                                    color="#4361ee"
+                                    class="academia__button--btn"
+                                    max-heigth="250"
+                                    height="50"
+                                    tile
+                                    btn-rounded-border-radius
+                                >
                                     <p class="academia__button--text">
                                         EQUIPAMENTOS NOVOS
                                     </p>
                                 </v-btn>
 
-                                <v-btn color="#4361ee" class="academia__button--btn" max-heigth="250" height="50" tile
-                                    btn-rounded-border-radius>
+                                <v-btn
+                                    color="#4361ee"
+                                    class="academia__button--btn"
+                                    max-heigth="250"
+                                    height="50"
+                                    tile
+                                    btn-rounded-border-radius
+                                >
                                     <p class="academia__button--text">
                                         AULAS DIÁRIAS
                                     </p>
@@ -190,9 +274,9 @@
 
         <!-- Cards de pacotes -->
         <section class="bg-preto">
-            <div class="title__font">
-                <p class="title__font-light">
-                    ESCOLHA O SEU <span class="title__font-pink">PLANO</span>
+            <div class="title__">
+                <p class="title__-light">
+                    ESCOLHA O SEU <span class="title__-pink">PLANO</span>
                 </p>
             </div>
             <v-container class="pacote">
@@ -200,72 +284,97 @@
                     <!-- standard -->
                     <v-col cols="3">
                         <v-card class="pacote__card">
-                        <v-img :src="images.pacote.standard" class="pacote__card--image--standard align-end">
+                            <v-img
+                                :src="images.pacote.standard"
+                                class="pacote__card--image--standard align-end"
+                            >
+                                <template v-slot:placeholder>
+                                    <v-row
+                                        class="fill-height ma-0"
+                                        align="center"
+                                        justify="center"
+                                    >
+                                        <v-progress-circular
+                                            indeterminate
+                                            color="grey lighten-5"
+                                        ></v-progress-circular>
+                                    </v-row>
+                                </template>
 
-                            <template v-slot:placeholder>
-                                <v-row class="fill-height ma-0" align="center" justify="center">
-                                    <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
-                                </v-row>
-                            </template>
+                                <div class="pacote__card--content">
+                                    <v-card-title class="pacote__card--title">
+                                        Standard
+                                    </v-card-title>
 
-                            <div class="pacote__card--content">
-                                <v-card-title class="pacote__card--title">
-                                    Standard
-                                </v-card-title>
-
-                                <v-card-text class="pacote__card--text">
-                                    1 modalidade
-                                </v-card-text>
-                            </div>
-                        </v-img>
+                                    <v-card-text class="pacote__card--text">
+                                        1 modalidade
+                                    </v-card-text>
+                                </div>
+                            </v-img>
                         </v-card>
-
                     </v-col>
                     <!-- gofighter -->
                     <v-col cols="3">
                         <v-card class="pacote__card">
-                        <v-img :src="images.pacote.gofighter" class="pacote__card--image--gofighter align-end">
+                            <v-img
+                                :src="images.pacote.gofighter"
+                                class="pacote__card--image--gofighter"
+                            >
+                                <template v-slot:placeholder>
+                                    <v-row
+                                        class="fill-height ma-0"
+                                        align="center"
+                                        justify="center"
+                                    >
+                                        <v-progress-circular
+                                            indeterminate
+                                            color="grey lighten-5"
+                                        ></v-progress-circular>
+                                    </v-row>
+                                </template>
 
-                            <template v-slot:placeholder>
-                                <v-row class="fill-height ma-0" align="center" justify="center">
-                                    <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
-                                </v-row>
-                            </template>
+                                <div class="pacote__card--content">
+                                    <v-card-title class="pacote__card--title">
+                                        Standard
+                                    </v-card-title>
 
-                            <div class="pacote__card--content">
-                                <v-card-title class="pacote__card--title">
-                                    Standard
-                                </v-card-title>
-
-                                <v-card-text class="pacote__card--text">
-                                    1 modalidade
-                                </v-card-text>
-                            </div>
-                        </v-img>
+                                    <v-card-text class="pacote__card--text">
+                                        3 modalidade
+                                    </v-card-text>
+                                </div>
+                            </v-img>
                         </v-card>
-
                     </v-col>
                     <!-- fighter -->
                     <v-col cols="3">
                         <v-card class="pacote__card">
-                        <v-img :src="images.pacote.fighter" class="pacote__card--image--fighter ">
+                            <v-img
+                                :src="images.pacote.fighter"
+                                class="pacote__card--image--fighter"
+                            >
+                                <template v-slot:placeholder>
+                                    <v-row
+                                        class="fill-height ma-0"
+                                        align="center"
+                                        justify="center"
+                                    >
+                                        <v-progress-circular
+                                            indeterminate
+                                            color="grey lighten-5"
+                                        ></v-progress-circular>
+                                    </v-row>
+                                </template>
 
-                            <template v-slot:placeholder>
-                                <v-row class="fill-height ma-0" align="center" justify="center">
-                                    <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
-                                </v-row>
-                            </template>
+                                <div class="pacote__card--content">
+                                    <v-card-title class="pacote__card--title">
+                                        Standard
+                                    </v-card-title>
 
-                            <div class="pacote__card--content">
-                                <v-card-title class="pacote__card--title">
-                                    Standard
-                                </v-card-title>
-
-                                <v-card-text class="pacote__card--text">
-                                    1 modalidade
-                                </v-card-text>
-                            </div>
-                        </v-img>
+                                    <v-card-text class="pacote__card--text">
+                                        2 modalidade
+                                    </v-card-text>
+                                </div>
+                            </v-img>
                         </v-card>
                     </v-col>
                 </v-row>
@@ -273,10 +382,10 @@
         </section>
 
         <!-- sobre nos  -->
-        <section>
-            <div class="title__font">
-                <p class="title__font-dark my-5">
-                    SOBRE <span class="title__font-pink">NÓS</span>
+        <section class="my-5 sobrenos">
+            <div class="title__">
+                <p class="title__-dark">
+                    SOBRE <span class="title__-pink">NÓS</span>
                 </p>
             </div>
 
@@ -284,7 +393,7 @@
                 <v-col sm="12" lg="6" class="flex justify-center items-center">
                     <v-img :src="images.logo" min-width="240" max-width="500" />
                 </v-col>
-                <v-col sm="12" lg="6">
+                <v-col sm="12" lg="6" class="sobreNos__section">
                     <p class="sobrenos__text--align">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore
@@ -308,19 +417,149 @@
                         blandit. Orci sagittis eu volutpat odio facilisis mauris
                         sit amet massa.
                     </p>
-                    <v-btn outlined rounded color="#F72585">Leia Mais</v-btn>
-
+                    <v-btn
+                        outlined
+                        rounded
+                        color="#F72585"
+                        class="sobrenos__btn"
+                        >Leia Mais</v-btn
+                    >
                 </v-col>
             </v-row>
         </section>
 
         <!-- fale conosco -->
-        <section class="bg-preto ">
-            <div class="title__font">
-            <p class="title__font-light">FALE <span class="title__font-blue">CONOSCO</span></p>
+        <section class="bg-preto rodape">
+            <!-- titulo da seção  -->
+            <div class="title__ col-span-12">
+                <p class="title__-light">
+                    FALE <span class="title__-blue">CONOSCO</span>
+                </p>
+            </div>
+            <!-- form -->
+            <div class="container mx-auto">
+                <validation-observer ref="observer" v-slot="{ invalid }">
+                    <form @submit.prevent="submit" class="rodape__form">
+                        <div class="col-span-6">
+                            <!-- campo do nome  -->
+                            <validation-provider
+                                v-slot="{ errors }"
+                                name="Name"
+                                rules="required|max:10"
+                            >
+                                <v-text-field
+                                    v-model="info.nome"
+                                    :error-messages="errors"
+                                    placeholder="Nome...."
+                                    required
+                                    solo
+                                ></v-text-field>
+                            </validation-provider>
+                            <!-- campo do Email  -->
+                            <validation-provider
+                                v-slot="{ errors }"
+                                name="email"
+                                rules="required|email"
+                            >
+                                <v-text-field
+                                    v-model="info.email"
+                                    :error-messages="errors"
+                                    placeholder="E-mail...."
+                                    required
+                                    solo
+                                ></v-text-field>
+                            </validation-provider>
+
+                            <v-btn
+                                class="mr-4 rodape__form--btn"
+                                type="submit"
+                                :disabled="invalid"
+                                color="#4361ee"
+                                @click="enviarDados()"
+                            >
+                                <h4>submit</h4>
+                            </v-btn>
+                        </div>
+                        <div class="col-span-6">
+                            <!-- campo de texto  -->
+                            <validation-provider
+                                v-slot="{ errors }"
+                                rules="required"
+                                name="digits"
+                            >
+                                <v-textarea
+                                    v-model="info.descricao"
+                                    :error-messages="errors"
+                                    required
+                                    solo
+                                    height="200"
+                                    label="Digite Aqui..."
+                                ></v-textarea>
+                            </validation-provider>
+                        </div>
+                    </form>
+                </validation-observer>
+            </div>
+            <!-- Dados de contato  -->
+            <div>
+                <div class="rodape__info">
+                    <div class="rodape__info--contato">
+                        <h5 class="rodape__info-title">Academia go fight</h5>
+                        <p>
+                            Rua Sagrado Coração, 876 - Canindé,São Paulo - SP<br />
+                            09999-000
+                        </p>
+                        <p>(11) 9999-9999</p>
+                        <p>contato@gofight.com.br</p>
+                    </div>
+
+                    <div class="rodape__info--sociais">
+                        <div>
+                            <h5 class="rodape__info-title">redes sociais</h5>
+                        </div>
+                        <div class="flex justify-around bg-red ">
+                        <v-btn icon >
+                            <div>
+                                <facebook-icon
+                                    size="1.5x"
+                                    class="rodape__info--sociais-facebook"
+                                />
+                            </div>
+                            <p class="rodape__icon--font">Facebook</p>
+                        </v-btn>
+
+                        <v-btn icon >
+                            <div>
+                                <instagram-icon
+                                    size="1.5x"
+                                    class="rodape__info--sociais-instagram"
+                                />
+                            </div>
+                            <p class="rodape__icon--font">instagram</p>
+                        </v-btn>
+
+                        <v-btn icon >
+                            <div>
+                                <linkedin-icon
+                                    size="1.5x"
+                                    class="rodape__info--sociais-linkedin"
+                                />
+                            </div>
+                            <p class="rodape__icon--font">linkedin</p>
+                        </v-btn>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rodape__copyright">
+                <p class="title__-light">
+                    Copyright © <span class="title__-pink">Gofight </span>2022.
+                    Do the impossible.
+                </p>
             </div>
         </section>
-
     </div>
 </template>
 
@@ -337,7 +576,19 @@ import salaJudo from "../../css/images/sala_judo.svg";
 import standard from "../../css/images/card_pacote-standard.svg";
 import fighter from "../../css/images/card_pacote-fighter.svg";
 import gofighter from "../../css/images/card_pacote-gofighter.svg";
-import { ChevronRightIcon, ChevronLeftIcon } from "vue-feather-icons";
+import {
+    ChevronRightIcon,
+    ChevronLeftIcon,
+    FacebookIcon,
+    InstagramIcon,
+    LinkedinIcon,
+} from "vue-feather-icons";
+import {
+    extend,
+    ValidationObserver,
+    ValidationProvider,
+    setInteractionMode,
+} from "vee-validate";
 
 export default {
     name: "inicio",
@@ -345,9 +596,19 @@ export default {
         ChevronRightIcon,
         ChevronLeftIcon,
         carrouselModalidades,
+        ValidationObserver,
+        ValidationProvider,
+        FacebookIcon,
+        InstagramIcon,
+        LinkedinIcon,
     },
     data() {
         return {
+            info: {
+                nome: "",
+                email: "",
+                descrição: "",
+            },
             images: {
                 StartBanner,
                 judoWide,
@@ -367,6 +628,32 @@ export default {
             },
         };
     },
+    methods: {
+        // submit() {
+        //     var data = {
+        //         nome: this.info.nome,
+        //         email: this.info.email,
+        //         descricao: this.info.descricao,
+        //     };
+        //     this.$axios
+        //         .post("faleConosco", data)
+        //         .then((response) => {
+        //             console.log(response);
+        //             localStorage.setItem("token", response.data.acess_token);
+        //         })
+        //         .catch((error) => {
+        //             console.log(error);
+        //         });
+        //     // this.$swal("Sucesso", "Dados Enviados!!!", "success");
+        // },
+    },
+    computed: {
+        anoAtual() {
+            data = new Date().getFullYear();
+
+            return data;
+        },
+    },
 };
 </script>
 
@@ -378,12 +665,13 @@ export default {
     font-size: 3rem;
     line-height: 72px;
     color: #ffffff;
-    &>span {
+
+    & > span {
         color: #f72585;
     }
 }
 
-.title__font {
+.title__ {
     @apply text-center;
     font-style: italic;
     font-weight: 700;
@@ -401,8 +689,13 @@ export default {
     &-pink {
         color: #f72585;
     }
-    &-blue{
-        color:#4361EE;
+
+    &-blue {
+        color: #4361ee;
+    }
+
+    &-gray {
+        color: #c4c4c4;
     }
 }
 
@@ -474,13 +767,18 @@ export default {
 }
 
 .pacote {
+    @apply flex flex-wrap justify-center;
+
     &__card {
+        @apply relative overflow-hidden;
         overflow: hidden;
         border: none;
         outline: none;
         border-radius: 25px;
+
         &--image {
-            @apply flex justify-center items-end ;
+            @apply flex flex-wrap justify-end items-center;
+
             &--standard {
                 position: relative;
                 width: 100%;
@@ -494,7 +792,11 @@ export default {
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background: radial-gradient(104.8% 104.8% at 50% -2.1%, rgba(217, 217, 217, 0) 0%, rgba(205, 127, 50, 0.6) 100%);
+                background: radial-gradient(
+                    104.8% 104.8% at 50% -2.1%,
+                    rgba(217, 217, 217, 0) 0%,
+                    rgba(205, 127, 50, 0.6) 100%
+                );
             }
 
             &--gofighter {
@@ -510,7 +812,11 @@ export default {
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background: radial-gradient(104.8% 104.8% at 50% -2.1%, rgba(153, 139, 60, 0.55) 0%, rgba(255, 215, 0, 0.4) 100%);
+                background: radial-gradient(
+                    104.8% 104.8% at 50% -2.1%,
+                    rgba(153, 139, 60, 0.55) 0%,
+                    rgba(255, 215, 0, 0.4) 100%
+                );
             }
 
             &--fighter {
@@ -526,13 +832,17 @@ export default {
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background: radial-gradient(104.8% 104.8% at 50% -2.1%, rgba(255, 255, 255, 0) 0%, rgba(192, 192, 192, 0.6) 100%);
+                background: radial-gradient(
+                    104.8% 104.8% at 50% -2.1%,
+                    rgba(255, 255, 255, 0) 0%,
+                    rgba(192, 192, 192, 0.6) 100%
+                );
             }
         }
 
         &--content {
+            @apply absolute bottom-0;
         }
-
 
         &--title {
             font-style: italic;
@@ -557,13 +867,178 @@ export default {
     }
 }
 
-.sobrenos__text--align {
-    @screen lg {
-        @apply my-14 text-justify;
+.sobrenos {
+    &__text {
+        &--align {
+            @apply my-14 text-justify px-10;
+
+            @media screen and (max-width: 768px) {
+                @apply my-6 text-center;
+            }
+        }
+    }
+    &--btn {
+        @apply relative mx-auto;
+    }
+}
+
+.rodape {
+    @apply space-y-4;
+
+    &__form {
+        @screen lg {
+            @apply relative grid grid-cols-12 gap-4 w-3/6 mx-auto;
+        }
+        @media screen and (max-width: 768px) {
+            @apply grid-cols-6;
+        }
+        &--space_6 {
+            @screen lg {
+                @apply col-span-12;
+            }
+            @media screen and (max-width: 768px) {
+                @apply col-span-6;
+            }
+        }
+
+        &--btn {
+            @apply w-full;
+
+            & > p {
+                font-style: italic;
+                font-weight: 700;
+                font-size: 20px;
+                line-height: 30px;
+                color: #fafafa;
+            }
+        }
     }
 
-    @screen sm {
-        @apply my-6;
+    &__info {
+        @apply grid grid-cols-12  mx-auto justify-items-center;
+        @media screen and (max-width: 768px) {
+            @apply grid-cols-6 w-full space-y-6;
+        }
+        font-style: italic;
+        font-weight: 600;
+
+        &--contato {
+            @apply flex flex-col items-start col-span-6 space-y-6;
+
+            @media screen and (max-width: 768px) {
+                @apply flex items-center col-span-6 space-y-6;
+            }
+            color: #dcd9d9;
+        }
+
+        &--sociais {
+            @apply   col-span-6 space-y-6;
+                &>div{
+                @apply flex flex-col justify-between items-center
+            }
+
+           
+            &-facebook {
+                width: 25px;
+                height: 25px;
+                position: relative;
+            }
+
+            &-facebook::after {
+                content: "";
+                position: absolute;
+                border-radius: 25px;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: #3b5998;
+            }
+
+            &-instagram {
+                width: 25px;
+                height: 25px;
+                z-index: 1;
+                position: relative;
+            }
+
+            &-instagram::before {
+            }
+
+            &-linkedin {
+                width: 25px;
+                height: 25px;
+                position: relative;
+            }
+
+            &-linkedin::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-radius: 50px;
+                width: 100%;
+                height: 100%;
+                background: #007bb5;
+            }
+        }
+
+        &-title {
+            color: #ffff;
+            font-weight: 600;
+        }
+    }
+
+    &__icon {
+        &--font {
+            font-family: "Poppins";
+            font-style: italic;
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 18px;
+            color: #c4c4c4;
+        }
+
+        &--facebook {
+            width: 20px;
+            height: 20px;
+            position: relative;
+            background-color: transparent;
+        }
+
+        &--facebook::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #3b5998;
+            border-radius: 25px;
+        }
+
+        &--instagram {
+            width: 25px;
+            height: 25px;
+        }
+
+        &--instagram::before {
+            content: "";
+            border-radius: 50px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 120%;
+            height: 120%;
+            z-index: 0;
+        }
+    }
+
+    &__copyright {
+        @apply w-3/6 mx-auto py-5 flex justify-center;
+        @media screen and (max-width: 768px) {
+            @apply w-full;
+        }
     }
 }
 

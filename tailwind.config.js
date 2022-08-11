@@ -20,6 +20,7 @@ module.exports = {
       'preto': "#313131",
       'transparent': 'transparent',
       'azul':'#4361EE',
+      'cinza':'#C4C4C4'
     },
     screens: {
       'sm': '640px',

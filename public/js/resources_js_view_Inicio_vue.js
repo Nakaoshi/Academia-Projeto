@@ -249,6 +249,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _css_images_card_pacote_fighter_svg__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../css/images/card_pacote-fighter.svg */ "./resources/css/images/card_pacote-fighter.svg");
 /* harmony import */ var _css_images_card_pacote_gofighter_svg__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../css/images/card_pacote-gofighter.svg */ "./resources/css/images/card_pacote-gofighter.svg");
 /* harmony import */ var vue_feather_icons__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! vue-feather-icons */ "./node_modules/vue-feather-icons/dist/vue-feather-icons.es.js");
+/* harmony import */ var vee_validate__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! vee-validate */ "./node_modules/vee-validate/dist/vee-validate.esm.js");
 //
 //
 //
@@ -575,6 +576,246 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -593,10 +834,20 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     ChevronRightIcon: vue_feather_icons__WEBPACK_IMPORTED_MODULE_12__.ChevronRightIcon,
     ChevronLeftIcon: vue_feather_icons__WEBPACK_IMPORTED_MODULE_12__.ChevronLeftIcon,
-    carrouselModalidades: _components_carrosel_App_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    carrouselModalidades: _components_carrosel_App_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    ValidationObserver: vee_validate__WEBPACK_IMPORTED_MODULE_13__.ValidationObserver,
+    ValidationProvider: vee_validate__WEBPACK_IMPORTED_MODULE_13__.ValidationProvider,
+    FacebookIcon: vue_feather_icons__WEBPACK_IMPORTED_MODULE_12__.FacebookIcon,
+    InstagramIcon: vue_feather_icons__WEBPACK_IMPORTED_MODULE_12__.InstagramIcon,
+    LinkedinIcon: vue_feather_icons__WEBPACK_IMPORTED_MODULE_12__.LinkedinIcon
   },
   data: function data() {
     return {
+      info: {
+        nome: "",
+        email: "",
+        descrição: ""
+      },
       images: {
         StartBanner: _css_images_Banner_Image_svg__WEBPACK_IMPORTED_MODULE_1__["default"],
         judoWide: _css_images_judoCarrosel_svg__WEBPACK_IMPORTED_MODULE_3__["default"],
@@ -615,6 +866,30 @@ __webpack_require__.r(__webpack_exports__);
         }
       }
     };
+  },
+  methods: {// submit() {
+    //     var data = {
+    //         nome: this.info.nome,
+    //         email: this.info.email,
+    //         descricao: this.info.descricao,
+    //     };
+    //     this.$axios
+    //         .post("faleConosco", data)
+    //         .then((response) => {
+    //             console.log(response);
+    //             localStorage.setItem("token", response.data.acess_token);
+    //         })
+    //         .catch((error) => {
+    //             console.log(error);
+    //         });
+    //     // this.$swal("Sucesso", "Dados Enviados!!!", "success");
+    // },
+  },
+  computed: {
+    anoAtual: function anoAtual() {
+      data = new Date().getFullYear();
+      return data;
+    }
   }
 });
 
@@ -685,7 +960,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".banner--text[data-v-781fd2be] {\n  position: absolute;\n  top: 0px;\n  left: 0px;\n  padding-left: 1.75rem;\n  padding-top: 1.75rem;\n  font-style: italic;\n  font-weight: 700;\n  font-size: 3rem;\n  line-height: 72px;\n  color: #ffffff;\n}\n.banner--text > span[data-v-781fd2be] {\n  color: #f72585;\n}\n.title__font[data-v-781fd2be] {\n  text-align: center;\n  font-style: italic;\n  font-weight: 700;\n  font-size: 40px;\n  line-height: 60px;\n}\n.title__font-dark[data-v-781fd2be] {\n  color: #313131;\n}\n.title__font-light[data-v-781fd2be] {\n  color: #fafafa;\n}\n.title__font-pink[data-v-781fd2be] {\n  color: #f72585;\n}\n.title__font-blue[data-v-781fd2be] {\n  color: #4361EE;\n}\n.academia__card[data-v-781fd2be] {\n  overflow: hidden;\n  border: none;\n  outline: none;\n  border-radius: 25px;\n}\n.academia__card--title[data-v-781fd2be] {\n  font-style: italic;\n  font-weight: 700;\n  font-size: 23px;\n  line-height: 30px;\n  color: #4361ee;\n}\n@media screen and (max-width: 680px) {\n.academia__card--title[data-v-781fd2be] {\n    text-align: center;\n    font-size: 19px;\n}\n}\n.academia__card--text[data-v-781fd2be] {\n  font-style: normal;\n  font-weight: 500;\n  font-size: 16px;\n  line-height: 30px;\n  color: #313131;\n}\n.academia__card__content--space[data-v-781fd2be] {\n  border-radius: 50%;\n}\n.academia__card--boxe[data-v-781fd2be] {\n  display: flex;\n}\n@media (min-width: 1265px) {\n.academia__card--boxe[data-v-781fd2be] {\n    flex-direction: row-reverse;\n}\n}\n.academia__button--btn[data-v-781fd2be] {\n  cursor: default !important;\n  width: 25%;\n  height: 25%;\n  background-color: #4361ee;\n  border-radius: 15px;\n}\n@media (max-width: 1440px) {\n.academia__button--btn[data-v-781fd2be] {\n    width: 33%;\n}\n}\n.academia__button--text[data-v-781fd2be] {\n  font-weight: 700;\n  font-size: 14px;\n  line-height: 30px;\n  color: #f9f9f9;\n}\n@media (max-width: 1440px) {\n.academia__button--text[data-v-781fd2be] {\n    font-size: 12px;\n}\n}\n.pacote__card[data-v-781fd2be] {\n  overflow: hidden;\n  border: none;\n  outline: none;\n  border-radius: 25px;\n}\n.pacote__card--image[data-v-781fd2be] {\n  display: flex;\n  align-items: flex-end;\n  justify-content: center;\n}\n.pacote__card--image--standard[data-v-781fd2be] {\n  position: relative;\n  width: 100%;\n  height: 100%;\n}\n.pacote__card--image--standard[data-v-781fd2be]::before {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: radial-gradient(104.8% 104.8% at 50% -2.1%, rgba(217, 217, 217, 0) 0%, rgba(205, 127, 50, 0.6) 100%);\n}\n.pacote__card--image--gofighter[data-v-781fd2be] {\n  position: relative;\n  width: 100%;\n  height: 100%;\n}\n.pacote__card--image--gofighter[data-v-781fd2be]::before {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: radial-gradient(104.8% 104.8% at 50% -2.1%, rgba(153, 139, 60, 0.55) 0%, rgba(255, 215, 0, 0.4) 100%);\n}\n.pacote__card--image--fighter[data-v-781fd2be] {\n  position: relative;\n  width: 100%;\n  height: 100%;\n}\n.pacote__card--image--fighter[data-v-781fd2be]::before {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: radial-gradient(104.8% 104.8% at 50% -2.1%, rgba(255, 255, 255, 0) 0%, rgba(192, 192, 192, 0.6) 100%);\n}\n.pacote__card--title[data-v-781fd2be] {\n  font-style: italic;\n  font-weight: 600;\n  font-size: 20px;\n  line-height: 30px;\n  letter-spacing: 0.5em;\n  color: #ffffff;\n  text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);\n}\n.pacote__card--text[data-v-781fd2be] {\n  font-style: italic;\n  font-weight: 600;\n  font-size: 16px;\n  line-height: 24px;\n  text-align: justify;\n  letter-spacing: 0.5em;\n  color: #ffffff;\n  text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);\n}\n@media (min-width: 1024px) {\n.sobrenos__text--align[data-v-781fd2be] {\n    margin-top: 3.5rem;\n    margin-bottom: 3.5rem;\n    text-align: justify;\n}\n}\n@media (min-width: 640px) {\n.sobrenos__text--align[data-v-781fd2be] {\n    margin-top: 1.5rem;\n    margin-bottom: 1.5rem;\n}\n}\n@media (min-width: 680px) and (max-width: 1024px) {\n.banner--text[data-v-781fd2be] {\n    font-size: 2rem;\n}\n}\n@media screen and (max-width: 680px) {\n.banner--text[data-v-781fd2be] {\n    padding-top: 0px;\n    padding-left: 1.25rem;\n    font-size: 1rem;\n}\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".banner--text[data-v-781fd2be] {\n  position: absolute;\n  top: 0px;\n  left: 0px;\n  padding-left: 1.75rem;\n  padding-top: 1.75rem;\n  font-style: italic;\n  font-weight: 700;\n  font-size: 3rem;\n  line-height: 72px;\n  color: #ffffff;\n}\n.banner--text > span[data-v-781fd2be] {\n  color: #f72585;\n}\n.title__[data-v-781fd2be] {\n  text-align: center;\n  font-style: italic;\n  font-weight: 700;\n  font-size: 40px;\n  line-height: 60px;\n}\n.title__-dark[data-v-781fd2be] {\n  color: #313131;\n}\n.title__-light[data-v-781fd2be] {\n  color: #fafafa;\n}\n.title__-pink[data-v-781fd2be] {\n  color: #f72585;\n}\n.title__-blue[data-v-781fd2be] {\n  color: #4361ee;\n}\n.title__-gray[data-v-781fd2be] {\n  color: #c4c4c4;\n}\n.academia__card[data-v-781fd2be] {\n  overflow: hidden;\n  border: none;\n  outline: none;\n  border-radius: 25px;\n}\n.academia__card--title[data-v-781fd2be] {\n  font-style: italic;\n  font-weight: 700;\n  font-size: 23px;\n  line-height: 30px;\n  color: #4361ee;\n}\n@media screen and (max-width: 680px) {\n.academia__card--title[data-v-781fd2be] {\n    text-align: center;\n    font-size: 19px;\n}\n}\n.academia__card--text[data-v-781fd2be] {\n  font-style: normal;\n  font-weight: 500;\n  font-size: 16px;\n  line-height: 30px;\n  color: #313131;\n}\n.academia__card__content--space[data-v-781fd2be] {\n  border-radius: 50%;\n}\n.academia__card--boxe[data-v-781fd2be] {\n  display: flex;\n}\n@media (min-width: 1265px) {\n.academia__card--boxe[data-v-781fd2be] {\n    flex-direction: row-reverse;\n}\n}\n.academia__button--btn[data-v-781fd2be] {\n  cursor: default !important;\n  width: 25%;\n  height: 25%;\n  background-color: #4361ee;\n  border-radius: 15px;\n}\n@media (max-width: 1440px) {\n.academia__button--btn[data-v-781fd2be] {\n    width: 33%;\n}\n}\n.academia__button--text[data-v-781fd2be] {\n  font-weight: 700;\n  font-size: 14px;\n  line-height: 30px;\n  color: #f9f9f9;\n}\n@media (max-width: 1440px) {\n.academia__button--text[data-v-781fd2be] {\n    font-size: 12px;\n}\n}\n.pacote[data-v-781fd2be] {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n.pacote__card[data-v-781fd2be] {\n  position: relative;\n  overflow: hidden;\n  border: none;\n  outline: none;\n  border-radius: 25px;\n}\n.pacote__card--image[data-v-781fd2be] {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: flex-end;\n}\n.pacote__card--image--standard[data-v-781fd2be] {\n  position: relative;\n  width: 100%;\n  height: 100%;\n}\n.pacote__card--image--standard[data-v-781fd2be]::before {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: radial-gradient(104.8% 104.8% at 50% -2.1%, rgba(217, 217, 217, 0) 0%, rgba(205, 127, 50, 0.6) 100%);\n}\n.pacote__card--image--gofighter[data-v-781fd2be] {\n  position: relative;\n  width: 100%;\n  height: 100%;\n}\n.pacote__card--image--gofighter[data-v-781fd2be]::before {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: radial-gradient(104.8% 104.8% at 50% -2.1%, rgba(153, 139, 60, 0.55) 0%, rgba(255, 215, 0, 0.4) 100%);\n}\n.pacote__card--image--fighter[data-v-781fd2be] {\n  position: relative;\n  width: 100%;\n  height: 100%;\n}\n.pacote__card--image--fighter[data-v-781fd2be]::before {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: radial-gradient(104.8% 104.8% at 50% -2.1%, rgba(255, 255, 255, 0) 0%, rgba(192, 192, 192, 0.6) 100%);\n}\n.pacote__card--content[data-v-781fd2be] {\n  position: absolute;\n  bottom: 0px;\n}\n.pacote__card--title[data-v-781fd2be] {\n  font-style: italic;\n  font-weight: 600;\n  font-size: 20px;\n  line-height: 30px;\n  letter-spacing: 0.5em;\n  color: #ffffff;\n  text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);\n}\n.pacote__card--text[data-v-781fd2be] {\n  font-style: italic;\n  font-weight: 600;\n  font-size: 16px;\n  line-height: 24px;\n  text-align: justify;\n  letter-spacing: 0.5em;\n  color: #ffffff;\n  text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);\n}\n.sobrenos__text--align[data-v-781fd2be] {\n  margin-top: 3.5rem;\n  margin-bottom: 3.5rem;\n  padding-left: 2.5rem;\n  padding-right: 2.5rem;\n  text-align: justify;\n}\n@media screen and (max-width: 768px) {\n.sobrenos__text--align[data-v-781fd2be] {\n    margin-top: 1.5rem;\n    margin-bottom: 1.5rem;\n    text-align: center;\n}\n}\n.sobrenos--btn[data-v-781fd2be] {\n  position: relative;\n  margin-left: auto;\n  margin-right: auto;\n}\n.rodape[data-v-781fd2be] > :not([hidden]) ~ :not([hidden]) {\n  --tw-space-y-reverse: 0;\n  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));\n  margin-bottom: calc(1rem * var(--tw-space-y-reverse));\n}\n@media (min-width: 1024px) {\n.rodape__form[data-v-781fd2be] {\n    position: relative;\n    margin-left: auto;\n    margin-right: auto;\n    display: grid;\n    width: 50%;\n    grid-template-columns: repeat(12, minmax(0, 1fr));\n    gap: 1rem;\n}\n}\n@media screen and (max-width: 768px) {\n.rodape__form[data-v-781fd2be] {\n    grid-template-columns: repeat(6, minmax(0, 1fr));\n}\n}\n@media (min-width: 1024px) {\n.rodape__form--space_6[data-v-781fd2be] {\n    grid-column: span 12 / span 12;\n}\n}\n@media screen and (max-width: 768px) {\n.rodape__form--space_6[data-v-781fd2be] {\n    grid-column: span 6 / span 6;\n}\n}\n.rodape__form--btn[data-v-781fd2be] {\n  width: 100%;\n}\n.rodape__form--btn > p[data-v-781fd2be] {\n  font-style: italic;\n  font-weight: 700;\n  font-size: 20px;\n  line-height: 30px;\n  color: #fafafa;\n}\n.rodape__info[data-v-781fd2be] {\n  margin-left: auto;\n  margin-right: auto;\n  display: grid;\n  grid-template-columns: repeat(12, minmax(0, 1fr));\n  justify-items: center;\n  font-style: italic;\n  font-weight: 600;\n}\n@media screen and (max-width: 768px) {\n.rodape__info[data-v-781fd2be] {\n    width: 100%;\n    grid-template-columns: repeat(6, minmax(0, 1fr));\n}\n.rodape__info[data-v-781fd2be] > :not([hidden]) ~ :not([hidden]) {\n    --tw-space-y-reverse: 0;\n    margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));\n    margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));\n}\n}\n.rodape__info--contato[data-v-781fd2be] {\n  grid-column: span 6 / span 6;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n}\n.rodape__info--contato[data-v-781fd2be] > :not([hidden]) ~ :not([hidden]) {\n  --tw-space-y-reverse: 0;\n  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));\n  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));\n}\n.rodape__info--contato[data-v-781fd2be] {\n  color: #dcd9d9;\n}\n@media screen and (max-width: 768px) {\n.rodape__info--contato[data-v-781fd2be] {\n    grid-column: span 6 / span 6;\n    display: flex;\n    align-items: center;\n}\n.rodape__info--contato[data-v-781fd2be] > :not([hidden]) ~ :not([hidden]) {\n    --tw-space-y-reverse: 0;\n    margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));\n    margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));\n}\n}\n.rodape__info--sociais[data-v-781fd2be] {\n  grid-column: span 6 / span 6;\n}\n.rodape__info--sociais[data-v-781fd2be] > :not([hidden]) ~ :not([hidden]) {\n  --tw-space-y-reverse: 0;\n  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));\n  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));\n}\n.rodape__info--sociais > div[data-v-781fd2be] {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: space-between;\n}\n.rodape__info--sociais-facebook[data-v-781fd2be] {\n  width: 25px;\n  height: 25px;\n  position: relative;\n}\n.rodape__info--sociais-facebook[data-v-781fd2be]::after {\n  content: \"\";\n  position: absolute;\n  border-radius: 25px;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: #3b5998;\n}\n.rodape__info--sociais-instagram[data-v-781fd2be] {\n  width: 25px;\n  height: 25px;\n  z-index: 1;\n  position: relative;\n}\n.rodape__info--sociais-linkedin[data-v-781fd2be] {\n  width: 25px;\n  height: 25px;\n  position: relative;\n}\n.rodape__info--sociais-linkedin[data-v-781fd2be]::before {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  left: 0;\n  border-radius: 50px;\n  width: 100%;\n  height: 100%;\n  background: #007bb5;\n}\n.rodape__info-title[data-v-781fd2be] {\n  color: white;\n  font-weight: 600;\n}\n.rodape__icon--font[data-v-781fd2be] {\n  font-family: \"Poppins\";\n  font-style: italic;\n  font-weight: 700;\n  font-size: 12px;\n  line-height: 18px;\n  color: #c4c4c4;\n}\n.rodape__icon--facebook[data-v-781fd2be] {\n  width: 20px;\n  height: 20px;\n  position: relative;\n  background-color: transparent;\n}\n.rodape__icon--facebook[data-v-781fd2be]::before {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  right: 0;\n  width: 100%;\n  height: 100%;\n  background-color: #3b5998;\n  border-radius: 25px;\n}\n.rodape__icon--instagram[data-v-781fd2be] {\n  width: 25px;\n  height: 25px;\n}\n.rodape__icon--instagram[data-v-781fd2be]::before {\n  content: \"\";\n  border-radius: 50px;\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 120%;\n  height: 120%;\n  z-index: 0;\n}\n.rodape__copyright[data-v-781fd2be] {\n  margin-left: auto;\n  margin-right: auto;\n  display: flex;\n  width: 50%;\n  justify-content: center;\n  padding-top: 1.25rem;\n  padding-bottom: 1.25rem;\n}\n@media screen and (max-width: 768px) {\n.rodape__copyright[data-v-781fd2be] {\n    width: 100%;\n}\n}\n@media (min-width: 680px) and (max-width: 1024px) {\n.banner--text[data-v-781fd2be] {\n    font-size: 2rem;\n}\n}\n@media screen and (max-width: 680px) {\n.banner--text[data-v-781fd2be] {\n    padding-top: 0px;\n    padding-left: 1.25rem;\n    font-size: 1rem;\n}\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -748,7 +1023,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/card_pacote-fighter.svg?0aca3a32d9468b73cde3d891eadfea65");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/card_pacote-fighter.svg?33aafa38bb17ae3bb57b1352f6d8c9bc");
 
 /***/ }),
 
@@ -763,7 +1038,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/card_pacote-gofighter.svg?5b174f889916e26027f937b8aedb4631");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/card_pacote-gofighter.svg?5562704709bdfbf177a78323e90f618c");
 
 /***/ }),
 
@@ -16842,7 +17117,7 @@ var render = function () {
                                   { staticClass: "pacote__card--title" },
                                   [
                                     _vm._v(
-                                      "\n                                Standard\n                            "
+                                      "\n                                    Standard\n                                "
                                     ),
                                   ]
                                 ),
@@ -16852,7 +17127,7 @@ var render = function () {
                                   { staticClass: "pacote__card--text" },
                                   [
                                     _vm._v(
-                                      "\n                                1 modalidade\n                            "
+                                      "\n                                    1 modalidade\n                                "
                                     ),
                                   ]
                                 ),
@@ -16879,8 +17154,7 @@ var render = function () {
                         _c(
                           "v-img",
                           {
-                            staticClass:
-                              "pacote__card--image--gofighter align-end",
+                            staticClass: "pacote__card--image--gofighter",
                             attrs: { src: _vm.images.pacote.gofighter },
                             scopedSlots: _vm._u([
                               {
@@ -16923,7 +17197,7 @@ var render = function () {
                                   { staticClass: "pacote__card--title" },
                                   [
                                     _vm._v(
-                                      "\n                                Standard\n                            "
+                                      "\n                                    Standard\n                                "
                                     ),
                                   ]
                                 ),
@@ -16933,7 +17207,7 @@ var render = function () {
                                   { staticClass: "pacote__card--text" },
                                   [
                                     _vm._v(
-                                      "\n                                1 modalidade\n                            "
+                                      "\n                                    3 modalidade\n                                "
                                     ),
                                   ]
                                 ),
@@ -16960,7 +17234,7 @@ var render = function () {
                         _c(
                           "v-img",
                           {
-                            staticClass: "pacote__card--image--fighter ",
+                            staticClass: "pacote__card--image--fighter",
                             attrs: { src: _vm.images.pacote.fighter },
                             scopedSlots: _vm._u([
                               {
@@ -17003,7 +17277,7 @@ var render = function () {
                                   { staticClass: "pacote__card--title" },
                                   [
                                     _vm._v(
-                                      "\n                                Standard\n                            "
+                                      "\n                                    Standard\n                                "
                                     ),
                                   ]
                                 ),
@@ -17013,7 +17287,7 @@ var render = function () {
                                   { staticClass: "pacote__card--text" },
                                   [
                                     _vm._v(
-                                      "\n                                1 modalidade\n                            "
+                                      "\n                                    2 modalidade\n                                "
                                     ),
                                   ]
                                 ),
@@ -17040,6 +17314,7 @@ var render = function () {
     _vm._v(" "),
     _c(
       "section",
+      { staticClass: "my-5 sobrenos" },
       [
         _vm._m(3),
         _vm._v(" "),
@@ -17067,7 +17342,10 @@ var render = function () {
             _vm._v(" "),
             _c(
               "v-col",
-              { attrs: { sm: "12", lg: "6" } },
+              {
+                staticClass: "sobreNos__section",
+                attrs: { sm: "12", lg: "6" },
+              },
               [
                 _c("p", { staticClass: "sobrenos__text--align" }, [
                   _vm._v(
@@ -17083,7 +17361,10 @@ var render = function () {
                 _vm._v(" "),
                 _c(
                   "v-btn",
-                  { attrs: { outlined: "", rounded: "", color: "#F72585" } },
+                  {
+                    staticClass: "sobrenos__btn",
+                    attrs: { outlined: "", rounded: "", color: "#F72585" },
+                  },
                   [_vm._v("Leia Mais")]
                 ),
               ],
@@ -17096,7 +17377,249 @@ var render = function () {
       1
     ),
     _vm._v(" "),
-    _vm._m(4),
+    _c("section", { staticClass: "bg-preto rodape" }, [
+      _vm._m(4),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "container mx-auto" },
+        [
+          _c("validation-observer", {
+            ref: "observer",
+            scopedSlots: _vm._u([
+              {
+                key: "default",
+                fn: function (ref) {
+                  var invalid = ref.invalid
+                  return [
+                    _c(
+                      "form",
+                      {
+                        staticClass: "rodape__form",
+                        on: {
+                          submit: function ($event) {
+                            $event.preventDefault()
+                            return _vm.submit.apply(null, arguments)
+                          },
+                        },
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "col-span-6" },
+                          [
+                            _c("validation-provider", {
+                              attrs: { name: "Name", rules: "required|max:10" },
+                              scopedSlots: _vm._u(
+                                [
+                                  {
+                                    key: "default",
+                                    fn: function (ref) {
+                                      var errors = ref.errors
+                                      return [
+                                        _c("v-text-field", {
+                                          attrs: {
+                                            "error-messages": errors,
+                                            placeholder: "Nome....",
+                                            required: "",
+                                            solo: "",
+                                          },
+                                          model: {
+                                            value: _vm.info.nome,
+                                            callback: function ($$v) {
+                                              _vm.$set(_vm.info, "nome", $$v)
+                                            },
+                                            expression: "info.nome",
+                                          },
+                                        }),
+                                      ]
+                                    },
+                                  },
+                                ],
+                                null,
+                                true
+                              ),
+                            }),
+                            _vm._v(" "),
+                            _c("validation-provider", {
+                              attrs: { name: "email", rules: "required|email" },
+                              scopedSlots: _vm._u(
+                                [
+                                  {
+                                    key: "default",
+                                    fn: function (ref) {
+                                      var errors = ref.errors
+                                      return [
+                                        _c("v-text-field", {
+                                          attrs: {
+                                            "error-messages": errors,
+                                            placeholder: "E-mail....",
+                                            required: "",
+                                            solo: "",
+                                          },
+                                          model: {
+                                            value: _vm.info.email,
+                                            callback: function ($$v) {
+                                              _vm.$set(_vm.info, "email", $$v)
+                                            },
+                                            expression: "info.email",
+                                          },
+                                        }),
+                                      ]
+                                    },
+                                  },
+                                ],
+                                null,
+                                true
+                              ),
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "v-btn",
+                              {
+                                staticClass: "mr-4 rodape__form--btn",
+                                attrs: {
+                                  type: "submit",
+                                  disabled: invalid,
+                                  color: "#4361ee",
+                                },
+                                on: {
+                                  click: function ($event) {
+                                    return _vm.enviarDados()
+                                  },
+                                },
+                              },
+                              [_c("h4", [_vm._v("submit")])]
+                            ),
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col-span-6" },
+                          [
+                            _c("validation-provider", {
+                              attrs: { rules: "required", name: "digits" },
+                              scopedSlots: _vm._u(
+                                [
+                                  {
+                                    key: "default",
+                                    fn: function (ref) {
+                                      var errors = ref.errors
+                                      return [
+                                        _c("v-textarea", {
+                                          attrs: {
+                                            "error-messages": errors,
+                                            required: "",
+                                            solo: "",
+                                            height: "200",
+                                            label: "Digite Aqui...",
+                                          },
+                                          model: {
+                                            value: _vm.info.descricao,
+                                            callback: function ($$v) {
+                                              _vm.$set(
+                                                _vm.info,
+                                                "descricao",
+                                                $$v
+                                              )
+                                            },
+                                            expression: "info.descricao",
+                                          },
+                                        }),
+                                      ]
+                                    },
+                                  },
+                                ],
+                                null,
+                                true
+                              ),
+                            }),
+                          ],
+                          1
+                        ),
+                      ]
+                    ),
+                  ]
+                },
+              },
+            ]),
+          }),
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", [
+        _c("div", { staticClass: "rodape__info" }, [
+          _vm._m(5),
+          _vm._v(" "),
+          _c("div", { staticClass: "rodape__info--sociais" }, [
+            _vm._m(6),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "flex justify-around bg-red " },
+              [
+                _c("v-btn", { attrs: { icon: "" } }, [
+                  _c(
+                    "div",
+                    [
+                      _c("facebook-icon", {
+                        staticClass: "rodape__info--sociais-facebook",
+                        attrs: { size: "1.5x" },
+                      }),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "rodape__icon--font" }, [
+                    _vm._v("Facebook"),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("v-btn", { attrs: { icon: "" } }, [
+                  _c(
+                    "div",
+                    [
+                      _c("instagram-icon", {
+                        staticClass: "rodape__info--sociais-instagram",
+                        attrs: { size: "1.5x" },
+                      }),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "rodape__icon--font" }, [
+                    _vm._v("instagram"),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("v-btn", { attrs: { icon: "" } }, [
+                  _c(
+                    "div",
+                    [
+                      _c("linkedin-icon", {
+                        staticClass: "rodape__info--sociais-linkedin",
+                        attrs: { size: "1.5x" },
+                      }),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "rodape__icon--font" }, [
+                    _vm._v("linkedin"),
+                  ]),
+                ]),
+              ],
+              1
+            ),
+          ]),
+        ]),
+      ]),
+      _vm._v(" "),
+      _vm._m(7),
+    ]),
   ])
 }
 var staticRenderFns = [
@@ -17104,10 +17627,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "title__font my-3" }, [
-      _c("p", { staticClass: "title__font-dark" }, [
+    return _c("div", { staticClass: "title__ my-3" }, [
+      _c("p", { staticClass: "title__-dark" }, [
         _vm._v("\n                ESCOLHA SEU ESTILO DE\n                "),
-        _c("span", { staticClass: "title__font-pink" }, [_vm._v("LUTA")]),
+        _c("span", { staticClass: "title__-pink" }, [_vm._v("LUTA")]),
       ]),
     ])
   },
@@ -17115,10 +17638,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "title__font" }, [
-      _c("p", { staticClass: "title__font-light" }, [
+    return _c("div", { staticClass: "title__" }, [
+      _c("p", { staticClass: "title__-light" }, [
         _vm._v("\n                A "),
-        _c("span", { staticClass: "title__font-pink" }, [_vm._v("ACADEMIA")]),
+        _c("span", { staticClass: "title__-pink" }, [_vm._v("ACADEMIA")]),
       ]),
     ])
   },
@@ -17126,10 +17649,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "title__font" }, [
-      _c("p", { staticClass: "title__font-light" }, [
+    return _c("div", { staticClass: "title__" }, [
+      _c("p", { staticClass: "title__-light" }, [
         _vm._v("\n                ESCOLHA O SEU "),
-        _c("span", { staticClass: "title__font-pink" }, [_vm._v("PLANO")]),
+        _c("span", { staticClass: "title__-pink" }, [_vm._v("PLANO")]),
       ]),
     ])
   },
@@ -17137,10 +17660,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "title__font" }, [
-      _c("p", { staticClass: "title__font-dark my-5" }, [
+    return _c("div", { staticClass: "title__" }, [
+      _c("p", { staticClass: "title__-dark" }, [
         _vm._v("\n                SOBRE "),
-        _c("span", { staticClass: "title__font-pink" }, [_vm._v("NÓS")]),
+        _c("span", { staticClass: "title__-pink" }, [_vm._v("NÓS")]),
       ]),
     ])
   },
@@ -17148,12 +17671,54 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "bg-preto " }, [
-      _c("div", { staticClass: "title__font" }, [
-        _c("p", { staticClass: "title__font-light" }, [
-          _vm._v("FALE "),
-          _c("span", { staticClass: "title__font-blue" }, [_vm._v("CONOSCO")]),
-        ]),
+    return _c("div", { staticClass: "title__ col-span-12" }, [
+      _c("p", { staticClass: "title__-light" }, [
+        _vm._v("\n                FALE "),
+        _c("span", { staticClass: "title__-blue" }, [_vm._v("CONOSCO")]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "rodape__info--contato" }, [
+      _c("h5", { staticClass: "rodape__info-title" }, [
+        _vm._v("Academia go fight"),
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "\n                        Rua Sagrado Coração, 876 - Canindé,São Paulo - SP"
+        ),
+        _c("br"),
+        _vm._v("\n                        09999-000\n                    "),
+      ]),
+      _vm._v(" "),
+      _c("p", [_vm._v("(11) 9999-9999")]),
+      _vm._v(" "),
+      _c("p", [_vm._v("contato@gofight.com.br")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("h5", { staticClass: "rodape__info-title" }, [
+        _vm._v("redes sociais"),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "rodape__copyright" }, [
+      _c("p", { staticClass: "title__-light" }, [
+        _vm._v("\n                Copyright © "),
+        _c("span", { staticClass: "title__-pink" }, [_vm._v("Gofight ")]),
+        _vm._v("2022.\n                Do the impossible.\n            "),
       ]),
     ])
   },

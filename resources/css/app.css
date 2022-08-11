@@ -2,6 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import '~sweetalert2/src/sweetalert2';
 body {
     overflow: hidden;
 }
@@ -27,17 +28,29 @@ body {
     @apply mr-5;
 }
 
-/* config universal dos titulos */
+.v-messages{
+    color:red;
+}
 
 
 /* config universal dos inputs */
-.input {
-    &__label {
-        &--blue {
-            color: #4361ee;
-        }
-    }
+input{
+    border-radius: 12px;
 }
+input::placeholder,
+textarea::placeholder{
+    color: rgba(196, 196, 196, 0.5);
+font-style: italic;
+font-weight: 700;
+line-height: 18px;
+}
+input[aria-invalid="true"] {
+    border-color: red;
+  }
+  
+  input[aria-invalid="false"] {
+    border-color: green;
+  }
 
 @media screen and (min-width: 1024px) {
    
