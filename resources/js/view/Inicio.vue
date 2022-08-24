@@ -93,8 +93,9 @@
                                     btn-rounded-border-radius
                                 >
                                     <p class="academia__button--text">
-                                        EQUIPAMENTOS NOVOS
+                                        EQUIPAMENTOS
                                     </p>
+                                    <p class="academia__button--text">NOVOS</p>
                                 </v-btn>
 
                                 <v-btn
@@ -282,7 +283,7 @@
             <v-container class="pacote">
                 <v-row align="center" justify="center">
                     <!-- standard -->
-                    <v-col cols="3">
+                    <v-col lg="3" md="4" sm="12">
                         <v-card class="pacote__card">
                             <v-img
                                 :src="images.pacote.standard"
@@ -314,7 +315,7 @@
                         </v-card>
                     </v-col>
                     <!-- gofighter -->
-                    <v-col cols="3">
+                    <v-col lg="3" md="4" sm="12">
                         <v-card class="pacote__card">
                             <v-img
                                 :src="images.pacote.gofighter"
@@ -346,7 +347,7 @@
                         </v-card>
                     </v-col>
                     <!-- fighter -->
-                    <v-col cols="3">
+                    <v-col lg="3" md="4" sm="12">
                         <v-card class="pacote__card">
                             <v-img
                                 :src="images.pacote.fighter"
@@ -389,11 +390,11 @@
                 </p>
             </div>
 
-            <v-row class="grid__cols-12--sobrenos">
+            <v-row>
                 <v-col sm="12" lg="6" class="flex justify-center items-center">
-                    <v-img :src="images.logo" min-width="240" max-width="500" />
+                    <v-img :src="images.logo" min-width="180" max-width="500" />
                 </v-col>
-                <v-col sm="12" lg="6" class="sobreNos__section">
+                <v-col sm="12" lg="6" class="sobrenos__section">
                     <p class="sobrenos__text--align">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore
@@ -517,37 +518,36 @@
                         <div>
                             <h5 class="rodape__info-title">redes sociais</h5>
                         </div>
-                        <div class="flex justify-around bg-red ">
-                        <v-btn icon >
-                            <div>
-                                <facebook-icon
-                                    size="1.5x"
-                                    class="rodape__info--sociais-facebook"
-                                />
-                            </div>
-                            <p class="rodape__icon--font">Facebook</p>
-                        </v-btn>
+                        <div class="flex justify-around bg-red">
+                            <v-btn icon>
+                                <div>
+                                    <facebook-icon
+                                        size="1.5x"
+                                        class="rodape__info--sociais-facebook"
+                                    />
+                                </div>
+                                <p class="rodape__icon--font">Facebook</p>
+                            </v-btn>
 
-                        <v-btn icon >
-                            <div>
-                                <instagram-icon
-                                    size="1.5x"
-                                    class="rodape__info--sociais-instagram"
-                                />
-                            </div>
-                            <p class="rodape__icon--font">instagram</p>
-                        </v-btn>
+                            <v-btn icon>
+                                <div>
+                                    <instagram-icon
+                                        size="1.5x"
+                                        class="rodape__info--sociais-instagram"
+                                    />
+                                </div>
+                                <p class="rodape__icon--font">instagram</p>
+                            </v-btn>
 
-                        <v-btn icon >
-                            <div>
-                                <linkedin-icon
-                                    size="1.5x"
-                                    class="rodape__info--sociais-linkedin"
-                                />
-                            </div>
-                            <p class="rodape__icon--font">linkedin</p>
-                        </v-btn>
-                        
+                            <v-btn icon>
+                                <div>
+                                    <linkedin-icon
+                                        size="1.5x"
+                                        class="rodape__info--sociais-linkedin"
+                                    />
+                                </div>
+                                <p class="rodape__icon--font">linkedin</p>
+                            </v-btn>
                         </div>
                     </div>
                 </div>
@@ -564,7 +564,7 @@
 </template>
 
 <script>
-import carrouselModalidades from "../components/carrosel/App.vue";
+import carrouselModalidades from "../carrosel/App.vue";
 import StartBanner from "../../css/images/Banner_Image.svg";
 import Boxeador from "../../css/images/boxe.svg";
 import judoWide from "../../css/images/judoCarrosel.svg";
@@ -658,16 +658,17 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../../sass/variables.scss";
 .banner--text {
     @apply absolute top-0 left-0 pl-7 pt-7;
     font-style: italic;
     font-weight: 700;
     font-size: 3rem;
     line-height: 72px;
-    color: #ffffff;
+    color: $branco;
 
     & > span {
-        color: #f72585;
+        color: $rosa;
     }
 }
 
@@ -679,23 +680,23 @@ export default {
     line-height: 60px;
 
     &-dark {
-        color: #313131;
+        color: $preto;
     }
 
     &-light {
-        color: #fafafa;
+        color: $branco;
     }
 
     &-pink {
-        color: #f72585;
+        color: $rosa;
     }
 
     &-blue {
-        color: #4361ee;
+        color: $azul;
     }
 
     &-gray {
-        color: #c4c4c4;
+        color: $cinza;
     }
 }
 
@@ -745,7 +746,7 @@ export default {
             cursor: default !important;
             width: 25%;
             height: 25%;
-            background-color: #4361ee;
+            background-color: $azul;
             border-radius: 15px;
 
             @media (max-width: 1440px) {
@@ -754,6 +755,7 @@ export default {
         }
 
         &--text {
+            @apply break-words;
             font-weight: 700;
             font-size: 14px;
             line-height: 30px;
@@ -768,18 +770,16 @@ export default {
 
 .pacote {
     @apply flex flex-wrap justify-center;
-
     &__card {
-        @apply relative overflow-hidden;
+        @apply relative overflow-hidden flex justify-center items-center;
         overflow: hidden;
         border: none;
         outline: none;
         border-radius: 25px;
 
         &--image {
-            @apply flex flex-wrap justify-end items-center;
-
             &--standard {
+                @apply flex flex-wrap justify-center items-end;
                 position: relative;
                 width: 100%;
                 height: 100%;
@@ -800,6 +800,7 @@ export default {
             }
 
             &--gofighter {
+                @apply flex flex-wrap justify-center items-end;
                 position: relative;
                 width: 100%;
                 height: 100%;
@@ -820,6 +821,7 @@ export default {
             }
 
             &--fighter {
+                @apply flex justify-center items-end;
                 position: relative;
                 width: 100%;
                 height: 100%;
@@ -841,7 +843,7 @@ export default {
         }
 
         &--content {
-            @apply absolute bottom-0;
+            @apply relative;
         }
 
         &--title {
@@ -850,7 +852,7 @@ export default {
             font-size: 20px;
             line-height: 30px;
             letter-spacing: 0.5em;
-            color: #ffffff;
+            color: $branco;
             text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
         }
 
@@ -859,15 +861,20 @@ export default {
             font-weight: 600;
             font-size: 16px;
             line-height: 24px;
-            text-align: justify;
             letter-spacing: 0.5em;
-            color: #ffffff;
+            color: $branco;
             text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
         }
     }
 }
 
 .sobrenos {
+    &__section {
+        @apply flex flex-col;
+        @media screen and (max-width: 768px) {
+            @apply flex flex-col items-center;
+        }
+    }
     &__text {
         &--align {
             @apply my-14 text-justify px-10;
@@ -877,8 +884,8 @@ export default {
             }
         }
     }
-    &--btn {
-        @apply relative mx-auto;
+    &__btn {
+        width: 25%;
     }
 }
 
@@ -886,16 +893,12 @@ export default {
     @apply space-y-4;
 
     &__form {
-        @screen lg {
-            @apply relative grid grid-cols-12 gap-4 w-3/6 mx-auto;
-        }
+        @apply relative grid grid-cols-12 gap-4 w-3/6 mx-auto;
         @media screen and (max-width: 768px) {
             @apply grid-cols-6;
         }
         &--space_6 {
-            @screen lg {
-                @apply col-span-12;
-            }
+            @apply col-span-12;
             @media screen and (max-width: 768px) {
                 @apply col-span-6;
             }
@@ -909,7 +912,7 @@ export default {
                 font-weight: 700;
                 font-size: 20px;
                 line-height: 30px;
-                color: #fafafa;
+                color: $branco;
             }
         }
     }
@@ -932,12 +935,11 @@ export default {
         }
 
         &--sociais {
-            @apply   col-span-6 space-y-6;
-                &>div{
-                @apply flex flex-col justify-between items-center
+            @apply col-span-6 space-y-6;
+            & > div {
+                @apply flex flex-col justify-between items-center;
             }
 
-           
             &-facebook {
                 width: 25px;
                 height: 25px;
