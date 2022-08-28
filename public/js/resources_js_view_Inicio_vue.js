@@ -982,7 +982,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/Banner_Image.svg?c75fc67431db30582b67be3621fe403b");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/Banner_Image.svg?5fde88a8ad0f2c653198f6f1b6e0cc35");
 
 /***/ }),
 
@@ -997,7 +997,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/BoxeCarrousel.svg?900cf9bebbd3448b6abb711b9a2b0c0f");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/BoxeCarrousel.svg?12c6eb8fe948ddcb3d72a9588ff5a1cd");
 
 /***/ }),
 
@@ -1012,7 +1012,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/boxe.svg?137f777edf78c28fd7711988bfe7bdd7");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/boxe.svg?d45c1189fddaa658c06b915665688ef0");
 
 /***/ }),
 
@@ -1027,7 +1027,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/card_pacote-fighter.svg?33aafa38bb17ae3bb57b1352f6d8c9bc");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/card_pacote-fighter.svg?f729c0c7cd5370d0ed9dcecd7320f8db");
 
 /***/ }),
 
@@ -1042,7 +1042,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/card_pacote-gofighter.svg?5562704709bdfbf177a78323e90f618c");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/card_pacote-gofighter.svg?2220f2309ee52791c34da06b7a6c2915");
 
 /***/ }),
 
@@ -1057,7 +1057,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/card_pacote-standard.svg?64346bf521f32eb9d891e1a501099373");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/card_pacote-standard.svg?35119a3cd5351586cbc99122fc907e1c");
 
 /***/ }),
 
@@ -1072,7 +1072,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/judoCarrosel.svg?7d2cc214b317fa07a477423ed7825489");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/judoCarrosel.svg?f8892e805f8b31dbe531367dd081f12f");
 
 /***/ }),
 
@@ -1087,7 +1087,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/muayThai.svg?1577ac48fa747b09836d74fc6b0fb2f1");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/muayThai.svg?c015beed9cc5cd2729ef9b6a601dfd08");
 
 /***/ }),
 
@@ -1102,7 +1102,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/muayThaiCarrousel.svg?b3825e87c032684ecfc1e2ea8ae97e86");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/muayThaiCarrousel.svg?e4995af5e7e9f881348e955cfa1b9eda");
 
 /***/ }),
 
@@ -1117,7 +1117,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/sala_boxe.svg?e4ecbe8795b31284d0d843cda4f6e23e");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/sala_boxe.svg?674f2d8cc17da278656bfc60900a5573");
 
 /***/ }),
 
@@ -1132,7 +1132,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/sala_judo.svg?6eb5c1910af27dc720f8ba51f35ea145");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/sala_judo.svg?2dbc74c76c629c7d58fd8c9e98088567");
 
 /***/ }),
 
@@ -1147,7 +1147,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/sala_muai.svg?806c936b60645e08246ba947ccec237a");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/sala_muai.svg?4057a263493faba345b394725a9dd51b");
 
 /***/ }),
 

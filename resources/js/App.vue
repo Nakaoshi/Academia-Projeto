@@ -2,7 +2,7 @@
     <div id="app">
         <navbar-cliente></navbar-cliente>
 
-        <router-view></router-view>
+        <router-view class="mt-16"></router-view>
     </div>
 </template>
 

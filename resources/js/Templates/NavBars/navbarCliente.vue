@@ -91,7 +91,7 @@
                                         {{ icons.mdiHome }}
                                     </v-icon>
                                 </v-list-item-icon>
-                                <router-link to="/">
+                                <router-link to="/inicio">
                                     <p>Inicio</p>
                                 </router-link>
                             </v-list-item>
@@ -103,7 +103,7 @@
                                         {{ icons.mdiFencing }}
                                     </v-icon>
                                 </v-list-item-icon>
-                                <router-link to="/vendormodalidades">
+                                <router-link to="/modalidades">
                                     <p>Modalidades</p>
                                 </router-link>
                             </v-list-item>
