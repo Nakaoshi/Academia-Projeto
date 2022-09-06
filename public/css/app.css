@@ -11653,10 +11653,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 0.75rem;
 }.mb-0 {
   margin-bottom: 0px;
-}.mt-16 {
-  margin-top: 4rem;
 }.mr-4 {
   margin-right: 1rem;
+}.mt-16 {
+  margin-top: 4rem;
 }.flex {
   display: flex;
 }.inline-flex {
@@ -11927,10 +11927,7 @@ textarea::placeholder {
   }.sm\:pt-0 {
     padding-top: 0px;
   }
-}@media (min-width: 1024px) {.lg\:mx-0 {
-    margin-left: 0px;
-    margin-right: 0px;
-  }.lg\:space-y-14 > :not([hidden]) ~ :not([hidden]) {
+}@media (min-width: 1024px) {.lg\:space-y-14 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-y-reverse: 0;
     margin-top: calc(3.5rem * calc(1 - var(--tw-space-y-reverse)));
     margin-bottom: calc(3.5rem * var(--tw-space-y-reverse));
