@@ -26,9 +26,30 @@
             >
                 <!-- sim, se você ta no VS code, o template vai ficar dando erro sabe se la o porque  -->
                 <template v-slot:item.action="{ items }">
-                    <v-btn color="#f72585" class="tabela__btn" small
-                        >Detalhes</v-btn
-                    >
+                    <v-menu offset-y>
+                        <template v-slot:activator="{ on, attrs }">
+                            <v-btn
+                                color="#f72585"
+                                dark
+                                v-bind="attrs"
+                                v-on="on"
+                            >
+                                Detalhes
+                            </v-btn>
+                        </template>
+                        <v-list>
+                            <v-list-item>
+                                <v-btn color="#f72585" class="tabela__btn" small
+                                    >Deletar</v-btn
+                                >
+                            </v-list-item>
+                            <v-list-item>
+                                <v-btn color="#f72585" class="tabela__btn" small
+                                    >Editar</v-btn
+                                >
+                            </v-list-item>
+                        </v-list>
+                    </v-menu>
                 </template>
             </v-data-table>
         </div>
