@@ -5,13 +5,13 @@ const routes = [
         component: () => import("../view/loginFuncionario.vue"),
     },
     {
-        path: "clientes",
+        path: "/funcionarios/clientes",
         name: "Clientes",
         component: () => import("../view/Clientes.vue"),
     },
 
     {
-        path: "fornecedores",
+        path: "/funcionarios/fornecedores",
         name: "Fornecedores",
         component: () => import("../view/Fornecedores.vue"),
     },

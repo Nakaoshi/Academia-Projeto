@@ -419,6 +419,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -1589,12 +1610,83 @@ var render = function () {
                   var items = ref.items
                   return [
                     _c(
-                      "v-btn",
+                      "v-menu",
                       {
-                        staticClass: "tabela__btn",
-                        attrs: { color: "#f72585", small: "" },
+                        attrs: { "offset-y": "" },
+                        scopedSlots: _vm._u(
+                          [
+                            {
+                              key: "activator",
+                              fn: function (ref) {
+                                var on = ref.on
+                                var attrs = ref.attrs
+                                return [
+                                  _c(
+                                    "v-btn",
+                                    _vm._g(
+                                      _vm._b(
+                                        {
+                                          attrs: { color: "#f72585", dark: "" },
+                                        },
+                                        "v-btn",
+                                        attrs,
+                                        false
+                                      ),
+                                      on
+                                    ),
+                                    [
+                                      _vm._v(
+                                        "\n                            Detalhes\n                        "
+                                      ),
+                                    ]
+                                  ),
+                                ]
+                              },
+                            },
+                          ],
+                          null,
+                          true
+                        ),
                       },
-                      [_vm._v("Detalhes")]
+                      [
+                        _vm._v(" "),
+                        _c(
+                          "v-list",
+                          [
+                            _c(
+                              "v-list-item",
+                              [
+                                _c(
+                                  "v-btn",
+                                  {
+                                    staticClass: "tabela__btn",
+                                    attrs: { color: "#f72585", small: "" },
+                                  },
+                                  [_vm._v("Deletar")]
+                                ),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-list-item",
+                              [
+                                _c(
+                                  "v-btn",
+                                  {
+                                    staticClass: "tabela__btn",
+                                    attrs: { color: "#f72585", small: "" },
+                                  },
+                                  [_vm._v("Editar")]
+                                ),
+                              ],
+                              1
+                            ),
+                          ],
+                          1
+                        ),
+                      ],
+                      1
                     ),
                   ]
                 },
