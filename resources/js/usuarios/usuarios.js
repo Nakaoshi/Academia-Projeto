@@ -3,6 +3,7 @@ import App from "./App.vue";
 import VueRouter from "vue-router";
 import routes from "./routes/routes";
 import Vuetify from "../../plugins/vuetify";
+import "../../css/app.css";
 
 import "../../plugins/vee-validate";
 // import './plugins/vuetify-money.js'
@@ -50,26 +51,6 @@ router.beforeEach((to, from, next) => {
     localStorage.setItem("route", to.name);
     next();
 });
-
-// tentativa de autenticação de rotas
-new Promise((resolve, reject) => {
-    // router.push(url); LEMBRETE DE RECONFIGURAR ISSO =================================================================
-    router.onReady(() => {
-        const matchedComponents = router.getMatchedComponents();
-        if (!matchedComponents.length) {
-            return reject({ code: 404 });
-        }
-        resolve(app);
-    }, reject);
-})
-    .then((app) => {
-        renderVueComponentToString(app, (err, res) => {
-            console.log(res);
-        });
-    })
-    .catch((err) => {
-        console.log(err);
-    });
 
 // ---------------------------------------------------------------------------------------------------------------------/
 // Vue

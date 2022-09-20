@@ -49,7 +49,6 @@
                                     <v-btn
                                         color="#F72585"
                                         class="btn__matricula depressed"
-                                        to="/cadastro-aluno"
                                     >
                                         <p class="button__txt--font">
                                             MATRICULE-SE

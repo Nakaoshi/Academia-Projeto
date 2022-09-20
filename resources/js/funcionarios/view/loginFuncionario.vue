@@ -2,52 +2,58 @@
     <div class="background__loginCliente">
         <div class="divisaoGeometrica" />
         <div class="loginCliente">
-            <div class="text__login">
-                <p class="login__font">LOGIN</p>
-            </div>
-            <validation-observer ref="observer">
-                <form @submit.prevent="submit" action="" class="form">
-                    <!-- campo do Email  -->
-                    <validation-provider
-                        class="form__input"
-                        v-slot="{ errors }"
-                        name="email"
-                        rules="required|email"
-                    >
-                        <v-text-field
-                            v-model="email"
-                            :error-messages="errors"
-                            placeholder="E-mail...."
-                            required
-                            solo
-                        ></v-text-field>
-                    </validation-provider>
-                    <!-- campo do senha  -->
-                    <validation-provider
-                        v-slot="{ errors }"
-                        name="Password"
-                        rules="required|max:10"
-                        class="form__input"
-                    >
-                        <v-text-field
-                            v-model="senha"
-                            :error-messages="errors"
-                            placeholder="Senha...."
-                            required
-                            solo
-                        ></v-text-field>
-                    </validation-provider>
+            <p class="login__font text__login">Funcionarios</p>
+            <form @submit.prevent="submit" action="">
+                <validation-observer ref="observer">
+                    <v-row>
+                        <v-col cols="12">
+                            <!-- campo do Email  -->
+                            <validation-provider
+                                class="form__input"
+                                v-slot="{ errors }"
+                                name="email"
+                                rules="required|email"
+                            >
+                                <v-text-field
+                                    v-model="funcionario.email"
+                                    :error-messages="errors"
+                                    placeholder="E-mail...."
+                                    required
+                                    solo
+                                ></v-text-field>
+                            </validation-provider>
+                        </v-col>
 
-                    <v-btn
-                        class="form__btn"
-                        type="submit"
-                        color="#4361EE"
-                        @click="enviarDados()"
-                    >
-                        <h4>Sing in</h4>
-                    </v-btn>
-                </form>
-            </validation-observer>
+                        <v-col cols="12">
+                            <!-- campo do senha  -->
+                            <validation-provider
+                                v-slot="{ errors }"
+                                name="Password"
+                                rules="required|max:10"
+                                class="form__input"
+                            >
+                                <v-text-field
+                                    v-model="funcionario.senha"
+                                    :error-messages="errors"
+                                    placeholder="Senha...."
+                                    required
+                                    solo
+                                ></v-text-field>
+                            </validation-provider>
+                        </v-col>
+                        <v-col cols="12">
+                            <v-btn
+                                class="btn__login"
+                                type="submit"
+                                color="#4361EE"
+                                :to="{ name: 'Clientes' }"
+                            >
+                                <h4>Sing in</h4>
+                            </v-btn>
+                        </v-col>
+                    </v-row>
+                </validation-observer>
+            </form>
         </div>
     </div>
 </template>
@@ -61,7 +67,7 @@ export default {
     },
     data() {
         return {
-            Usuario: {
+            funcionario: {
                 email: this.email,
                 senha: this.senha,
             },
@@ -87,22 +93,19 @@ export default {
     background-clip: content-box;
 }
 .loginCliente {
+    @apply flex justify-center;
     z-index: 20;
 }
 
 .text {
     &__login {
-        @apply absolute  top-32;
+        @apply absolute top-20 mx-auto;
     }
 }
-.form {
-    @apply flex flex-col items-center;
+.btn__login {
     width: 100%;
-    &__btn {
-        width: 100%;
-    }
-    &__input {
-        max-width: 100%;
-    }
+    font-weight: 300;
+    line-height: 36px;
+    color: #ffffff;
 }
 </style>

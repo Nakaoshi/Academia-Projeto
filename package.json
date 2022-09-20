@@ -32,6 +32,7 @@
         "@mdi/font": "^6.7.96",
         "@mdi/js": "^6.7.96",
         "node-sass": "^7.0.1",
+        "v-mask": "^2.3.0",
         "vee-validate": "^3.4.14",
         "vue-feather-icons": "^5.1.0",
         "vue-router": "^3.5.3",

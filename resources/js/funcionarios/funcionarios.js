@@ -3,10 +3,9 @@ import App from "./App.vue";
 import VueRouter from "vue-router";
 import routes from "./routes/routes";
 import Vuetify from "../../plugins/vuetify";
-
+import "../../css/app.css";
 import "../../plugins/vee-validate";
 // import './plugins/vuetify-money.js'
-// import './plugins/vuetify-mask.js'
 
 import VueSweetalert2 from "vue-sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
@@ -15,13 +14,19 @@ Vue.use(VueSweetalert2);
 // ---------------------------------------------------------------------------------------------------------------------/
 // Navbar Component
 // ---------------------------------------------------------------------------------------------------------------------/
-// import navbarCliente from "./Templates/NavBars/navbarCliente.vue";
-// Vue.component("navbar-cliente", navbarCliente);
+import navbarFuncionario from "../../Templates/NavBars/navbarFuncionario.vue";
+Vue.component("navbar-cliente", navbarFuncionario);
 
 // ---------------------------------------------------------------------------------------------------------------------/
 // Vuex
 // ---------------------------------------------------------------------------------------------------------------------/
 import store from "./store";
+
+// ---------------------------------------------------------------------------------------------------------------------/
+// Vue Mask
+// ---------------------------------------------------------------------------------------------------------------------/
+import VueMask from "v-mask";
+Vue.use(VueMask);
 
 // ---------------------------------------------------------------------------------------------------------------------/
 // Axios
@@ -74,6 +79,7 @@ new Promise((resolve, reject) => {
 // ---------------------------------------------------------------------------------------------------------------------/
 new Vue({
     el: "#app",
+    VueMask,
     router,
     store,
     vuetify: Vuetify,
