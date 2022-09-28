@@ -819,6 +819,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -871,7 +872,8 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
-  methods: {// submit() {
+  methods: {
+    // submit() {
     //     var data = {
     //         nome: this.info.nome,
     //         email: this.info.email,
@@ -888,6 +890,12 @@ __webpack_require__.r(__webpack_exports__);
     //         });
     //     // this.$swal("Sucesso", "Dados Enviados!!!", "success");
     // },
+    scrollMeTo: function scrollMeTo(refName) {
+      var element = this.$refs[refName];
+      element.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
   },
   computed: {
     anoAtual: function anoAtual() {
@@ -16498,6 +16506,8 @@ var render = function () {
     _c(
       "section",
       [
+        _c("div", { attrs: { id: "Inicio" } }),
+        _vm._v(" "),
         _c(
           "v-responsive",
           [
@@ -17309,7 +17319,7 @@ var render = function () {
     _vm._v(" "),
     _c(
       "section",
-      { staticClass: "my-5 sobrenos" },
+      { staticClass: "my-5 sobrenos", attrs: { id: "SobreNos" } },
       [
         _vm._m(3),
         _vm._v(" "),
@@ -17621,18 +17631,22 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "title__ my-3" }, [
-      _c("p", { staticClass: "title__-dark" }, [
-        _vm._v("\n                ESCOLHA SEU ESTILO DE\n                "),
-        _c("span", { staticClass: "title__-pink" }, [_vm._v("LUTA")]),
-      ]),
-    ])
+    return _c(
+      "div",
+      { staticClass: "title__ my-3", attrs: { id: "Modalidades" } },
+      [
+        _c("p", { staticClass: "title__-dark" }, [
+          _vm._v("\n                ESCOLHA SEU ESTILO DE\n                "),
+          _c("span", { staticClass: "title__-pink" }, [_vm._v("LUTA")]),
+        ]),
+      ]
+    )
   },
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "title__" }, [
+    return _c("div", { staticClass: "title__", attrs: { id: "Academia" } }, [
       _c("p", { staticClass: "title__-light" }, [
         _vm._v("\n                A "),
         _c("span", { staticClass: "title__-pink" }, [_vm._v("ACADEMIA")]),

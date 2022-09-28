@@ -46,7 +46,7 @@
                                 class="btn__login"
                                 type="submit"
                                 color="#f72585"
-                                :to="{ name: 'Cadastro De Clientes' }"
+                                :to="{ name: 'Inicio' }"
                             >
                                 <h4>Sing in</h4>
                             </v-btn>
@@ -77,6 +77,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    body{
+        @apply absolute w-full h-full;
+    }
 .background__loginCliente {
     @apply flex justify-center items-center w-full h-full absolute overflow-hidden;
     background-image: url("../../../css/images/Banner__login.svg");

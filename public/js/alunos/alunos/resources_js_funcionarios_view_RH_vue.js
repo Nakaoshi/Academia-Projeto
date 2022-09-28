@@ -359,9 +359,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     EnviarDados: function EnviarDados() {
-      this.$swal("Sucesso", "Cliente Cadastrado com Sucesso", "success");
+      console.log(this.funcionario); // this.$swal("Sucesso", "Cliente Cadastrado com Sucesso", "success");
+      // // $axios.post("", this.funcionario).then(() => {});
+
       this.$router.push("/funcionarios/clientes");
     }
+  },
+  mounted: function mounted() {
+    this.EnviarDados();
   }
 });
 
@@ -507,7 +512,7 @@ __webpack_require__.r(__webpack_exports__);
         value: "height",
         align: "center"
       }, {
-        text: "Plano",
+        text: "Cargo",
         value: "gender",
         align: "center"
       }, {
@@ -1580,7 +1585,7 @@ var render = function () {
                     color: "#f72585",
                   },
                   on: {
-                    click: function ($event) {
+                    submit: function ($event) {
                       return _vm.EnviarDados()
                     },
                   },

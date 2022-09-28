@@ -2,6 +2,7 @@
     <div id="app">
         <!-- imagem de background -->
         <section>
+            <div id="Inicio"></div>
             <v-responsive>
                 <v-img :src="images.StartBanner">
                     <p class="banner--text">
@@ -12,8 +13,8 @@
         </section>
 
         <!-- carrosel de modalidades -->
-        <section>
-            <div class="title__ my-3">
+        <section >
+            <div class="title__ my-3"  id="Modalidades">
                 <p class="title__-dark">
                     ESCOLHA SEU ESTILO DE
                     <span class="title__-pink">LUTA</span>
@@ -23,8 +24,8 @@
         </section>
 
         <!-- a academia  -->
-        <section class="bg-preto">
-            <div class="title__">
+        <section class="bg-preto"  >
+            <div class="title__" id="Academia">
                 <p class="title__-light">
                     A <span class="title__-pink">ACADEMIA</span>
                 </p>
@@ -383,7 +384,7 @@
         </section>
 
         <!-- sobre nos  -->
-        <section class="my-5 sobrenos">
+        <section class="my-5 sobrenos" id="SobreNos">
             <div class="title__">
                 <p class="title__-dark">
                     SOBRE <span class="title__-pink">NÓS</span>
@@ -646,7 +647,13 @@ export default {
         //         });
         //     // this.$swal("Sucesso", "Dados Enviados!!!", "success");
         // },
+       
+        scrollMeTo(refName) {
+            var element = this.$refs[refName];
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
     },
+
     computed: {
         anoAtual() {
             data = new Date().getFullYear();

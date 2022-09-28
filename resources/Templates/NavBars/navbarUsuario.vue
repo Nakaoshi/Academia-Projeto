@@ -10,37 +10,51 @@
                         <div class="navbar__desktop--links">
                             <!-- Inicio -->
                             <div>
-                                <router-link :to="{ name: 'inicio' }">
-                                    <p>Inicio</p>
-                                </router-link>
+                                <v-btn
+                                    text
+                                    href="#Inicio"
+                                >
+                                    Inicio
+                                </v-btn>
+                                
                             </div>
 
                             <!-- Modalidades  -->
                             <div>
-                                <router-link :to="{ path: '/modalidades' }">
-                                    <p>Modalidades</p>
-                                </router-link>
+                                <v-btn
+                                href="#Modalidades"
+                                    text
+                                    @click="goto('Modalidades')"
+                                >
+                                Modalidades
+                                </v-btn>
                             </div>
 
                             <!-- A academia  -->
                             <div>
-                                <router-link :to="{ path: '/academia' }">
-                                    <p>A Academia</p>
-                                </router-link>
+                                <v-btn
+                                href="#Academia"
+                                    text
+                                >
+                                    A Academia
+                                </v-btn>
                             </div>
 
                             <!-- sobre nós  -->
                             <div>
-                                <router-link :to="{ name: 'Sobre Nos' }">
-                                    <p>Sobre Nós</p>
-                                </router-link>
+                                <v-btn
+                                    href="#SobreNos"
+                                    text
+                                >
+                                    Sobre Nós
+                                </v-btn>
                             </div>
 
                             <!-- area do aluno  -->
                             <div>
-                                <router-link :to="{ path: '/area-do-aluno' }">
-                                    <p>Área do aluno</p>
-                                </router-link>
+                                <v-btn text @click="alunos()">
+                                    Área do aluno
+                                </v-btn>
                             </div>
 
                             <!-- matricule-se  -->
@@ -189,6 +203,17 @@ export default {
             drawer: false,
             group: null,
         };
+    },
+    methods: {
+        //função para os links de ancora
+
+        goto(refName) {
+            var el = this.$refs[refName];
+            scrollTo(el);
+        },
+        alunos(){
+            location.assign("/alunos")
+        },
     },
 };
 </script>

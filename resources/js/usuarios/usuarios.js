@@ -1,3 +1,5 @@
+
+'use strict'
 import Vue from "vue";
 import App from "./App.vue";
 import VueRouter from "vue-router";
@@ -43,9 +45,9 @@ const router = new VueRouter({
     base: process.env.BASE_URL,
     routes,
     root: "/",
-    scrollBehavior(to, from, savedPosition) {
-        return { x: 0, y: 0 };
-    },
+    // scrollBehavior(to, from, savedPosition) {
+    //     return { x: 0, y: 0 };
+    // },
 });
 router.beforeEach((to, from, next) => {
     localStorage.setItem("route", to.name);
