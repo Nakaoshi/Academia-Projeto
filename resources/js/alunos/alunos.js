@@ -3,7 +3,9 @@ import App from "./App.vue";
 import VueRouter from "vue-router";
 import routes from "./routes/routes";
 import Vuetify from "../../plugins/vuetify";
+import "../../css/app.css";
 
+import '../../sass/variables.scss'
 import "../../plugins/vee-validate";
 // import './plugins/vuetify-money.js'
 // import './plugins/vuetify-mask.js'

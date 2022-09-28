@@ -319,9 +319,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     EnviarDados: function EnviarDados() {
+      console.log(this.cliente);
       this.$swal("Sucesso", "Cliente Cadastrado com Sucesso", "success");
       this.$router.push("/funcionarios/clientes");
     }
+  },
+  mounted: function mounted() {
+    console.log(this.cliente);
   }
 });
 
@@ -452,7 +456,7 @@ __webpack_require__.r(__webpack_exports__);
       dialog: false,
       search: "",
       headers: [{
-        text: "Funcionario",
+        text: "Clientes",
         align: "start",
         sortable: false,
         value: "name"
@@ -494,6 +498,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.getData();
+    console.log(this.clientes);
   }
 });
 

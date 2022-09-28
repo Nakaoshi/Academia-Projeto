@@ -298,7 +298,7 @@
                         min-width="180"
                         min-height="50"
                         color="#f72585"
-                        @click="EnviarDados()"
+                        @submit="EnviarDados()"
                     >
                         <p class="cadastro__btn--cadastrar">
                             Cadastrar funcionario
@@ -353,10 +353,15 @@ export default {
     },
     methods: {
         EnviarDados() {
-            this.$swal("Sucesso", "Cliente Cadastrado com Sucesso", "success");
+            console.log(this.funcionario);
+            // this.$swal("Sucesso", "Cliente Cadastrado com Sucesso", "success");
+            // // $axios.post("", this.funcionario).then(() => {});
             this.$router.push("/funcionarios/clientes");
         },
     },
+    mounted(){
+        this.EnviarDados()
+    }
 };
 </script>
 <style lang="scss">

@@ -81,7 +81,7 @@ export default {
                 },
                 { text: "CPF", value: "eye_color", align: "center" },
                 { text: "Telefone", value: "height", align: "center" },
-                { text: "Plano", value: "gender", align: "center" },
+                { text: "Cargo", value: "gender", align: "center" },
                 { value: "action", align: "center" },
             ],
             clientes: [],

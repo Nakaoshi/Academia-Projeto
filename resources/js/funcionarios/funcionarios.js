@@ -50,7 +50,9 @@ const router = new VueRouter({
     },
 });
 router.beforeEach((to, from, next) => {
-    localStorage.setItem("route", to.name);
+    localStorage.setItem("route", to.name, function () {
+        console.log(to.name);
+    });
     next();
 });
 

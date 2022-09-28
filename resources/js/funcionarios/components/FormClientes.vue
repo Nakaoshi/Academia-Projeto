@@ -313,10 +313,14 @@ export default {
     },
     methods: {
         EnviarDados() {
+            console.log(this.cliente)
             this.$swal("Sucesso", "Cliente Cadastrado com Sucesso", "success");
             this.$router.push("/funcionarios/clientes");
         },
     },
+    mounted(){
+        console.log(this.cliente)
+    }
 };
 </script>
 <style lang="scss">

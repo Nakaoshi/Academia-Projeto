@@ -71,7 +71,7 @@ export default {
             search: "",
             headers: [
                 {
-                    text: "Funcionario",
+                    text: "Clientes",
                     align: "start",
                     sortable: false,
                     value: "name",
@@ -102,6 +102,7 @@ export default {
     },
     mounted() {
         this.getData();
+        console.log(this.clientes)
     },
 };
 </script>

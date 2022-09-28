@@ -417,26 +417,22 @@ __webpack_require__.r(__webpack_exports__);
     return {
       search: "",
       headers: [{
-        text: "Funcionario",
+        text: "Fornecedores",
         align: "start",
         sortable: false,
         value: "name"
       }, {
-        text: "DT.Nascimento",
+        text: "CNPJ",
         value: "mass",
         align: "center",
         "class": "texto"
       }, {
-        text: "CPF",
+        text: "Telefone",
         value: "eye_color",
         align: "center"
       }, {
-        text: "Telefone",
+        text: "Email ",
         value: "height",
-        align: "center"
-      }, {
-        text: "Plano",
-        value: "gender",
         align: "center"
       }, {
         value: "action",

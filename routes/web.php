@@ -16,7 +16,7 @@ Route::get('alunos/{vue?}',function(){
     return view('alunos.index');
 })->where('vue', '.*?');
 
-// Auth::routes();
+// Auth::routes(); 
 
 Route::fallback(function(){
     return view('error.error404');
