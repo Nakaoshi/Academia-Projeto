@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('fornecedores', function(Blueprint $table){
-            $table->id();
-            $table->string('CNPJ',14)->nullable(false);
+            $table->increments('id');
+            $table->string('cnpj',14)->nullable(false)->unique();
             $table->string('nomeFantasia',70)->nullable(false);
             $table->string('razaoSocial',60)->nullable(false);
             $table->string('telefone',11)->nullable(false);
