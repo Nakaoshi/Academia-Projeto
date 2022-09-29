@@ -13,20 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('endereco',function(Blueprint $table){
-            $table->increments('id_endereço');
-            $table->string('estado',2);
-            $table->string('cidade',40)->nullable(false);
-            $table->string('bairro', 40)->nullable(false);
+        Schema::create('enderecos',function(Blueprint $table){
+            $table->increments('id_endereco');
             $table->string('rua', 40)->nullable(false);
+            $table->string('bairro', 40)->nullable(false);
+            $table->string('cep',8)->nullable(false);
+            $table->string('cidade',40)->nullable(false);
+            $table->string('estado',2);
             //id clientes
-            $table->unsignedBigInteger('id_cliente');
+            $table->unsignedInteger('id_cliente');
             $table->foreign('id_cliente')->references('id')->on('clientes');
             //id dos fornecedores
-            $table->unsignedBigInteger('id_fornecedor');
+            $table->unsignedInteger('id_fornecedor');
             $table->foreign('id_fornecedor')->references('id')->on('fornecedores');
             //id fos funcionarios
-            $table->unsignedBigInteger('id_funcionario');
+            $table->unsignedInteger('id_funcionario');
             $table->foreign('id_funcionario')->references('id')->on('funcionarios');
         });
     }
@@ -38,6 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('endereco');
+        Schema::dropIfExists('enderecos');
     }
 };

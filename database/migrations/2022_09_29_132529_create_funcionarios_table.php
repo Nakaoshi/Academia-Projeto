@@ -14,10 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('funcionarios', function(Blueprint $table){
-            $table->id();
+            $table->increments('id');
             $table->string('nome', 15)->nullable(false);
             $table->string('sobrenome',50)->nullable(false);
-            $table->string('CPF', 11)->nullable(false);
+            $table->string('cpf', 11)->nullable()->unique(false);
             $table->enum('genero',array('m','f'));
             $table->string('cargo', 30)->nullable(false);
             $table->float('salario',7);
