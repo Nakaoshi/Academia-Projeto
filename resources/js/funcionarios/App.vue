@@ -10,6 +10,17 @@
 import NavbarFuncionario from "../../Templates/NavBars/navbarFuncionario.vue";
 export default {
     components: { NavbarFuncionario },
+    methods: {
+        validate(){
+            this.$axios.get().then((response)=>{
+                console.log(response);
+
+                if(response.data.status === "Token is Invalid"){
+                    this.$router.push('/funcionarios')
+                }
+            })
+        }
+    },
 };
 </script>
 <style>

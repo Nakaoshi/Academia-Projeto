@@ -323,6 +323,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -1365,7 +1370,7 @@ var render = function () {
                 { staticClass: "cadastro__grid--2" },
                 [
                   _c("validation-provider", {
-                    attrs: { rules: "required" },
+                    attrs: { rules: "required", name: "numeroCasa" },
                     scopedSlots: _vm._u([
                       {
                         key: "default",
@@ -1406,7 +1411,7 @@ var render = function () {
                 { staticClass: "cadastro__grid--3" },
                 [
                   _c("validation-provider", {
-                    attrs: { rules: "required" },
+                    attrs: { rules: "required", name: "cidade" },
                     scopedSlots: _vm._u([
                       {
                         key: "default",
@@ -1447,7 +1452,7 @@ var render = function () {
                 { staticClass: "cadastro__grid--3" },
                 [
                   _c("validation-provider", {
-                    attrs: { rules: "required" },
+                    attrs: { rules: "required", name: "estado" },
                     scopedSlots: _vm._u([
                       {
                         key: "default",
@@ -1488,7 +1493,7 @@ var render = function () {
                 { staticClass: "cadastro__grid--3" },
                 [
                   _c("validation-provider", {
-                    attrs: { rules: "required" },
+                    attrs: { rules: "required", name: "complemento" },
                     scopedSlots: _vm._u([
                       {
                         key: "default",
@@ -1529,7 +1534,7 @@ var render = function () {
                 { staticClass: "cadastro__grid--3" },
                 [
                   _c("validation-provider", {
-                    attrs: { rules: "required" },
+                    attrs: { rules: "required", name: "cep" },
                     scopedSlots: _vm._u([
                       {
                         key: "default",

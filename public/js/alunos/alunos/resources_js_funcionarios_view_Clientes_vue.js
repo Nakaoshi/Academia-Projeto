@@ -285,6 +285,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -294,35 +306,36 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       cliente: {
-        dadosPessoais: {
-          nome: "",
-          sobrenome: "",
-          genero: "",
-          nascimento: "",
-          cpf: ""
-        },
-        dadosContato: {
-          telefone: "",
-          email: ""
-        },
-        endereço: {
-          rua: "",
-          casaNumero: "",
-          cidade: "",
-          estado: "",
-          complemento: "",
-          cep: ""
-        }
+        nome: "",
+        sobrenome: "",
+        genero: "",
+        nascimento: "",
+        cpf: "",
+        plano: "Standard",
+        telefone: "",
+        email: ""
       },
-      items: ["Homem", "Mulher", "Prefiro Não Declarar"]
+      endereco: {
+        rua: "",
+        casaNumero: "",
+        cidade: "",
+        estado: "",
+        complemento: "",
+        cep: ""
+      },
+      items: ["Homem", "Mulher", "Prefiro Não Declarar"],
+      planos: ["Standard", "Fighter", "GoFighter"]
     };
   },
   methods: {
     EnviarDados: function EnviarDados() {
-      console.log(this.cliente);
-      this.$swal("Sucesso", "Cliente Cadastrado com Sucesso", "success");
-      this.$router.push("/funcionarios/clientes");
-    }
+      this.$axios.post("create-cliente", this.cliente); // console.log(this.cliente);
+      // this.$swal("Sucesso", "Cliente Cadastrado com Sucesso", "success");
+      // this.$router.push("/funcionarios/clientes");
+    } // EnviarEndereco(){
+    //     this.$axios.post('create-endereço',this.endereco)
+    // }
+
   },
   mounted: function mounted() {
     console.log(this.cliente);
@@ -523,7 +536,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_13_0_rules_0_use_1_css_app_css__WEBPACK_IMPORTED_MODULE_1__["default"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".cadastro{\n  padding-left: 3.5rem;\n  padding-right: 3.5rem;\n  background-color: #313131;\n  padding: 1rem;\n}\n.cadastro__form {\n  margin: 1rem;\n  padding: 14px;\n  height: 100vh;\n  background-color: rgba(229, 229, 229, 0.1);\n  border-radius: 18px;\n}\n.cadastro__grid{\n  display: grid;\n  grid-template-columns: repeat(12, minmax(0, 1fr));\n  gap: 1rem;\n}\n.cadastro__grid--1{\n  grid-column: span 1 / span 1;\n}\n@media screen and (max-width: 768px) {\n.cadastro__grid--1{\n    grid-column: span 12 / span 12;\n}\n}\n.cadastro__grid--2{\n  grid-column: span 2 / span 2;\n}\n@media screen and (max-width: 768px) {\n.cadastro__grid--2{\n    grid-column: span 12 / span 12;\n}\n}\n.cadastro__grid--3{\n  grid-column: span 3 / span 3;\n}\n@media screen and (max-width: 768px) {\n.cadastro__grid--3{\n    grid-column: span 12 / span 12;\n}\n}\n.cadastro__grid--4{\n  grid-column: span 4 / span 4;\n}\n@media screen and (max-width: 768px) {\n.cadastro__grid--4{\n    grid-column: span 12 / span 12;\n}\n}\n.cadastro__grid--5{\n  grid-column: span 5 / span 5;\n}\n@media screen and (max-width: 768px) {\n.cadastro__grid--5{\n    grid-column: span 12 / span 12;\n}\n}\n.cadastro__grid--6{\n  grid-column: span 6 / span 6;\n}\n@media screen and (max-width: 768px) {\n.cadastro__grid--6{\n    grid-column: span 12 / span 12;\n}\n}\n.cadastro__grid--7{\n  grid-column: span 7 / span 7;\n}\n@media screen and (max-width: 768px) {\n.cadastro__grid--7{\n    grid-column: span 12 / span 12;\n}\n}\n.cadastro__grid--8{\n  grid-column: span 8 / span 8;\n}\n@media screen and (max-width: 768px) {\n.cadastro__grid--8{\n    grid-column: span 12 / span 12;\n}\n}\n.cadastro__grid--9{\n  grid-column: span 9 / span 9;\n}\n@media screen and (max-width: 768px) {\n.cadastro__grid--9{\n    grid-column: span 12 / span 12;\n}\n}\n.cadastro__grid--10{\n  grid-column: span 10 / span 10;\n}\n@media screen and (max-width: 768px) {\n.cadastro__grid--10{\n    grid-column: span 12 / span 12;\n}\n}\n.cadastro__grid--11{\n  grid-column: span 11 / span 11;\n}\n@media screen and (max-width: 768px) {\n.cadastro__grid--11{\n    grid-column: span 12 / span 12;\n}\n}\n.cadastro__grid--12{\n  grid-column: span 12 / span 12;\n}\n@media screen and (max-width: 768px) {\n.cadastro__grid--12{\n    grid-column: span 12 / span 12;\n}\n.cadastro{\n    padding-left: 0px;\n    padding-right: 0px;\n}\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".cadastro{\n  padding-left: 3.5rem;\n  padding-right: 3.5rem;\n  background-color: #313131;\n  padding: 1rem;\n}\n.cadastro__form {\n  margin: 1rem;\n  padding: 14px;\n  height: 100vh;\n  background-color: rgba(229, 229, 229, 0.1);\n  border-radius: 18px;\n}\n.cadastro .v-select__slot {\n  background-color: #fff;\n}\n.cadastro__grid{\n  display: grid;\n  grid-template-columns: repeat(12, minmax(0, 1fr));\n  gap: 1rem;\n}\n.cadastro__grid--1{\n  grid-column: span 1 / span 1;\n}\n@media screen and (max-width: 768px) {\n.cadastro__grid--1{\n    grid-column: span 12 / span 12;\n}\n}\n.cadastro__grid--2{\n  grid-column: span 2 / span 2;\n}\n@media screen and (max-width: 768px) {\n.cadastro__grid--2{\n    grid-column: span 12 / span 12;\n}\n}\n.cadastro__grid--3{\n  grid-column: span 3 / span 3;\n}\n@media screen and (max-width: 768px) {\n.cadastro__grid--3{\n    grid-column: span 12 / span 12;\n}\n}\n.cadastro__grid--4{\n  grid-column: span 4 / span 4;\n}\n@media screen and (max-width: 768px) {\n.cadastro__grid--4{\n    grid-column: span 12 / span 12;\n}\n}\n.cadastro__grid--5{\n  grid-column: span 5 / span 5;\n}\n@media screen and (max-width: 768px) {\n.cadastro__grid--5{\n    grid-column: span 12 / span 12;\n}\n}\n.cadastro__grid--6{\n  grid-column: span 6 / span 6;\n}\n@media screen and (max-width: 768px) {\n.cadastro__grid--6{\n    grid-column: span 12 / span 12;\n}\n}\n.cadastro__grid--7{\n  grid-column: span 7 / span 7;\n}\n@media screen and (max-width: 768px) {\n.cadastro__grid--7{\n    grid-column: span 12 / span 12;\n}\n}\n.cadastro__grid--8{\n  grid-column: span 8 / span 8;\n}\n@media screen and (max-width: 768px) {\n.cadastro__grid--8{\n    grid-column: span 12 / span 12;\n}\n}\n.cadastro__grid--9{\n  grid-column: span 9 / span 9;\n}\n@media screen and (max-width: 768px) {\n.cadastro__grid--9{\n    grid-column: span 12 / span 12;\n}\n}\n.cadastro__grid--10{\n  grid-column: span 10 / span 10;\n}\n@media screen and (max-width: 768px) {\n.cadastro__grid--10{\n    grid-column: span 12 / span 12;\n}\n}\n.cadastro__grid--11{\n  grid-column: span 11 / span 11;\n}\n@media screen and (max-width: 768px) {\n.cadastro__grid--11{\n    grid-column: span 12 / span 12;\n}\n}\n.cadastro__grid--12{\n  grid-column: span 12 / span 12;\n}\n@media screen and (max-width: 768px) {\n.cadastro__grid--12{\n    grid-column: span 12 / span 12;\n}\n.cadastro{\n    padding-left: 0px;\n    padding-right: 0px;\n}\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -974,7 +987,6 @@ var render = function () {
                         staticClass: "cadastro__input",
                         attrs: {
                           color: "#ffffff",
-                          dark: "",
                           items: this.items,
                           label: "Genero",
                         },
@@ -1087,6 +1099,32 @@ var render = function () {
                       },
                     ]),
                   }),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "cadastro__grid--4" },
+                [
+                  _c(
+                    "validation-provider",
+                    { attrs: { rules: "required" } },
+                    [
+                      _c("v-select", {
+                        staticClass: "cadastro__input",
+                        attrs: { dense: "", items: this.planos },
+                        model: {
+                          value: _vm.cliente.dadosContato.plano,
+                          callback: function ($$v) {
+                            _vm.$set(_vm.cliente.dadosContato, "plano", $$v)
+                          },
+                          expression: "cliente.dadosContato.plano",
+                        },
+                      }),
+                    ],
+                    1
+                  ),
                 ],
                 1
               ),
@@ -1471,6 +1509,7 @@ var render = function () {
       ],
       1
     ),
+    _vm._v("\n    " + _vm._s(this.cliente) + "\n"),
   ])
 }
 var staticRenderFns = []

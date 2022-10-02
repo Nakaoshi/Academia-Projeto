@@ -49,7 +49,6 @@
                             <validation-provider rules="required">
                                 <v-select
                                     color="#ffffff"
-                                    dark
                                     class="cadastro__input"
                                     :items="this.items"
                                     v-model="cliente.dadosContato.genero"
@@ -92,6 +91,18 @@
                                     required
                                     solo
                                 ></v-text-field>
+                            </validation-provider>
+                        </div>
+
+                        <!-- SELECT DO planos  -->
+                        <div class="cadastro__grid--4">
+                            <validation-provider rules="required">
+                                <v-select
+                                    dense
+                                    class="cadastro__input"
+                                    :items="this.planos"
+                                    v-model="cliente.dadosContato.plano"
+                                ></v-select>
                             </validation-provider>
                         </div>
                     </div>
@@ -269,6 +280,7 @@
                 </div>
             </validation-observer>
         </form>
+        {{ this.cliente }}
     </div>
 </template>
 <script>
@@ -287,40 +299,42 @@ export default {
     data() {
         return {
             cliente: {
-                dadosPessoais: {
-                    nome: "",
-                    sobrenome: "",
-                    genero: "",
-                    nascimento: "",
-                    cpf: "",
-                },
-                dadosContato: {
-                    telefone: "",
-                    email: "",
-                },
-                endereço: {
-                    rua: "",
-                    casaNumero: "",
-                    cidade: "",
-                    estado: "",
-                    complemento: "",
-                    cep: "",
-                },
+                nome: "",
+                sobrenome: "",
+                genero: "",
+                nascimento: "",
+                cpf: "",
+                plano: "Standard",
+                telefone: "",
+                email: "",
+            },
+            endereco: {
+                rua: "",
+                casaNumero: "",
+                cidade: "",
+                estado: "",
+                complemento: "",
+                cep: "",
             },
 
             items: ["Homem", "Mulher", "Prefiro Não Declarar"],
+            planos: ["Standard", "Fighter", "GoFighter"],
         };
     },
     methods: {
         EnviarDados() {
-            console.log(this.cliente)
-            this.$swal("Sucesso", "Cliente Cadastrado com Sucesso", "success");
-            this.$router.push("/funcionarios/clientes");
+            this.$axios.post("create-cliente", this.cliente);
+            // console.log(this.cliente);
+            // this.$swal("Sucesso", "Cliente Cadastrado com Sucesso", "success");
+            // this.$router.push("/funcionarios/clientes");
         },
+        // EnviarEndereco(){
+        //     this.$axios.post('create-endereço',this.endereco)
+        // }
     },
-    mounted(){
-        console.log(this.cliente)
-    }
+    mounted() {
+        console.log(this.cliente);
+    },
 };
 </script>
 <style lang="scss">
@@ -338,6 +352,9 @@ export default {
         height: 100vh;
         background-color: rgba(229, 229, 229, 0.1);
         border-radius: 18px;
+    }
+    .v-select__slot {
+        background-color: #fff;
     }
     //grid dos inputs
     &__grid {

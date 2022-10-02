@@ -2341,6 +2341,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -21366,7 +21367,7 @@ var render = function () {
     [
       _vm.$route.name != "Login Alunos"
         ? _c("SidebarAluno", { staticClass: "sidebar" })
-        : _vm._e(),
+        : _c("div", { attrs: { hidden: "" } }),
       _vm._v(" "),
       _c(
         "div",
