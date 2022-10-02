@@ -1,3 +1,4 @@
+import Guard from '../services/middleware'
 const routes = [
     {
         path: "/funcionarios",
@@ -8,6 +9,7 @@ const routes = [
         path: "/funcionarios/clientes",
         name: "Clientes",
         component: () => import("../view/Clientes.vue"),
+        beforeEnter: Guard.auth,
     },
 
     {

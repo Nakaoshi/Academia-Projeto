@@ -203,6 +203,7 @@
                             <validation-provider
                                 v-slot="{ errors }"
                                 rules="required"
+                                name="numeroCasa"
                             >
                                 <v-text-field
                                     class="cadastro__input"
@@ -221,6 +222,7 @@
                             <validation-provider
                                 v-slot="{ errors }"
                                 rules="required"
+                                name="cidade"
                             >
                                 <v-text-field
                                     class="cadastro__input"
@@ -239,6 +241,7 @@
                             <validation-provider
                                 v-slot="{ errors }"
                                 rules="required"
+                                name="estado"
                             >
                                 <v-text-field
                                     class="cadastro__input"
@@ -257,6 +260,7 @@
                             <validation-provider
                                 v-slot="{ errors }"
                                 rules="required"
+                                name="complemento"
                             >
                                 <v-text-field
                                     class="cadastro__input"
@@ -275,6 +279,7 @@
                             <validation-provider
                                 v-slot="{ errors }"
                                 rules="required"
+                                name="cep"
                             >
                                 <v-text-field
                                     class="cadastro__input"

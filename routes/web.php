@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PlanosController;
 
 Route::redirect('/','inicio');
 //SPA dos usuarios
@@ -21,3 +22,5 @@ Route::get('alunos/{vue?}',function(){
 Route::fallback(function(){
     return view('error.error404');
 });
+
+//Route::get('/testePlano',[PlanosController::class, 'index']); teste do controller

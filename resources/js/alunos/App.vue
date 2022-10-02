@@ -4,6 +4,7 @@
             v-if="$route.name != 'Login Alunos'"
            class="sidebar"
         ></SidebarAluno>
+        <div v-else hidden></div>
 
        <div class="content">
         <div class="BemVindo" v-if="$route.name != 'Login Alunos'">

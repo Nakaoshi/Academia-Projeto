@@ -3,7 +3,7 @@
         <div class="divisaoGeometrica" />
         <div class="loginCliente">
             <p class="login__font text__login">Funcionarios</p>
-            <form @submit.prevent="submit" action="">
+            <form @submit.stop.prevent="submit()" action="">
                 <validation-observer ref="observer">
                     <v-row>
                         <v-col cols="12">
@@ -15,7 +15,7 @@
                                 rules="required|email"
                             >
                                 <v-text-field
-                                    v-model="funcionario.email"
+                                    v-model="email"
                                     :error-messages="errors"
                                     placeholder="E-mail...."
                                     required
@@ -29,11 +29,12 @@
                             <validation-provider
                                 v-slot="{ errors }"
                                 name="Password"
-                                rules="required|max:10"
+                                rules="required"
                                 class="form__input"
                             >
                                 <v-text-field
-                                    v-model="funcionario.senha"
+                                    v-model="password"
+                                    type="Password"
                                     :error-messages="errors"
                                     placeholder="Senha...."
                                     required
@@ -46,7 +47,6 @@
                                 class="btn__login"
                                 type="submit"
                                 color="#4361EE"
-                                :to="{ name: 'Clientes' }"
                             >
                                 <h4>Sing in</h4>
                             </v-btn>
@@ -67,11 +67,26 @@ export default {
     },
     data() {
         return {
-            funcionario: {
-                email: this.email,
-                senha: this.senha,
-            },
+            email:"",
+            password:"",
         };
+    },
+    methods:{
+        submit(){
+            var funcionario = {
+                email:this.email,
+                password:this.password
+            }
+            // alyson.hamill@example.org
+            this.$axios.post(`login`,funcionario)
+            .then((response)=>{
+                console.log(response)
+                localStorage.setItem('myauth_token', response.data.access_token)
+                this.$router.push("/funcionarios/clientes")
+            }).catch((error)=>{
+                this.$swal("Erro!!", `${error}`, "error")
+            })
+        }
     },
 };
 </script>

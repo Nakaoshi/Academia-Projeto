@@ -297,8 +297,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -308,37 +306,36 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       cliente: {
-        dadosPessoais: {
-          nome: "",
-          sobrenome: "",
-          genero: "",
-          nascimento: "",
-          cpf: "",
-          plano: ''
-        },
-        dadosContato: {
-          telefone: "",
-          email: ""
-        },
-        endereço: {
-          rua: "",
-          casaNumero: "",
-          cidade: "",
-          estado: "",
-          complemento: "",
-          cep: ""
-        }
+        nome: "",
+        sobrenome: "",
+        genero: "",
+        nascimento: "",
+        cpf: "",
+        plano: "Standard",
+        telefone: "",
+        email: ""
+      },
+      endereco: {
+        rua: "",
+        casaNumero: "",
+        cidade: "",
+        estado: "",
+        complemento: "",
+        cep: ""
       },
       items: ["Homem", "Mulher", "Prefiro Não Declarar"],
-      planos: ['Standard', 'Fighter', 'GoFighter']
+      planos: ["Standard", "Fighter", "GoFighter"]
     };
   },
   methods: {
     EnviarDados: function EnviarDados() {
-      console.log(this.cliente);
-      this.$swal("Sucesso", "Cliente Cadastrado com Sucesso", "success");
-      this.$router.push("/funcionarios/clientes");
-    }
+      this.$axios.post("create-cliente", this.cliente); // console.log(this.cliente);
+      // this.$swal("Sucesso", "Cliente Cadastrado com Sucesso", "success");
+      // this.$router.push("/funcionarios/clientes");
+    } // EnviarEndereco(){
+    //     this.$axios.post('create-endereço',this.endereco)
+    // }
+
   },
   mounted: function mounted() {
     console.log(this.cliente);

@@ -80,11 +80,28 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      funcionario: {
-        email: this.email,
-        senha: this.senha
-      }
+      email: "",
+      password: ""
     };
+  },
+  methods: {
+    submit: function submit() {
+      var _this = this;
+
+      var funcionario = {
+        email: this.email,
+        password: this.password
+      }; // alyson.hamill@example.org
+
+      this.$axios.post("login", funcionario).then(function (response) {
+        console.log(response);
+        localStorage.setItem('myauth_token', response.data.access_token);
+
+        _this.$router.push("/funcionarios/clientes");
+      })["catch"](function (error) {
+        _this.$swal("Erro!!", "".concat(error), "error");
+      });
+    }
   }
 });
 
@@ -317,8 +334,9 @@ var render = function () {
           attrs: { action: "" },
           on: {
             submit: function ($event) {
+              $event.stopPropagation()
               $event.preventDefault()
-              return _vm.submit.apply(null, arguments)
+              return _vm.submit()
             },
           },
         },
@@ -351,11 +369,11 @@ var render = function () {
                                     solo: "",
                                   },
                                   model: {
-                                    value: _vm.funcionario.email,
+                                    value: _vm.email,
                                     callback: function ($$v) {
-                                      _vm.$set(_vm.funcionario, "email", $$v)
+                                      _vm.email = $$v
                                     },
-                                    expression: "funcionario.email",
+                                    expression: "email",
                                   },
                                 }),
                               ]
@@ -373,7 +391,7 @@ var render = function () {
                     [
                       _c("validation-provider", {
                         staticClass: "form__input",
-                        attrs: { name: "Password", rules: "required|max:10" },
+                        attrs: { name: "Password", rules: "required" },
                         scopedSlots: _vm._u([
                           {
                             key: "default",
@@ -382,17 +400,18 @@ var render = function () {
                               return [
                                 _c("v-text-field", {
                                   attrs: {
+                                    type: "Password",
                                     "error-messages": errors,
                                     placeholder: "Senha....",
                                     required: "",
                                     solo: "",
                                   },
                                   model: {
-                                    value: _vm.funcionario.senha,
+                                    value: _vm.password,
                                     callback: function ($$v) {
-                                      _vm.$set(_vm.funcionario, "senha", $$v)
+                                      _vm.password = $$v
                                     },
-                                    expression: "funcionario.senha",
+                                    expression: "password",
                                   },
                                 }),
                               ]
@@ -412,11 +431,7 @@ var render = function () {
                         "v-btn",
                         {
                           staticClass: "btn__login",
-                          attrs: {
-                            type: "submit",
-                            color: "#4361EE",
-                            to: { name: "Clientes" },
-                          },
+                          attrs: { type: "submit", color: "#4361EE" },
                         },
                         [_c("h4", [_vm._v("Sing in")])]
                       ),
