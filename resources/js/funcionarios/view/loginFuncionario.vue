@@ -80,11 +80,10 @@ export default {
             // alyson.hamill@example.org
             this.$axios.post(`login`,funcionario)
             .then((response)=>{
-                console.log(response)
                 localStorage.setItem('myauth_token', response.data.access_token)
                 this.$router.push("/funcionarios/clientes")
-            }).catch((error)=>{
-                this.$swal("Erro!!", `${error}`, "error")
+            }).catch(()=>{
+                this.$swal("Erro!!", `Usuario Incorreto`, "error")
             })
         }
     },

@@ -457,6 +457,72 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -472,23 +538,22 @@ __webpack_require__.r(__webpack_exports__);
         text: "Clientes",
         align: "start",
         sortable: false,
-        value: "name"
+        value: "nome"
       }, {
         text: "DT.Nascimento",
-        value: "mass",
-        align: "center",
-        "class": "texto"
+        value: "dataNascimento",
+        align: "center"
       }, {
         text: "CPF",
-        value: "eye_color",
+        value: "cpf",
         align: "center"
       }, {
         text: "Telefone",
-        value: "height",
+        value: "telefone",
         align: "center"
       }, {
         text: "Plano",
-        value: "gender",
+        value: "plano",
         align: "center"
       }, {
         value: "action",
@@ -504,8 +569,29 @@ __webpack_require__.r(__webpack_exports__);
     getData: function getData() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get("https://swapi.dev/api/people/").then(function (response) {
-        _this.clientes = response.data.results;
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("get-clientes").then(function (response) {
+        _this.clientes = response.data;
+        console.log(response);
+      });
+    },
+    Deletarcliente: function Deletarcliente(id) {
+      var _this2 = this;
+
+      this.$swal({
+        title: "Quer mesmo Excluir?",
+        showDenyButton: true,
+        confirmButtonText: "Deletar",
+        denyButtonText: "N\xE3o Deletar"
+      }).then(function (result) {
+        if (result.isConfirmed) {
+          _this2.$axios["delete"]("delete-clientes", id).then(function () {
+            _this2.$swal("O usuario ".concat(id, " foi Deletado!"), "", "success");
+          })["catch"](function (error) {
+            _this2.$swal("erro", "".concat(error), "error");
+          });
+        } else if (result.isDenied) {
+          _this2.$swal("O usuario n\xE3o foi deletado", "", "error");
+        }
       });
     }
   },
@@ -562,7 +648,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_13_0_rules_0_use_1_css_app_css__WEBPACK_IMPORTED_MODULE_1__["default"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".tabela{\n  width: 100%;\n}\n@media (min-width: 640px){\n.tabela{\n    max-width: 640px;\n}\n}\n@media (min-width: 768px){\n.tabela{\n    max-width: 768px;\n}\n}\n@media (min-width: 1024px){\n.tabela{\n    max-width: 1024px;\n}\n}\n@media (min-width: 1280px){\n.tabela{\n    max-width: 1280px;\n}\n}\n@media (min-width: 1536px){\n.tabela{\n    max-width: 1536px;\n}\n}\n.tabela{\n  margin-left: auto;\n  margin-right: auto;\n  padding-left: 5rem;\n  padding-right: 5rem;\n}\n.tabela__clientes {\n  background: #222831;\n}\n.tabela__busca {\n  width: 5% !important;\n}\n.tabela__btn {\n  font-style: italic;\n  font-weight: 700;\n  font-size: 14px;\n  line-height: 21px;\n  color: #fafafa !important;\n}\n.clientes{\n  position: absolute;\n  top: 9%;\n  left: 3%;\n}\nthead,\nthead tr th span {\n  background: #222831;\n  color: #fafafa;\n}\ntbody {\n  border-radius: 50%;\n}\ntd {\n  margin: 3rem;\n}\ntr > :not([hidden]) ~ :not([hidden]){\n  --tw-space-y-reverse: 0;\n  margin-top: calc(5rem * calc(1 - var(--tw-space-y-reverse)));\n  margin-bottom: calc(5rem * var(--tw-space-y-reverse));\n}\ntr {\n  border-radius: 18px;\n  font-style: italic;\n  font-weight: 600;\n  font-size: 12px;\n  line-height: 18px;\n  color: #000000;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".tabela{\n  width: 100%;\n}\n@media (min-width: 640px){\n.tabela{\n    max-width: 640px;\n}\n}\n@media (min-width: 768px){\n.tabela{\n    max-width: 768px;\n}\n}\n@media (min-width: 1024px){\n.tabela{\n    max-width: 1024px;\n}\n}\n@media (min-width: 1280px){\n.tabela{\n    max-width: 1280px;\n}\n}\n@media (min-width: 1536px){\n.tabela{\n    max-width: 1536px;\n}\n}\n.tabela{\n  margin-left: auto;\n  margin-right: auto;\n  padding-left: 5rem;\n  padding-right: 5rem;\n}\n.tabela__header{\n  text-align: center;\n  color: #fafafa !important;\n}\n.tabela__clientes {\n  background: #222831;\n}\n.tabela__busca {\n  width: 5% !important;\n}\n.tabela__btn {\n  font-style: italic;\n  font-weight: 700;\n  font-size: 14px;\n  line-height: 21px;\n  color: #fafafa !important;\n}\n.clientes{\n  position: absolute;\n  top: 9%;\n  left: 3%;\n}\nthead,\nthead tr th span {\n  background: #222831;\n  color: #fafafa;\n}\ntbody {\n  border-radius: 50%;\n}\ntd {\n  margin: 3rem;\n}\ntr > :not([hidden]) ~ :not([hidden]){\n  --tw-space-y-reverse: 0;\n  margin-top: calc(5rem * calc(1 - var(--tw-space-y-reverse)));\n  margin-bottom: calc(5rem * var(--tw-space-y-reverse));\n}\ntr {\n  border-radius: 18px;\n  font-style: italic;\n  font-weight: 600;\n  font-size: 12px;\n  line-height: 18px;\n  color: #000000;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1638,102 +1724,165 @@ var render = function () {
             1
           ),
           _vm._v(" "),
-          _c("v-data-table", {
-            attrs: {
-              loading: "",
-              "loading-text": "Carregando......Aguarde",
-              headers: _vm.headers,
-              items: this.clientes,
-              search: _vm.search,
-              "hide-default-footer": "",
-            },
+          _c("v-simple-table", {
+            attrs: { "fixed-header": "", search: _vm.search },
             scopedSlots: _vm._u([
               {
-                key: "item.action",
-                fn: function (ref) {
-                  var items = ref.items
+                key: "default",
+                fn: function () {
                   return [
-                    _c(
-                      "v-menu",
-                      {
-                        attrs: { "offset-y": "" },
-                        scopedSlots: _vm._u(
-                          [
-                            {
-                              key: "activator",
-                              fn: function (ref) {
-                                var on = ref.on
-                                var attrs = ref.attrs
-                                return [
-                                  _c(
-                                    "v-btn",
-                                    _vm._g(
-                                      _vm._b(
-                                        {
-                                          attrs: { color: "#f72585", dark: "" },
-                                        },
-                                        "v-btn",
-                                        attrs,
-                                        false
-                                      ),
-                                      on
-                                    ),
-                                    [
-                                      _vm._v(
-                                        "\n                            Detalhes\n                        "
-                                      ),
-                                    ]
-                                  ),
-                                ]
-                              },
-                            },
-                          ],
-                          null,
-                          true
-                        ),
-                      },
-                      [
+                    _c("thead", [
+                      _c("tr", [
+                        _c("th", { staticClass: "text-left" }, [_vm._v("Id")]),
                         _vm._v(" "),
-                        _c(
-                          "v-list",
-                          [
-                            _c(
-                              "v-list-item",
-                              [
-                                _c(
-                                  "v-btn",
-                                  {
-                                    staticClass: "tabela__btn",
-                                    attrs: { color: "#f72585", small: "" },
-                                  },
-                                  [_vm._v("Deletar")]
-                                ),
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-list-item",
-                              [
-                                _c(
-                                  "v-btn",
-                                  {
-                                    staticClass: "tabela__btn",
-                                    attrs: { color: "#f72585", small: "" },
-                                  },
-                                  [_vm._v("Editar")]
-                                ),
-                              ],
-                              1
-                            ),
-                          ],
-                          1
-                        ),
-                      ],
-                      1
+                        _c("th", { staticClass: "text-left" }, [
+                          _vm._v("Cliente"),
+                        ]),
+                        _vm._v(" "),
+                        _c("th", { staticClass: "text-left" }, [
+                          _vm._v("DT.Nascimento"),
+                        ]),
+                        _vm._v(" "),
+                        _c("th", { staticClass: "text-left" }, [_vm._v("CPF")]),
+                        _vm._v(" "),
+                        _c("th", { staticClass: "text-left" }, [
+                          _vm._v("Telefone"),
+                        ]),
+                        _vm._v(" "),
+                        _c("th", { staticClass: "text-left" }, [
+                          _vm._v("Plano"),
+                        ]),
+                        _vm._v(" "),
+                        _c("th", { staticClass: "text-left" }, [
+                          _vm._v("Ações"),
+                        ]),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "tbody",
+                      _vm._l(_vm.clientes, function (cliente) {
+                        return _c("tr", { key: cliente.nome }, [
+                          _c("td", [_vm._v(_vm._s(cliente.id))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(cliente.nome))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(cliente.dataNascimento))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(cliente.cpf))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(cliente.telefone))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(cliente.plano))]),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            [
+                              _c(
+                                "v-menu",
+                                {
+                                  attrs: { "offset-y": "" },
+                                  scopedSlots: _vm._u(
+                                    [
+                                      {
+                                        key: "activator",
+                                        fn: function (ref) {
+                                          var on = ref.on
+                                          var attrs = ref.attrs
+                                          return [
+                                            _c(
+                                              "v-btn",
+                                              _vm._g(
+                                                _vm._b(
+                                                  {
+                                                    attrs: {
+                                                      color: "#f72585",
+                                                      dark: "",
+                                                    },
+                                                  },
+                                                  "v-btn",
+                                                  attrs,
+                                                  false
+                                                ),
+                                                on
+                                              ),
+                                              [
+                                                _vm._v(
+                                                  "\n                                        Detalhes\n                                    "
+                                                ),
+                                              ]
+                                            ),
+                                          ]
+                                        },
+                                      },
+                                    ],
+                                    null,
+                                    true
+                                  ),
+                                },
+                                [
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-list",
+                                    [
+                                      _c(
+                                        "v-list-item",
+                                        [
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              staticClass: "tabela__btn",
+                                              attrs: {
+                                                color: "#f72585",
+                                                small: "",
+                                              },
+                                              on: {
+                                                click: function ($event) {
+                                                  return _vm.Deletarcliente(
+                                                    cliente.id
+                                                  )
+                                                },
+                                              },
+                                            },
+                                            [_vm._v("Deletar")]
+                                          ),
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-list-item",
+                                        [
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              staticClass: "tabela__btn",
+                                              attrs: {
+                                                color: "#f72585",
+                                                small: "",
+                                              },
+                                            },
+                                            [_vm._v("Editar")]
+                                          ),
+                                        ],
+                                        1
+                                      ),
+                                    ],
+                                    1
+                                  ),
+                                ],
+                                1
+                              ),
+                            ],
+                            1
+                          ),
+                        ])
+                      }),
+                      0
                     ),
                   ]
                 },
+                proxy: true,
               },
             ]),
           }),

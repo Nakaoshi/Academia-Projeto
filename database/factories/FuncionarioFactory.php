@@ -16,15 +16,18 @@ class FuncionarioFactory extends Factory
      */
     public function definition()
     {
+
+        $gender = $this->faker->randomElement($array = array('male','female','mixed'));
         return [
-            'nome' => $this->faker->name,
-            'sobrenome' => $this->faker->lastName,
-            'cpf' => $this->faker->countryCode,
-            'genero' => $this->faker->title($gender = "M"),
-            'cargo' => $this->faker->jobTitle,
+            'nome' => $this->faker->name(),
+            'sobrenome' => $this->faker->lastName(),
+            'cpf' => $this->faker->countryCode(),
+            'genero' => $gender,
+            'cargo' => $this->faker->jobTitle(),
             'salario' => $this->faker->randomDigitNot(5),
-            'telefone' => $this->faker->phoneNumber,
-            'email' => $this->faker->email
+            'telefone' => $this->faker->phoneNumber(),
+            'email' => $this->faker->email(),
+
         ];
     }
 }

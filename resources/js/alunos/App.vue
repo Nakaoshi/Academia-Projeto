@@ -6,13 +6,16 @@
         ></SidebarAluno>
         <div v-else hidden></div>
 
-       <div class="content">
-        <div class="BemVindo" v-if="$route.name != 'Login Alunos'">
+       <div class="content" v-if="$route.name != 'Login Alunos'">
+        <div class="BemVindo">
             <h2 class="alunos__font--welcome BemVindo__aluno">
                 Olá {{ this.aluno.name }}, Bem Vindo de Volta
             </h2>
             <h2 class="alunos__font--title BemVindo__pagina">{{this.$route.name}}</h2>
         </div>
+        <router-view   class="router-view"></router-view>
+       </div>
+       <div v-else>
         <router-view   class="router-view"></router-view>
        </div>
     </div>

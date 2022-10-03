@@ -7,7 +7,7 @@ use App\Models\Cliente;
 
 class ClienteController extends Controller
 {
-    public function index()
+    public function getCliente()
     {
         $clientes = Cliente::all()->toArray();
         return array_reverse($clientes);      

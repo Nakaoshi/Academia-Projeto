@@ -94,12 +94,11 @@ __webpack_require__.r(__webpack_exports__);
       }; // alyson.hamill@example.org
 
       this.$axios.post("login", funcionario).then(function (response) {
-        console.log(response);
         localStorage.setItem('myauth_token', response.data.access_token);
 
         _this.$router.push("/funcionarios/clientes");
-      })["catch"](function (error) {
-        _this.$swal("Erro!!", "".concat(error), "error");
+      })["catch"](function () {
+        _this.$swal("Erro!!", "Usuario Incorreto", "error");
       });
     }
   }
