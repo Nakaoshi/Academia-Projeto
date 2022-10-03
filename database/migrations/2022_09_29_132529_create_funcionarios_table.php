@@ -23,6 +23,8 @@ return new class extends Migration
             $table->float('salario',7);
             $table->string('telefone',11)->nullable(false);
             $table->string('email');
+            $table->time('update_at');
+            $table->time('created_at');
         });
     }
 

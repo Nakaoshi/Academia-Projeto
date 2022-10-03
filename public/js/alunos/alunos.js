@@ -2342,6 +2342,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -21369,12 +21372,12 @@ var render = function () {
         ? _c("SidebarAluno", { staticClass: "sidebar" })
         : _c("div", { attrs: { hidden: "" } }),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "content" },
-        [
-          _vm.$route.name != "Login Alunos"
-            ? _c("div", { staticClass: "BemVindo" }, [
+      _vm.$route.name != "Login Alunos"
+        ? _c(
+            "div",
+            { staticClass: "content" },
+            [
+              _c("div", { staticClass: "BemVindo" }, [
                 _c(
                   "h2",
                   { staticClass: "alunos__font--welcome BemVindo__aluno" },
@@ -21392,13 +21395,13 @@ var render = function () {
                   { staticClass: "alunos__font--title BemVindo__pagina" },
                   [_vm._v(_vm._s(this.$route.name))]
                 ),
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _c("router-view", { staticClass: "router-view" }),
-        ],
-        1
-      ),
+              ]),
+              _vm._v(" "),
+              _c("router-view", { staticClass: "router-view" }),
+            ],
+            1
+          )
+        : _c("div", [_c("router-view", { staticClass: "router-view" })], 1),
     ],
     1
   )

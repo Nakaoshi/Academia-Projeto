@@ -15,7 +15,6 @@ use App\Http\Controllers\ClienteController;
 */
 
 Route::post('login', [App\Http\Controllers\AutenticacaoController::class, 'login']);
-Route::get('login', function(){return "login";});
 
 
 
@@ -34,7 +33,7 @@ Route::middleware('api')->group(function () {
 
 });
 */
-Route::get('index-clientes',[ClienteController::class,'index']);
+Route::get('get-clientes',[ClienteController::class,'getCliente']);
 Route::post('create-clientes',[ClienteController::class,'createCliente']);
 Route::put('update-clientes',[ClienteController::class,'updateCliente']);
-Route::delete('delete-clientes',[ClienteController::class,'deletCliente']);
+Route::delete('delete-clientes',[ClienteController::class,'deleteCliente']);

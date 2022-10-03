@@ -12,6 +12,8 @@ class FuncionarioController extends Controller
         $funcionarios = Funcionario::all()->toArray();
         return array_reverse($funcionarios);      
     }
+
+     
     public function createFuncionario(Request $request)
     {
         $funcionario = new Funcionario([
