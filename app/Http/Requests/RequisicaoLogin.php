@@ -25,7 +25,8 @@ class RequisicaoLogin extends FormRequest
     {
         return [
             'email' => 'email|required',
-            'password' => 'string|required', //se der erro, trocar de senha para password
-        ];
+            // 'password' => 'password|required', //se der erro, trocar de senha para password
+            'password' => 'string|required', 
+               ];
     }
 }

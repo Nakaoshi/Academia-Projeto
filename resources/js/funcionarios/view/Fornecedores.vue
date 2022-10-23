@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <div class="tabela">
-            <p class="cadastro__form--title clientes">FORNECEDORES</p>
+    <div class="tabelaGeral">
+        <div class="tabela" v-if="fornecedor.length > 0">
+            <p class="cadastro__form--title fornecedor">FORNECEDORES</p>
             <v-card-title>
                 <v-spacer></v-spacer>
                 <v-text-field
@@ -20,13 +20,13 @@
                 loading
                 loading-text="Carregando......Aguarde"
                 :headers="headers"
-                :items="this.clientes"
+                :items="fornecedor"
                 :search="search"
                 hide-default-footer
                 mobile
             >
                 <!-- sim, se você ta no VS code, o template vai ficar dando erro sabe se la o porque  -->
-                <template v-slot:item.action="{ items }">
+                <template v-slot:item.action="{ item }">
                     <v-menu offset-y>
                         <template v-slot:activator="{ on, attrs }">
                             <v-btn
@@ -41,61 +41,92 @@
                         <v-list>
                             <v-list-item>
                                 <v-btn color="#f72585" class="tabela__btn" small
+                                @click="deletarFornecedor(item.id)"
                                     >Deletar</v-btn
                                 >
                             </v-list-item>
                             <v-list-item>
-                                <v-btn color="#f72585" class="tabela__btn" small
+                                <router-link :to="{name: 'Editar Fornecedor', params: { id: item.id }}">
+                                    <v-btn
+                                    color="#f72585"
+                                    class="tabela__btn"
+                                    small
                                     >Editar</v-btn
                                 >
+                                </router-link>
                             </v-list-item>
                         </v-list>
                     </v-menu>
                 </template>
             </v-data-table>
-            <ModalFornecedores />
         </div>
+        <span class="semDados" v-else>Não há Dados na base de Dados</span>
+        <ModalFornecedores />
     </div>
 </template>
 
 <script>
-import axios from "axios";
 import { mdiMagnify } from "@mdi/js";
 import ModalFornecedores from "../components/modalFornecedores.vue";
 export default {
     data() {
         return {
+            dialog: false,
             search: "",
             headers: [
                 {
                     text: "Fornecedores",
-                    align: "start",
+                    align: "center",
                     sortable: false,
-                    value: "name",
+                    value: "nomeFantasia",
                 },
                 {
-                    text: "CNPJ",
-                    value: "mass",
+                    text: "Nome Fantasia",
+                    value: "razaoSocial",
                     align: "center",
                     class: "texto",
                 },
-                { text: "Telefone", value: "eye_color", align: "center" },
-                { text: "Email ", value: "height", align: "center" },
+                { text: "Telefone", value: "telefone", align: "center" },
+                { text: "Email ", value: "email", align: "center" },
                 { value: "action", align: "center" },
             ],
-            clientes: [],
+            fornecedor: [],
             mdiMagnify,
         };
     },
     methods: {
-        getData() {
-            axios.get("https://swapi.dev/api/people/").then((response) => {
-                this.clientes = response.data.results;
+        deletarFornecedor(id) {
+            this.$swal({
+                title: "Quer mesmo Excluir?",
+                showDenyButton: true,
+                confirmButtonText: "Deletar",
+                denyButtonText: `Não Deletar`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.$axios
+                        .delete(`fornecedores/delete/${id}`)
+                        .then((response) => {
+                            let i = this.fornecedor
+                                .map((item) => item.id)
+                                .indexOf(id);
+                            this.fornecedor.splice(i, 1);
+                            this.$swal({
+                                title: "fornecedor deletado com sucesso!!!",
+                                text: "",
+                                icon: "success",
+                            });
+                        });
+                } else if (result.isDenied) {
+                    this.$swal(`O fornecedor não foi deletado`, "", "");
+                }
             });
         },
     },
     mounted() {
-        this.getData();
+        this.$axios.get("fornecedores/get").then((response) => {
+            console.log(response);
+            this.fornecedor = response.data;
+        });
     },
     components: { ModalFornecedores },
 };
@@ -107,7 +138,7 @@ export default {
 
 .tabela {
     @apply container mx-auto  px-20;
-    &__clientes {
+    &__fornecedor {
         background: #222831;
     }
     &__busca {
@@ -121,7 +152,7 @@ export default {
         color: $branco !important;
     }
 }
-.clientes {
+.fornecedor {
     @apply absolute;
     top: 10%;
     left: 3%;

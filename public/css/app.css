@@ -961,6 +961,28 @@ ALUNOS
     line-height: 17px;
     color: #000000;
 }
+.tabelaGeral{
+    display:flex;
+    justify-content:center
+}
+.tabelaGeral .semDados{
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    text-align:center;
+
+    background-color:#fafafa;
+    color:#313131;
+
+    max-width:100%;
+    width:80%;
+    height:2rem;
+
+    position:absolute;
+    display:flex;
+    justify-content:center;
+    align-items:center
+}
 /*active class vue router */
 .router-link-active,
 .router-link-exact-active {

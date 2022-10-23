@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cliente;
-
 class ClienteController extends Controller
 {
     public function getCliente()
@@ -14,7 +13,8 @@ class ClienteController extends Controller
     }
     public function createCliente(Request $request)
     {
-        $cliente = new Cliente([
+        
+        $cliente = Cliente::create([
             'nome' => $request->input('nome'),
             'sobrenome'=> $request->input('sobrenome'),
             'cpf'=> $request->input('cpf'),
@@ -27,7 +27,7 @@ class ClienteController extends Controller
         $cliente->save();
         return response()->json('cliente Criado');
     }
-    public function showCliente($id)
+    public function EditCliente($id)
     {
         $cliente = Cliente::find($id);
         return response()->json($cliente);

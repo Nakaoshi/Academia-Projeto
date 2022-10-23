@@ -7,7 +7,7 @@ use App\Models\Fornecedor;
 
 class FornecedorController extends Controller
 {
-    public function index()
+    public function getFornecedores()
     {
         $fornecedores = Fornecedor::all()->toArray();
         return array_reverse($fornecedores);      
@@ -19,13 +19,13 @@ class FornecedorController extends Controller
             'nomeFantasia'=> $request->input('nomeFantasia'),
             'razaoSocial'=> $request->input('razaoSocial'),
             'telefone'=> $request->input('telefone'),
-            'email'=> $request->input('ameil')
+            'email'=> $request->input('email')
             
         ]);
         $fornecedor->save();
         return response()->json('fornecedor Criado');
     }
-    public function showFornecedor($id)
+    public function editFornecedor($id)
     {
         $fornecedor = Fornecedor::find($id);
         return response()->json($fornecedor);

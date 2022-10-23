@@ -112,7 +112,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_css_images_Banner_login_svg__WEBPACK_IMPORTED_MODULE_2__["default"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body[data-v-04227703] {\n  position: absolute;\n  height: 100%;\n  width: 100%;\n}\n.background__loginCliente[data-v-04227703] {\n  position: absolute;\n  display: flex;\n  height: 100%;\n  width: 100%;\n  align-items: center;\n  justify-content: center;\n  overflow: hidden;\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-size: cover;\n}\n.divisaoGeometrica[data-v-04227703] {\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  left: 0;\n  z-index: 0;\n  -webkit-clip-path: polygon(0 0, 30% 0, 77% 100%, 0% 100%);\n          clip-path: polygon(0 0, 30% 0, 77% 100%, 0% 100%);\n  background: #c4c4c4;\n  background-clip: content-box;\n}\n.loginCliente[data-v-04227703] {\n  display: flex;\n  justify-content: center;\n  z-index: 20;\n}\n.text__login[data-v-04227703] {\n  position: absolute;\n  top: 5rem;\n  margin-left: auto;\n  margin-right: auto;\n}\n.btn__login[data-v-04227703] {\n  width: 100%;\n  font-weight: 300;\n  line-height: 36px;\n  color: #ffffff;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "body[data-v-04227703] {\n  position: absolute;\n  height: 100%;\n  width: 100%;\n}\n.background__loginCliente[data-v-04227703] {\n  position: absolute;\n  display: flex;\n  height: 100%;\n  width: 100%;\n  align-items: center;\n  justify-content: center;\n  overflow: hidden;\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-size: cover;\n}\n.divisaoGeometrica[data-v-04227703] {\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  left: 0;\n  z-index: 0;\n  -webkit-clip-path: polygon(0 0, 30% 0, 77% 100%, 0% 100%);\n          clip-path: polygon(0 0, 30% 0, 77% 100%, 0% 100%);\n  background: #c4c4c4;\n  background-clip: content-box;\n}\n.loginCliente[data-v-04227703] {\n  display: flex;\n  justify-content: center;\n  z-index: 20;\n}\n.text__login[data-v-04227703] {\n  position: absolute;\n  top: 5rem;\n  margin-left: auto;\n  margin-right: auto;\n}\n.btn__login[data-v-04227703] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 100%;\n  font-weight: 300;\n  line-height: 36px;\n}\n.btn__login > h4[data-v-04227703] {\n  color: #ffffff;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -416,7 +416,7 @@ var render = function () {
                             to: { name: "Inicio" },
                           },
                         },
-                        [_c("h4", [_vm._v("Sing in")])]
+                        [_c("h4", [_vm._v("Acessar")])]
                       ),
                     ],
                     1

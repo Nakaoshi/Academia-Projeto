@@ -12,27 +12,22 @@ extend("digits", value =>{
   if(value > 0){
     return true
   }
-    return "{_field_} needs to be {length} digits. ({_value_})"
+    return "o campo precisa ter {length} digitos ({_value_})"
 });
 
 extend("required", {
     ...required,
-    message: "{_field_} can not be empty",
+    message: "o campo não pode estar vazio!!",
 });
 
 extend("max", {
     ...max,
-    message: "{_field_} may not be greater than {length} characters",
-});
-
-extend("regex", {
-    ...regex,
-    message: "{_field_} {_value_} does not match {regex}",
+    message: "o campo não pode ser maior que {length} caractéres",
 });
 
 extend("email", {
     ...email,
-    message: "Email must be valid",
+    message: "Email tem que ser valido",
 });
 
 

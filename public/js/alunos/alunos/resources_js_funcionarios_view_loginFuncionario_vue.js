@@ -91,8 +91,7 @@ __webpack_require__.r(__webpack_exports__);
       var funcionario = {
         email: this.email,
         password: this.password
-      }; // alyson.hamill@example.org
-
+      };
       this.$axios.post("login", funcionario).then(function (response) {
         localStorage.setItem('myauth_token', response.data.access_token);
 

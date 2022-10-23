@@ -7,7 +7,7 @@ use App\Models\Funcionario;
 
 class FuncionarioController extends Controller
 {
-    public function index()
+    public function getFuncionarios()
     {
         $funcionarios = Funcionario::all()->toArray();
         return array_reverse($funcionarios);      
@@ -30,7 +30,7 @@ class FuncionarioController extends Controller
         $funcionario->save();
         return response()->json('funcionario Criado');
     }
-    public function showFuncionario($id)
+    public function EditFuncionario($id)
     {
         $funcionario = Funcionario::find($id);
         return response()->json($funcionario);

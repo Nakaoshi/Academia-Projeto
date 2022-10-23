@@ -11,7 +11,7 @@ const routes = [
         component: () => import("../view/Perfil.vue"),
     },
     {
-        path: "/alunos/pagamentos", //add o :id aqui tbm
+        path: "/alunos/pagamentos", 
         name: "Pagamentos",
         component: () => import("../view/Pagamentos.vue"),
     },

@@ -16,16 +16,18 @@ class FuncionarioFactory extends Factory
      */
     public function definition()
     {
+        require_once 'vendor/autoload.php';
 
-        $gender = $this->faker->randomElement($array = array('male','female','mixed'));
+        $gender = $this->faker->randomElement($array = array('Homem','Mulher','Prefiro Não Declarar'));
+        $faker = \Faker\Factory::create('pt_BR');
         return [
-            'nome' => $this->faker->name(),
+            'nome' => $faker->name(),
             'sobrenome' => $this->faker->lastName(),
-            'cpf' => $this->faker->countryCode(),
+            'cpf' =>  $faker->cpf(14),
             'genero' => $gender,
-            'cargo' => $this->faker->jobTitle(),
+            'cargo' => $this->faker->jobTitle(30),
             'salario' => $this->faker->randomDigitNot(5),
-            'telefone' => $this->faker->phoneNumber(),
+            'telefone' => sprintf('(0%s) %s', $faker->areaCode, $faker->landline),
             'email' => $this->faker->email(),
 
         ];

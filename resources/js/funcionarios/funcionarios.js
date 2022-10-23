@@ -16,7 +16,7 @@ Vue.prototype.$Swal = VueSweetalert2
 // Navbar Component
 // ---------------------------------------------------------------------------------------------------------------------/
 import navbarFuncionario from "../../Templates/NavBars/navbarFuncionario.vue";
-Vue.component("navbar-cliente", navbarFuncionario);
+Vue.component("navbar-funcionario", navbarFuncionario);
 
 // ---------------------------------------------------------------------------------------------------------------------/
 // Vuex
@@ -32,12 +32,13 @@ Vue.use(VueMask);
 // ---------------------------------------------------------------------------------------------------------------------/
 // Axios
 // ---------------------------------------------------------------------------------------------------------------------/
+import VueAxios from "vue-axios";
 import axios from "axios";
-axios.defaults.baseURL = 'http://127.0.0.1:8000/api/'
-axios.defaults.headers.common['Authorization'] = `bearer ${localStorage.getItem('token')}`
+axios.defaults.baseURL = 'http://127.0.0.1:8000/api/';
+// axios.defaults.headers.common['Authorization'] = `bearer ${localStorage.getItem('token')}`
 
 Vue.prototype.$axios = axios;
-
+Vue.use(VueAxios, axios);
 // ---------------------------------------------------------------------------------------------------------------------/
 // Vue Router
 // ---------------------------------------------------------------------------------------------------------------------/
@@ -53,32 +54,9 @@ const router = new VueRouter({
     },
 });
 router.beforeEach((to, from, next) => {
-    localStorage.setItem("route", to.name, function () {
-        console.log(to.name);
-    });
+    localStorage.setItem("route", to.name)
     next();
 });
-
-// tentativa de autenticação de rotas
-new Promise((resolve, reject) => {
-    // router.push(url); LEMBRETE DE RECONFIGURAR ISSO =================================================================
-    router.onReady(() => {
-        const matchedComponents = router.getMatchedComponents();
-        if (!matchedComponents.length) {
-            return reject({ code: 404 });
-        }
-        resolve(app);
-    }, reject);
-})
-    .then((app) => {
-        renderVueComponentToString(app, (err, res) => {
-            console.log(res);
-        });
-    })
-    .catch((err) => {
-        console.log(err);
-    });
-
 // ---------------------------------------------------------------------------------------------------------------------/
 // Vue
 // ---------------------------------------------------------------------------------------------------------------------/

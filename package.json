@@ -34,6 +34,7 @@
         "node-sass": "^7.0.3",
         "v-mask": "^2.3.0",
         "vee-validate": "^3.4.14",
+        "vue-axios": "^3.5.0",
         "vue-feather-icons": "^5.1.0",
         "vue-router": "^3.5.3",
         "vue-sweetalert2": "^5.0.5",

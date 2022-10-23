@@ -48,7 +48,7 @@
                                 color="#f72585"
                                 :to="{ name: 'Inicio' }"
                             >
-                                <h4>Sing in</h4>
+                                <h4>Acessar</h4>
                             </v-btn>
                         </v-col>
                     </v-row>
@@ -106,9 +106,13 @@ export default {
     }
 }
 .btn__login {
+    @apply flex justify-center items-center;
     width: 100%;
     font-weight: 300;
     line-height: 36px;
-    color: #ffffff;
+    &>h4{
+        color: #ffffff;
+        
+    }
 }
 </style>

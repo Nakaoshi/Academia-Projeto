@@ -6,7 +6,7 @@
                     <v-icon>{{ mdiPlus }}</v-icon>
                 </v-btn>
             </template>
-            <FormClientes />
+            <Form-Clientes />
         </v-dialog>
     </div>
 </template>
