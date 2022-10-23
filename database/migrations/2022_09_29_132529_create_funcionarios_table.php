@@ -15,16 +15,16 @@ return new class extends Migration
     {
         Schema::create('funcionarios', function(Blueprint $table){
             $table->increments('id');
-            $table->string('nome', 15)->nullable(false);
+            $table->string('nome')->nullable(false);
             $table->string('sobrenome',50)->nullable(false);
-            $table->string('cpf', 11)->nullable()->unique(false);
-            $table->enum('genero',array('m','f'));
-            $table->string('cargo', 30)->nullable(false);
-            $table->float('salario',7);
-            $table->string('telefone',11)->nullable(false);
+            $table->string('cpf', 14)->nullable()->unique(false);
+            $table->enum('genero',array('Homem','Mulher','Prefiro Não Declarar'));
+            $table->string('cargo')->nullable(false);
+            $table->float('salario',11);
+            $table->string('telefone',15)->nullable(false);
             $table->string('email');
-            $table->time('update_at');
-            $table->time('created_at');
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

@@ -31,29 +31,12 @@
             </v-btn>
         </div>
         <!-- navbar mobile -->
-        <div class="sidebarMobile " >
-                <v-app-bar
-                  :collapse="!collapseOnScroll"
-                  :collapse-on-scroll="collapseOnScroll"
-                  absolute
-                  color="deep-purple accent-4"
-                  dark
-                  scroll-target="#scrolling-techniques-6"
-                >
-                  <v-app-bar-nav-icon></v-app-bar-nav-icon>
-            
-                  <v-toolbar-title>Collapsing Bar</v-toolbar-title>
-            
-                  
-                </v-app-bar>
-                <v-sheet
-                  id="scrolling-techniques-6"
-                  class="overflow-y-auto"
-                  max-height="600"
-                >
-                  <v-container style="height: 1000px;"></v-container>
-                </v-sheet>
-        </div>
+        <header class="sidebarMobile">
+                <router-link :to="{name: 'Inicio'}">Inicio</router-link>
+                <router-link :to="{name: 'Pagamentos'}">Pagamentos</router-link>
+                <!-- <v-img :src="logo" max-width="240" min-width="100"/> -->
+
+        </header>
     </div>
 </template>
 
@@ -125,14 +108,8 @@ export default {
         @apply hidden;
     }
     .sidebarMobile {
-        @apply block container mx-auto;
-        border:2px solid red;
-        &__menu {
-            @apply space-x-7;
-            &--item {
-                @apply space-x-5;
-            }
-        }
+        @apply w-screen max-w-full h-10 fixed z-10 flex items-center justify-between px-10;
+        background-color: $cinza;
     }
 }
 </style>

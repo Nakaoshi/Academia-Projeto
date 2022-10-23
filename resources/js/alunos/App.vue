@@ -2,7 +2,7 @@
     <div id="app" max-height="100vh">
         <SidebarAluno
             v-if="$route.name != 'Login Alunos'"
-           class="sidebar"
+            class="barraTarefas"
         ></SidebarAluno>
         <div v-else hidden></div>
 
@@ -91,7 +91,7 @@ export default {
    
 }
 
-.sidebar {
+.barraTarefas {
     @apply col-span-2;
     @media screen and (max-width: 1024px) {
         @apply col-span-12;

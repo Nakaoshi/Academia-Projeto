@@ -77,7 +77,6 @@ export default {
                 email:this.email,
                 password:this.password
             }
-            // alyson.hamill@example.org
             this.$axios.post(`login`,funcionario)
             .then((response)=>{
                 localStorage.setItem('myauth_token', response.data.access_token)

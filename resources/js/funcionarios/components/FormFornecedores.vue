@@ -1,8 +1,13 @@
 <template>
     <div class="cadastro">
-        <form class="cadastro__form">
-            <p class="cadastro__form--title">Cadastro De Clientes</p>
-            <validation-observer class="cadastro__form--inputs">
+        <form class="cadastro__form" @submit.prevent="EnviarDados()">
+            <p class="cadastro__form--title">
+                {{
+                    $route.name === "Editar Cliente" ? "Editar" : "Cadastrar"
+                }}
+                Fornecedores
+            </p>
+            <validation-observer class="cadastro__form--inputs" v-slot="{ invalid }">
                 <!-- dados pessoais -->
                 <div>
                     <p class="cadastro__section--title">Dados Gerais</p>
@@ -16,7 +21,7 @@
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="fornecedor.dadosGerais.fantasia"
+                                    v-model="fornecedor.nomeFantasia"
                                     :error-messages="errors"
                                     placeholder="Fantasia...."
                                     required
@@ -36,8 +41,7 @@
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-mask="'##/##/####'"
-                                    v-model="fornecedor.dadosGerais.razaoSocial"
+                                    v-model="fornecedor.razaoSocial"
                                     :error-messages="errors"
                                     placeholder="Razão Social....."
                                     required
@@ -50,12 +54,12 @@
                         <div class="cadastro__grid--4">
                             <validation-provider
                                 v-slot="{ errors }"
-                                rules="required|max:14"
+                                rules="required|max:18"
                             >
                                 <v-text-field
                                     class="cadastro__input"
                                     v-mask="'##.###.###/####-##'"
-                                    v-model="fornecedores.dadosGerais.cnpj"
+                                    v-model="fornecedor.cnpj"
                                     :error-messages="errors"
                                     placeholder="CNPJ....."
                                     required
@@ -79,7 +83,7 @@
                                 <v-text-field
                                     class="cadastro__input"
                                     v-mask="'(##)#####-####'"
-                                    v-model="fornecedor.dadosContato.telefone"
+                                    v-model="fornecedor.telefone"
                                     :error-messages="errors"
                                     placeholder="Telefone....."
                                     required
@@ -96,7 +100,7 @@
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="fornecedor.dadosContato.email"
+                                    v-model="fornecedor.email"
                                     :error-messages="errors"
                                     placeholder="email...."
                                     required
@@ -120,7 +124,7 @@
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="fornecedor.endereço.rua"
+                                    v-model="endereço.rua"
                                     :error-messages="errors"
                                     placeholder="Rua...."
                                     required
@@ -137,7 +141,7 @@
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="fornecedor.endereço.casaNumero"
+                                    v-model="endereço.casaNumero"
                                     :error-messages="errors"
                                     placeholder="Numero......"
                                     required
@@ -155,7 +159,7 @@
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="fornecedor.endereço.cidade"
+                                    v-model="endereço.cidade"
                                     :error-messages="errors"
                                     placeholder="Cidade...."
                                     required
@@ -173,7 +177,7 @@
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="fornecedor.endereço.estado"
+                                    v-model="endereço.estado"
                                     :error-messages="errors"
                                     placeholder="Estado....."
                                     required
@@ -191,7 +195,7 @@
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="fornecedor.endereço.complemento"
+                                    v-model="endereço.complemento"
                                     :error-messages="errors"
                                     placeholder="Complemento...."
                                     required
@@ -210,7 +214,7 @@
                                 <v-text-field
                                     class="cadastro__input"
                                     v-mask="'#####-###'"
-                                    v-model="fornecedor.endereço.cep"
+                                    v-model="endereço.cep"
                                     :error-messages="errors"
                                     placeholder="CEP"
                                     required
@@ -229,10 +233,15 @@
                         min-width="180"
                         min-height="50"
                         color="#f72585"
-                        @click="EnviarDados()"
+                        type="submit"
                     >
                         <p class="cadastro__btn--cadastrar">
-                            Cadastrar Cliente
+                            {{
+                                $route.name === "Editar Cliente"
+                                    ? "Editar"
+                                    : "Cadastrar"
+                            }}
+                            Fornecedor
                         </p>
                     </v-btn>
                 </div>
@@ -255,33 +264,33 @@ export default {
     },
     data() {
         return {
-            fornecedor: {
-                dadosGerais: {
-                    nome: "",
-                    sobrenome: "",
-                    genero: "",
-                    nascimento: "",
-                    cnpj: "",
-                },
-                dadosContato: {
-                    telefone: "",
-                    email: "",
-                },
-                endereço: {
-                    rua: "",
-                    casaNumero: "",
-                    cidade: "",
-                    estado: "",
-                    complemento: "",
-                    cep: "",
-                },
+            fornecedor: {},
+            endereço: {
+                rua: "",
+                casaNumero: "",
+                cidade: "",
+                estado: "",
+                complemento: "",
+                cep: "",
             },
         };
     },
     methods: {
         EnviarDados() {
-            this.$swal("Sucesso", "Cliente Cadastrado com Sucesso", "success");
-            this.$router.push("/funcionarios/fornecedores");
+            this.$axios
+                .post("fornecedores/create", this.fornecedor)
+                .then(() => {
+                    this.$swal(
+                        "Fornecedor Criado!!",
+                        "Fornecedor foi adicionado a base de dados com sucesso",
+                        "success"
+                    ).then(() => {
+                        this.$router.go();
+                    });
+                })
+                .catch((error) => {
+                    this.$swal("Erro", `${error}`, "error");
+                });
         },
     },
 };

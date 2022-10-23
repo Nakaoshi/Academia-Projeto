@@ -22,7 +22,7 @@
                             </router-link>
 
                             <!-- botao de RH  -->
-                            <router-link :to="{ name: 'RH' }">
+                            <router-link :to="{ name: 'RH' }" v-if="usuario.gerente === 1">
                                 <p>RH</p>
                             </router-link>
 
@@ -35,9 +35,11 @@
                         <!-- botão de logout  -->
                         <div>
                             <v-btn icon>
-                                <v-icon color="grey lighten-3">{{
-                                    icons.mdiLogout
-                                }}</v-icon>
+                                <v-icon
+                                    color="grey lighten-3"
+                                    @click="LogOutFuncionarios()"
+                                    >{{ icons.mdiLogout }}</v-icon
+                                >
                             </v-btn>
                         </div>
                     </div>
@@ -67,8 +69,8 @@
                                         {{ icons.mdiHome }}
                                     </v-icon>
                                 </v-list-item-icon>
-                                <router-link to="/inicio">
-                                    <p>Inicio</p>
+                                <router-link :to="{ name: 'Clientes' }">
+                                    <p>Clientes</p>
                                 </router-link>
                             </v-list-item>
 
@@ -79,51 +81,27 @@
                                         {{ icons.mdiFencing }}
                                     </v-icon>
                                 </v-list-item-icon>
-                                <router-link to="/modalidades">
-                                    <p>Modalidades</p>
+                                <router-link :to="{ name: 'Fornecedores' }">
+                                    <p>Fornecedores</p>
                                 </router-link>
                             </v-list-item>
 
                             <!-- area do aluno  -->
-                            <v-list-item>
+                            <v-list-item v-if="usuario.gerente === 1">
                                 <v-list-item-icon>
                                     <v-icon class="navbar__menu--icon">
                                         {{ icons.mdiAccountSchoolOutline }}
                                     </v-icon>
                                 </v-list-item-icon>
-                                <router-link to="/area-do-aluno">
-                                    <p>Área do Aluno</p>
-                                </router-link>
-                            </v-list-item>
-                            <!-- a academia  -->
-                            <v-list-item>
-                                <v-list-item-icon>
-                                    <v-icon class="navbar__menu--icon">
-                                        {{ icons.mdiHomeCity }}
-                                    </v-icon>
-                                </v-list-item-icon>
-                                <router-link to="/academia">
-                                    <p>A Academia</p>
-                                </router-link>
-                            </v-list-item>
-                            <!--sobre nós  -->
-                            <v-list-item>
-                                <v-list-item-icon>
-                                    <v-icon class="navbar__menu--icon">
-                                        {{ icons.mdiAccountGroup }}
-                                    </v-icon>
-                                </v-list-item-icon>
-                                <router-link to="/sobrenos">
-                                    <p>Sobre Nós</p>
+                                <router-link :to="{ name: 'RH' }" >
+                                    <p>RH</p>
                                 </router-link>
                             </v-list-item>
                             <!-- botão de matricula  -->
                             <v-list-item>
-                                <v-card class="mx-auto">
-                                    <v-btn icon>
-                                        {{ icons.mdiLogout }}
-                                    </v-btn>
-                                </v-card>
+                                <v-btn icon id="btn__logout" @click="LogOutFuncionarios()">
+                                    {{ icons.mdiLogout }}
+                                </v-btn>
                             </v-list-item>
                         </v-list-item-group>
                     </v-list>
@@ -148,6 +126,7 @@ export default {
     name: "navbarMobile",
     data() {
         return {
+            usuario:[],
             icons: {
                 mdiHome,
                 mdiAccountGroup,
@@ -160,6 +139,19 @@ export default {
             drawer: false,
             group: null,
         };
+    },
+    methods: {
+        LogOutFuncionarios() {
+            localStorage.removeItem("myauth_token");
+            this.$router.push({ name: "Login Funcionario" });
+        },
+    },
+    mounted() {
+        this.$axios.get('cliente/get')
+        .then((response)=>{
+            this.usuario = response.data
+            console.log(response)
+        })
     },
 };
 </script>

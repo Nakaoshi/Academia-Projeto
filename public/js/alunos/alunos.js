@@ -2271,23 +2271,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -2497,7 +2480,6 @@ var routes = [{
   }
 }, {
   path: "/alunos/pagamentos",
-  //add o :id aqui tbm
   name: "Pagamentos",
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_alunos_view_Pagamentos_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../view/Pagamentos.vue */ "./resources/js/alunos/view/Pagamentos.vue"));
@@ -2567,19 +2549,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return true;
   }
 
-  return "{_field_} needs to be {length} digits. ({_value_})";
+  return "o campo precisa ter {length} digitos ({_value_})";
 });
 (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.extend)("required", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__.required), {}, {
-  message: "{_field_} can not be empty"
+  message: "o campo não pode estar vazio!!"
 }));
 (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.extend)("max", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__.max), {}, {
-  message: "{_field_} may not be greater than {length} characters"
-}));
-(0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.extend)("regex", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__.regex), {}, {
-  message: "{_field_} {_value_} does not match {regex}"
+  message: "o campo não pode ser maior que {length} caractéres"
 }));
 (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.extend)("email", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__.email), {}, {
-  message: "Email must be valid"
+  message: "Email tem que ser valido"
 }));
 
 /***/ }),
@@ -2697,7 +2676,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "@media screen and (min-width: 1025px) {\n.sidebar {\n    position: fixed;\n    z-index: 10;\n    height: 100vh;\n    width: 100%;\n    max-width: 300px;\n    background-color: #c4c4c4;\n}\n.sidebar__text {\n    font-family: \"Inter\" !important;\n    font-style: normal;\n    font-weight: 800;\n    font-size: 15px;\n    line-height: 18px;\n    color: #fafafa !important;\n    text-decoration: none;\n}\n.sidebar__img {\n    width: 100%;\n}\n@media (min-width: 640px) {\n.sidebar__img {\n      max-width: 640px;\n}\n}\n@media (min-width: 768px) {\n.sidebar__img {\n      max-width: 768px;\n}\n}\n@media (min-width: 1024px) {\n.sidebar__img {\n      max-width: 1024px;\n}\n}\n@media (min-width: 1280px) {\n.sidebar__img {\n      max-width: 1280px;\n}\n}\n@media (min-width: 1536px) {\n.sidebar__img {\n      max-width: 1536px;\n}\n}\n.sidebar__img {\n    margin-left: auto;\n    margin-right: auto;\n}\n.sidebar__group {\n    width: 100%;\n}\n@media (min-width: 640px) {\n.sidebar__group {\n      max-width: 640px;\n}\n}\n@media (min-width: 768px) {\n.sidebar__group {\n      max-width: 768px;\n}\n}\n@media (min-width: 1024px) {\n.sidebar__group {\n      max-width: 1024px;\n}\n}\n@media (min-width: 1280px) {\n.sidebar__group {\n      max-width: 1280px;\n}\n}\n@media (min-width: 1536px) {\n.sidebar__group {\n      max-width: 1536px;\n}\n}\n.sidebar__group {\n    margin-left: auto;\n    margin-right: auto;\n    margin-top: 3.5rem;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n}\n.sidebar__group > :not([hidden]) ~ :not([hidden]) {\n    --tw-space-y-reverse: 0;\n    margin-top: calc(2.25rem * calc(1 - var(--tw-space-y-reverse)));\n    margin-bottom: calc(2.25rem * var(--tw-space-y-reverse));\n}\n.sidebar__group--icons {\n    display: flex;\n    width: 50%;\n    align-items: center;\n}\n.sidebar__group--icons > :not([hidden]) ~ :not([hidden]) {\n    --tw-space-x-reverse: 0;\n    margin-right: calc(0.25rem * var(--tw-space-x-reverse));\n    margin-left: calc(0.25rem * calc(1 - var(--tw-space-x-reverse)));\n}\n.sidebar__btn {\n    margin-left: auto;\n    margin-right: auto;\n    width: 50%;\n}\n.sidebarMobile {\n    display: none;\n}\n}\n@media screen and (max-width: 1024px) {\n.sidebar {\n    display: none;\n}\n.sidebarMobile {\n    width: 100%;\n}\n@media (min-width: 640px) {\n.sidebarMobile {\n      max-width: 640px;\n}\n}\n@media (min-width: 768px) {\n.sidebarMobile {\n      max-width: 768px;\n}\n}\n@media (min-width: 1024px) {\n.sidebarMobile {\n      max-width: 1024px;\n}\n}\n@media (min-width: 1280px) {\n.sidebarMobile {\n      max-width: 1280px;\n}\n}\n@media (min-width: 1536px) {\n.sidebarMobile {\n      max-width: 1536px;\n}\n}\n.sidebarMobile {\n    margin-left: auto;\n    margin-right: auto;\n    display: block;\n    border: 2px solid red;\n}\n.sidebarMobile__menu > :not([hidden]) ~ :not([hidden]) {\n    --tw-space-x-reverse: 0;\n    margin-right: calc(1.75rem * var(--tw-space-x-reverse));\n    margin-left: calc(1.75rem * calc(1 - var(--tw-space-x-reverse)));\n}\n.sidebarMobile__menu--item > :not([hidden]) ~ :not([hidden]) {\n    --tw-space-x-reverse: 0;\n    margin-right: calc(1.25rem * var(--tw-space-x-reverse));\n    margin-left: calc(1.25rem * calc(1 - var(--tw-space-x-reverse)));\n}\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "@media screen and (min-width: 1025px) {\n.sidebar {\n    position: fixed;\n    z-index: 10;\n    height: 100vh;\n    width: 100%;\n    max-width: 300px;\n    background-color: #c4c4c4;\n}\n.sidebar__text {\n    font-family: \"Inter\" !important;\n    font-style: normal;\n    font-weight: 800;\n    font-size: 15px;\n    line-height: 18px;\n    color: #fafafa !important;\n    text-decoration: none;\n}\n.sidebar__img {\n    width: 100%;\n}\n@media (min-width: 640px) {\n.sidebar__img {\n      max-width: 640px;\n}\n}\n@media (min-width: 768px) {\n.sidebar__img {\n      max-width: 768px;\n}\n}\n@media (min-width: 1024px) {\n.sidebar__img {\n      max-width: 1024px;\n}\n}\n@media (min-width: 1280px) {\n.sidebar__img {\n      max-width: 1280px;\n}\n}\n@media (min-width: 1536px) {\n.sidebar__img {\n      max-width: 1536px;\n}\n}\n.sidebar__img {\n    margin-left: auto;\n    margin-right: auto;\n}\n.sidebar__group {\n    width: 100%;\n}\n@media (min-width: 640px) {\n.sidebar__group {\n      max-width: 640px;\n}\n}\n@media (min-width: 768px) {\n.sidebar__group {\n      max-width: 768px;\n}\n}\n@media (min-width: 1024px) {\n.sidebar__group {\n      max-width: 1024px;\n}\n}\n@media (min-width: 1280px) {\n.sidebar__group {\n      max-width: 1280px;\n}\n}\n@media (min-width: 1536px) {\n.sidebar__group {\n      max-width: 1536px;\n}\n}\n.sidebar__group {\n    margin-left: auto;\n    margin-right: auto;\n    margin-top: 3.5rem;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n}\n.sidebar__group > :not([hidden]) ~ :not([hidden]) {\n    --tw-space-y-reverse: 0;\n    margin-top: calc(2.25rem * calc(1 - var(--tw-space-y-reverse)));\n    margin-bottom: calc(2.25rem * var(--tw-space-y-reverse));\n}\n.sidebar__group--icons {\n    display: flex;\n    width: 50%;\n    align-items: center;\n}\n.sidebar__group--icons > :not([hidden]) ~ :not([hidden]) {\n    --tw-space-x-reverse: 0;\n    margin-right: calc(0.25rem * var(--tw-space-x-reverse));\n    margin-left: calc(0.25rem * calc(1 - var(--tw-space-x-reverse)));\n}\n.sidebar__btn {\n    margin-left: auto;\n    margin-right: auto;\n    width: 50%;\n}\n.sidebarMobile {\n    display: none;\n}\n}\n@media screen and (max-width: 1024px) {\n.sidebar {\n    display: none;\n}\n.sidebarMobile {\n    position: fixed;\n    z-index: 10;\n    display: flex;\n    height: 2.5rem;\n    width: 100vw;\n    max-width: 100%;\n    align-items: center;\n    justify-content: space-between;\n    padding-left: 2.5rem;\n    padding-right: 2.5rem;\n    background-color: #c4c4c4;\n}\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2721,7 +2700,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".BemVindo[data-v-41e62058] {\n  position: relative;\n  width: 100%;\n  height: 10rem;\n  max-height: 10rem;\n}\n@media (max-width: 768px) {\n.BemVindo[data-v-41e62058] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n}\n}\n.BemVindo__aluno[data-v-41e62058] {\n  position: absolute;\n  top: 0px;\n  right: 0px;\n}\n@media (max-width: 768px) {\n.BemVindo__aluno[data-v-41e62058] {\n    position: static;\n    text-align: center;\n}\n}\n.BemVindo__pagina[data-v-41e62058] {\n  position: absolute;\n  left: 0px;\n  bottom: 0px;\n}\n@media (max-width: 768px) {\n.BemVindo__pagina[data-v-41e62058] {\n    position: static;\n}\n}\n@media screen and (max-width: 1024px) {\n.BemVindo[data-v-41e62058] {\n    top: 5rem;\n}\n.BemVindo .alunos__font--welcome[data-v-41e62058] {\n    font-size: 1.5rem;\n}\n}\n#app[data-v-41e62058] {\n  display: grid;\n  grid-template-columns: repeat(12, minmax(0, 1fr));\n  gap: 0px;\n  background: #222831;\n}\n@media screen and (max-width: 1024px) {\n.router-view[data-v-41e62058] {\n    margin-top: 6rem;\n}\n}\n@media screen and (max-width: 435px) {\n.router-view[data-v-41e62058] {\n    margin-top: 9rem;\n}\n.router-view .alunos__font--titleTable[data-v-41e62058] {\n    font-size: 1.5rem;\n}\n}\n.sidebar[data-v-41e62058] {\n  grid-column: span 2 / span 2;\n}\n@media screen and (max-width: 1024px) {\n.sidebar[data-v-41e62058] {\n    grid-column: span 12 / span 12;\n}\n}\n.content[data-v-41e62058] {\n  grid-column: span 10 / span 10;\n  grid-column-start: 3;\n}\n@media (max-width: 1820px) and (min-width: 1024px) {\n.content[data-v-41e62058] {\n    grid-column-start: 5;\n}\n}\n@media screen and (max-width: 1024px) {\n.content[data-v-41e62058] {\n    grid-column: span 12 / span 12;\n}\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".BemVindo[data-v-41e62058] {\n  position: relative;\n  width: 100%;\n  height: 10rem;\n  max-height: 10rem;\n}\n@media (max-width: 768px) {\n.BemVindo[data-v-41e62058] {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n}\n}\n.BemVindo__aluno[data-v-41e62058] {\n  position: absolute;\n  top: 0px;\n  right: 0px;\n}\n@media (max-width: 768px) {\n.BemVindo__aluno[data-v-41e62058] {\n    position: static;\n    text-align: center;\n}\n}\n.BemVindo__pagina[data-v-41e62058] {\n  position: absolute;\n  left: 0px;\n  bottom: 0px;\n}\n@media (max-width: 768px) {\n.BemVindo__pagina[data-v-41e62058] {\n    position: static;\n}\n}\n@media screen and (max-width: 1024px) {\n.BemVindo[data-v-41e62058] {\n    top: 5rem;\n}\n.BemVindo .alunos__font--welcome[data-v-41e62058] {\n    font-size: 1.5rem;\n}\n}\n#app[data-v-41e62058] {\n  display: grid;\n  grid-template-columns: repeat(12, minmax(0, 1fr));\n  gap: 0px;\n  background: #222831;\n}\n@media screen and (max-width: 1024px) {\n.router-view[data-v-41e62058] {\n    margin-top: 6rem;\n}\n}\n@media screen and (max-width: 435px) {\n.router-view[data-v-41e62058] {\n    margin-top: 9rem;\n}\n.router-view .alunos__font--titleTable[data-v-41e62058] {\n    font-size: 1.5rem;\n}\n}\n.barraTarefas[data-v-41e62058] {\n  grid-column: span 2 / span 2;\n}\n@media screen and (max-width: 1024px) {\n.barraTarefas[data-v-41e62058] {\n    grid-column: span 12 / span 12;\n}\n}\n.content[data-v-41e62058] {\n  grid-column: span 10 / span 10;\n  grid-column-start: 3;\n}\n@media (max-width: 1820px) and (min-width: 1024px) {\n.content[data-v-41e62058] {\n    grid-column-start: 5;\n}\n}\n@media screen and (max-width: 1024px) {\n.content[data-v-41e62058] {\n    grid-column: span 12 / span 12;\n}\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21304,38 +21283,16 @@ var render = function () {
     ),
     _vm._v(" "),
     _c(
-      "div",
-      { staticClass: "sidebarMobile " },
+      "header",
+      { staticClass: "sidebarMobile" },
       [
-        _c(
-          "v-app-bar",
-          {
-            attrs: {
-              collapse: !_vm.collapseOnScroll,
-              "collapse-on-scroll": _vm.collapseOnScroll,
-              absolute: "",
-              color: "deep-purple accent-4",
-              dark: "",
-              "scroll-target": "#scrolling-techniques-6",
-            },
-          },
-          [
-            _c("v-app-bar-nav-icon"),
-            _vm._v(" "),
-            _c("v-toolbar-title", [_vm._v("Collapsing Bar")]),
-          ],
-          1
-        ),
+        _c("router-link", { attrs: { to: { name: "Inicio" } } }, [
+          _vm._v("Inicio"),
+        ]),
         _vm._v(" "),
-        _c(
-          "v-sheet",
-          {
-            staticClass: "overflow-y-auto",
-            attrs: { id: "scrolling-techniques-6", "max-height": "600" },
-          },
-          [_c("v-container", { staticStyle: { height: "1000px" } })],
-          1
-        ),
+        _c("router-link", { attrs: { to: { name: "Pagamentos" } } }, [
+          _vm._v("Pagamentos"),
+        ]),
       ],
       1
     ),
@@ -21369,7 +21326,7 @@ var render = function () {
     { attrs: { id: "app", "max-height": "100vh" } },
     [
       _vm.$route.name != "Login Alunos"
-        ? _c("SidebarAluno", { staticClass: "sidebar" })
+        ? _c("SidebarAluno", { staticClass: "barraTarefas" })
         : _c("div", { attrs: { hidden: "" } }),
       _vm._v(" "),
       _vm.$route.name != "Login Alunos"

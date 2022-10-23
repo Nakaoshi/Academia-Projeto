@@ -3,6 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\FornecedorController;
+use App\Http\Controllers\FuncionarioController;
+use App\Models\Funcionario;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -33,7 +37,29 @@ Route::middleware('api')->group(function () {
 
 });
 */
-Route::get('get-clientes',[ClienteController::class,'getCliente']);
-Route::post('create-clientes',[ClienteController::class,'createCliente']);
-Route::put('update-clientes',[ClienteController::class,'updateCliente']);
-Route::delete('delete-clientes',[ClienteController::class,'deleteCliente']);
+
+
+Route::group(['prefix'=>'cliente'],function(){
+    Route::get('get',[ClienteController::class,'getCliente']);
+    Route::post('/create',[ClienteController::class,'createCliente']);
+    Route::get('/editar/{id}',[ClienteController::class,'EditCliente']);
+    Route::put('/update/{id}',[ClienteController::class,'updateCliente']);
+    Route::delete('/delete/{id}',[ClienteController::class,'deleteCliente']);
+
+});
+
+
+Route::group(['prefix'=>'fornecedores'],function() {
+        Route::get('get',[FornecedorController::class,'getFornecedores']);
+        Route::post('/create',[FornecedorController::class,'createFornecedor']);
+        Route::get('/editar/{id}',[FornecedorController::class,'editFornecedor']);
+        Route::put('/update/{id}',[FornecedorController::class,'updateFornecedor']);
+        Route::delete('/delete/{id}',[FornecedorController::class,'deleteFornecedor']);
+});
+Route::group(['prefix'=>'funcionario'],function() {
+        Route::get('get',[FuncionarioController::class,'getFuncionarios']);
+        Route::post('/create',[FuncionarioController::class,'createFuncionario']);
+        Route::get('/editar/{id}',[FuncionarioController::class,'editFuncionario']);
+        Route::put('/update/{id}',[FuncionarioController::class,'updateFuncionario']);
+        Route::delete('/delete/{id}',[FuncionarioController::class,'deleteFuncionario']);
+});

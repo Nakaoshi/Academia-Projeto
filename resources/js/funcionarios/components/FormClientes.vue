@@ -1,8 +1,15 @@
 <template>
-    <div class="cadastro">
-        <form class="cadastro__form">
-            <p class="cadastro__form--title">Cadastro De Clientes</p>
-            <validation-observer class="cadastro__form--inputs">
+        <form
+            class="cadastro__form"
+            @submit.stop.prevent="FormAction()"
+            method="POST"
+        >
+            <p class="cadastro__form--title"> {{$route.name === "Editar Cliente"? "Editar":"Cadastrar"}} Cliente</p>
+            
+            <validation-observer
+                class="cadastro__form--inputs"
+                v-slot="{ invalid }"
+            >
                 <!-- dados pessoais -->
                 <div>
                     <p class="cadastro__section--title">Dados Pessoais</p>
@@ -16,7 +23,7 @@
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="cliente.dadosPessoais.nome"
+                                    v-model="cliente.nome"
                                     :error-messages="errors"
                                     placeholder="Nome...."
                                     required
@@ -35,7 +42,7 @@
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="cliente.dadosPessoais.sobrenome"
+                                    v-model="cliente.sobrenome"
                                     :error-messages="errors"
                                     placeholder="Sobrenome...."
                                     required
@@ -49,9 +56,11 @@
                             <validation-provider rules="required">
                                 <v-select
                                     color="#ffffff"
+                                    dark
+                                    dense
                                     class="cadastro__input"
-                                    :items="this.items"
-                                    v-model="cliente.dadosContato.genero"
+                                    :items="generosDisponiveis"
+                                    v-model="cliente.genero"
                                     label="Genero"
                                 ></v-select>
                             </validation-provider>
@@ -66,8 +75,8 @@
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-mask="'##/##/####'"
-                                    v-model="cliente.dadosPessoais.nascimento"
+                                    v-mask="'##-##-####'"
+                                    v-model="cliente.dataNascimento"
                                     :error-messages="errors"
                                     placeholder="Data de Nascimento"
                                     required
@@ -85,7 +94,7 @@
                                 <v-text-field
                                     class="cadastro__input"
                                     v-mask="'###.###.###-##'"
-                                    v-model="cliente.dadosPessoais.cpf"
+                                    v-model="cliente.cpf"
                                     :error-messages="errors"
                                     placeholder="CPF....."
                                     required
@@ -98,10 +107,12 @@
                         <div class="cadastro__grid--4">
                             <validation-provider rules="required">
                                 <v-select
+                                    dark
                                     dense
                                     class="cadastro__input"
-                                    :items="this.planos"
-                                    v-model="cliente.dadosContato.plano"
+                                    label="Planos"
+                                    :items="planos"
+                                    v-model="cliente.plano"
                                 ></v-select>
                             </validation-provider>
                         </div>
@@ -121,7 +132,7 @@
                                 <v-text-field
                                     class="cadastro__input"
                                     v-mask="'(##)#####-####'"
-                                    v-model="cliente.dadosContato.telefone"
+                                    v-model="cliente.telefone"
                                     :error-messages="errors"
                                     placeholder="Telefone....."
                                     required
@@ -137,8 +148,9 @@
                                 rules="required|email"
                             >
                                 <v-text-field
+                                    type="email"
                                     class="cadastro__input"
-                                    v-model="cliente.dadosContato.email"
+                                    v-model="cliente.email"
                                     :error-messages="errors"
                                     placeholder="email...."
                                     required
@@ -162,7 +174,7 @@
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="cliente.endereço.rua"
+                                    v-model="endereco.rua"
                                     :error-messages="errors"
                                     placeholder="Rua...."
                                     required
@@ -179,7 +191,7 @@
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="cliente.endereço.casaNumero"
+                                    v-model="endereco.casaNumero"
                                     :error-messages="errors"
                                     placeholder="Numero......"
                                     required
@@ -197,7 +209,7 @@
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="cliente.endereço.cidade"
+                                    v-model="endereco.cidade"
                                     :error-messages="errors"
                                     placeholder="Cidade...."
                                     required
@@ -215,7 +227,7 @@
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="cliente.endereço.estado"
+                                    v-model="endereco.estado"
                                     :error-messages="errors"
                                     placeholder="Estado....."
                                     required
@@ -233,7 +245,7 @@
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="cliente.endereço.complemento"
+                                    v-model="endereco.complemento"
                                     :error-messages="errors"
                                     placeholder="Complemento...."
                                     required
@@ -252,7 +264,7 @@
                                 <v-text-field
                                     class="cadastro__input"
                                     v-mask="'#####-###'"
-                                    v-model="cliente.endereço.cep"
+                                    v-model="endereco.cep"
                                     :error-messages="errors"
                                     placeholder="CEP"
                                     required
@@ -265,23 +277,22 @@
                 </div>
 
                 <!-- botao de cadastrar -->
-                <div class="flex justify-end">
+                <div class="cadastro__btn">
                     <v-btn
+                        class="cadastro__btn--button"
                         :disabled="invalid"
                         min-width="180"
                         min-height="50"
                         color="#f72585"
-                        @click="EnviarDados()"
+                        type="submit"
                     >
                         <p class="cadastro__btn--cadastrar">
-                            Cadastrar Cliente
+                            {{$route.name === "Editar Cliente"? "Editar":"Cadastrar"}} Cliente
                         </p>
                     </v-btn>
                 </div>
             </validation-observer>
         </form>
-        {{ this.cliente }}
-    </div>
 </template>
 <script>
 import {
@@ -298,16 +309,7 @@ export default {
     },
     data() {
         return {
-            cliente: {
-                nome: "",
-                sobrenome: "",
-                genero: "",
-                nascimento: "",
-                cpf: "",
-                plano: "Standard",
-                telefone: "",
-                email: "",
-            },
+            cliente: {},
             endereco: {
                 rua: "",
                 casaNumero: "",
@@ -317,24 +319,29 @@ export default {
                 cep: "",
             },
 
-            items: ["Homem", "Mulher", "Prefiro Não Declarar"],
+            generosDisponiveis: ["Homem", "Mulher", "Prefiro Não Declarar"],
             planos: ["Standard", "Fighter", "GoFighter"],
         };
     },
     methods: {
-        EnviarDados() {
-            this.$axios.post("create-cliente", this.cliente);
-            // console.log(this.cliente);
-            // this.$swal("Sucesso", "Cliente Cadastrado com Sucesso", "success");
-            // this.$router.push("/funcionarios/clientes");
+        FormAction() {
+            this.$axios
+                .post("cliente/create", this.cliente)
+                .then(() => {
+                    this.$swal(
+                        "Cliente Criado!!",
+                        "Cliente foi adicionado a base de dados com sucesso",
+                        "success"
+                    ).then(() => {
+                        this.$router.go();
+                    });
+                })
+                .catch((error) => {
+                    this.$swal("Erro", `${error}`, "error");
+                });
         },
-        // EnviarEndereco(){
-        //     this.$axios.post('create-endereço',this.endereco)
-        // }
     },
-    mounted() {
-        console.log(this.cliente);
-    },
+    mounted() {},
 };
 </script>
 <style lang="scss">
@@ -347,11 +354,16 @@ export default {
 
     //formulario
     &__form {
-        margin: 1rem;
         padding: 14px;
         height: 100vh;
         background-color: rgba(229, 229, 229, 0.1);
         border-radius: 18px;
+    }
+    &__btn {
+        @apply flex justify-end;
+        &--button {
+            @apply -mt-7;
+        }
     }
     .v-select__slot {
         background-color: #fff;
