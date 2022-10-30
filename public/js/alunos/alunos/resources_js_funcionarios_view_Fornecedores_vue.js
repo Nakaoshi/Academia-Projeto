@@ -485,7 +485,6 @@ __webpack_require__.r(__webpack_exports__);
     var _this2 = this;
 
     this.$axios.get("fornecedores/get").then(function (response) {
-      console.log(response);
       _this2.fornecedor = response.data;
     });
   },

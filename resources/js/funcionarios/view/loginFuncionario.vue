@@ -3,7 +3,7 @@
         <div class="divisaoGeometrica" />
         <div class="loginCliente">
             <p class="login__font text__login">Funcionarios</p>
-            <form @submit.stop.prevent="submit()" action="">
+            <form @submit.stop.prevent="submit()" method="POST">
                 <validation-observer ref="observer">
                     <v-row>
                         <v-col cols="12">
@@ -25,7 +25,7 @@
                         </v-col>
 
                         <v-col cols="12">
-                            <!-- campo do senha  -->
+                            <!-- campo do password  -->
                             <validation-provider
                                 v-slot="{ errors }"
                                 name="Password"
@@ -67,23 +67,33 @@ export default {
     },
     data() {
         return {
-            email:"",
-            password:"",
+            email: "",
+            password: "",
         };
     },
-    methods:{
-        submit(){
+    methods: {
+        submit() {
             var funcionario = {
-                email:this.email,
-                password:this.password
-            }
-            this.$axios.post(`login`,funcionario)
-            .then((response)=>{
-                localStorage.setItem('myauth_token', response.data.access_token)
-                this.$router.push("/funcionarios/clientes")
-            }).catch(()=>{
-                this.$swal("Erro!!", `Usuario Incorreto`, "error")
-            })
+                email: this.email,
+                password: this.password,
+            };
+            this.$axios
+                .post(`cliente/Auth`, funcionario)
+                .then((res) => {
+                    localStorage.setItem("myauth_token", res.data);
+                })
+                .then(() => {
+                    this.$router.push({ name: "Clientes" });
+                })
+                .catch(() => {
+                    this.$swal("Erro!!", `Usuario Incorreto`, "error");
+                });
+        },
+    },
+    created() {
+        let token = localStorage.getItem("myauth_token");
+        if (token) {
+            localStorage.removeItem("myauth_token");
         }
     },
 };

@@ -26,6 +26,8 @@ class FuncionarioFactory extends Factory
             'cpf' =>  $faker->cpf(14),
             'genero' => $gender,
             'cargo' => $this->faker->jobTitle(30),
+            'password'=>$this->faker->password(),
+            'gerente' => false,
             'salario' => $this->faker->randomDigitNot(5),
             'telefone' => sprintf('(0%s) %s', $faker->areaCode, $faker->landline),
             'email' => $this->faker->email(),

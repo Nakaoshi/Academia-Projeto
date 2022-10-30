@@ -20,7 +20,9 @@ return new class extends Migration
             $table->string('cpf', 14)->nullable()->unique(false);
             $table->enum('genero',array('Homem','Mulher','Prefiro Não Declarar'));
             $table->string('cargo')->nullable(false);
+            $table->boolean('gerente')->default(false);
             $table->float('salario',11);
+            $table->string('password')->nullable(false);
             $table->string('telefone',15)->nullable(false);
             $table->string('email');
             $table->timestamp('created_at')->nullable();

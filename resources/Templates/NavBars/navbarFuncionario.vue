@@ -22,7 +22,7 @@
                             </router-link>
 
                             <!-- botao de RH  -->
-                            <router-link :to="{ name: 'RH' }" v-if="usuario.gerente === 1">
+                            <router-link :to="{ name: 'RH' }" v-if="gerente === 1">
                                 <p>RH</p>
                             </router-link>
 
@@ -62,7 +62,7 @@
                             v-model="group"
                             active-class="deep-purple--text text--accent-4"
                         >
-                            <!-- inicio  -->
+                            <!-- Clientes  -->
                             <v-list-item>
                                 <v-list-item-icon>
                                     <v-icon class="navbar__menu--icon">
@@ -74,7 +74,7 @@
                                 </router-link>
                             </v-list-item>
 
-                            <!-- Modalidade  -->
+                            <!-- Fornecedores  -->
                             <v-list-item>
                                 <v-list-item-icon>
                                     <v-icon class="navbar__menu--icon">
@@ -86,8 +86,8 @@
                                 </router-link>
                             </v-list-item>
 
-                            <!-- area do aluno  -->
-                            <v-list-item v-if="usuario.gerente === 1">
+                            <!-- area do RH  -->
+                            <v-list-item v-if="gerente == 1">
                                 <v-list-item-icon>
                                     <v-icon class="navbar__menu--icon">
                                         {{ icons.mdiAccountSchoolOutline }}
@@ -140,19 +140,22 @@ export default {
             group: null,
         };
     },
+    computed:{
+        gerente(){
+            return this.$store.state.usuario.gerente
+        }
+    },
     methods: {
+           
         LogOutFuncionarios() {
             localStorage.removeItem("myauth_token");
             this.$router.push({ name: "Login Funcionario" });
+            this.$axios.post('cliente/logout')
         },
     },
-    mounted() {
-        this.$axios.get('cliente/get')
-        .then((response)=>{
-            this.usuario = response.data
-            console.log(response)
-        })
-    },
+    beforeMount(){
+        this.verificaRota
+    }
 };
 </script>
 

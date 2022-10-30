@@ -124,7 +124,6 @@ export default {
     },
     mounted() {
         this.$axios.get("fornecedores/get").then((response) => {
-            console.log(response);
             this.fornecedor = response.data;
         });
     },

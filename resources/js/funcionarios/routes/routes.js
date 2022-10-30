@@ -19,7 +19,6 @@ const routes = [
         name: "Clientes",
         component: () => import("../view/Clientes.vue"),
         beforeEnter: Guard.auth,
-        
     },
     {
         path:'/funcionarios/cliente/editar/:id',
@@ -54,7 +53,7 @@ const routes = [
         beforeEnter: Guard.auth,
     },
     {
-        path: "ajuda",
+        path: "/ajuda",
         name: "Ajuda",
     },
     // ---------------------------------------------------------------------------------------------------------------------/

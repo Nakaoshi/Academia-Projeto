@@ -328,6 +328,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -344,7 +361,8 @@ __webpack_require__.r(__webpack_exports__);
           nascimento: "",
           cpf: "",
           cargo: "",
-          salario: ""
+          salario: "",
+          senha: ''
         },
         dadosContato: {
           telefone: "",
@@ -1211,6 +1229,47 @@ var render = function () {
                                   )
                                 },
                                 expression: "funcionario.dadosPessoais.salario",
+                              },
+                            }),
+                          ]
+                        },
+                      },
+                    ]),
+                  }),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "cadastro__grid--6" },
+                [
+                  _c("validation-provider", {
+                    attrs: { rules: "required" },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "default",
+                        fn: function (ref) {
+                          var errors = ref.errors
+                          return [
+                            _c("v-text-field", {
+                              staticClass: "cadastro__input",
+                              attrs: {
+                                "error-messages": errors,
+                                placeholder: "Senha.....",
+                                required: "",
+                                solo: "",
+                              },
+                              model: {
+                                value: _vm.funcionario.dadosPessoais.senha,
+                                callback: function ($$v) {
+                                  _vm.$set(
+                                    _vm.funcionario.dadosPessoais,
+                                    "senha",
+                                    $$v
+                                  )
+                                },
+                                expression: "funcionario.dadosPessoais.senha",
                               },
                             }),
                           ]

@@ -35,8 +35,8 @@ Vue.use(VueMask);
 import VueAxios from "vue-axios";
 import axios from "axios";
 axios.defaults.baseURL = 'http://127.0.0.1:8000/api/';
-// axios.defaults.headers.common['Authorization'] = `bearer ${localStorage.getItem('token')}`
-
+axios.defaults.headers.common['Authorization'] = `bearer ${localStorage.getItem('myauth_token')}`
+axios.defaults.withCredentials = true;
 Vue.prototype.$axios = axios;
 Vue.use(VueAxios, axios);
 // ---------------------------------------------------------------------------------------------------------------------/

@@ -132,6 +132,23 @@
                                 ></v-text-field>
                             </validation-provider>
                         </div>
+
+                        <!-- INPUT senha -->
+                        <div class="cadastro__grid--6">
+                            <validation-provider
+                                v-slot="{ errors }"
+                                rules="required"
+                            >
+                                <v-text-field
+                                    class="cadastro__input"
+                                    v-model="funcionario.dadosPessoais.senha"
+                                    :error-messages="errors"
+                                    placeholder="Senha....."
+                                    required
+                                    solo
+                                ></v-text-field>
+                            </validation-provider>
+                        </div>
                     </div>
                 </div>
 
@@ -338,6 +355,7 @@ export default {
                     cpf: "",
                     cargo: "",
                     salario: "",
+                    senha:'',
                 },
                 dadosContato: {
                     telefone: "",

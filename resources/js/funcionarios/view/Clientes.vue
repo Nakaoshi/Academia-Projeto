@@ -16,6 +16,7 @@
                     class="tabela__busca"
                 ></v-text-field>
             </v-card-title>
+            {{coisas}}
             <v-data-table
                 loading
                 loading-text="Carregando......Aguarde"
@@ -74,10 +75,10 @@
 </template>
 
 <script>
-import { mdiMagnify } from "@mdi/js";
+import { mdiMagnify, mdiYahoo } from "@mdi/js";
+import mapGetters from 'vuex';
 import ModalClientes from "../components/modalClientes.vue";
 export default {
-    
     components: { ModalClientes },
     data() {
         return {
@@ -112,6 +113,11 @@ export default {
             },
         };
     },
+    computed:{
+        coisas(){
+            return this.$store.state
+        }
+    },
     methods: {
         deletarCliente(id) {
             this.$swal({
@@ -143,8 +149,19 @@ export default {
     mounted() {
         this.$axios.get("cliente/get").then((response) => {
             this.clientes = response.data;
-            console.log(response);
         });
+        let token = localStorage.getItem("myauth_token");
+            this.$axios
+                .get("/user", {
+                    headers: { Authorization: "Bearer " + token },
+                })
+                .then((response) => {
+                    console.log(response);
+                    this.$store.commit('verificarGerente',{
+                        gerente: response.data.gerente,
+                        token: localStorage.getItem('myauth_token')
+                    })
+                });
     },
 };
 </script>
