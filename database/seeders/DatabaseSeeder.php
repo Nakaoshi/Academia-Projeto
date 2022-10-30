@@ -18,6 +18,15 @@ class DatabaseSeeder extends Seeder
     {
         Cliente::factory(10)->create();
         Funcionario::factory(10)->create();
+        Funcionario::factory()->create([
+            'nome' => 'Test User',
+            'sobrenome'=>'Nakaoshi',
+            'cpf'=>'333.333.333-33',
+            'genero'=>'Homem',
+            'cargo'=>'gerente',
+            'email' => 'gerente@gmail.com',
+            'gerente'=> true,
+        ]);
         \App\Models\User::factory(10)->create();
 
         \App\Models\User::factory()->create([

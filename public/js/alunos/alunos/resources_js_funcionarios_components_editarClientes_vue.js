@@ -308,6 +308,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -829,11 +852,11 @@ var render = function () {
     [
       _c("p", { staticClass: "cadastro__form--title" }, [
         _vm._v(
-          " " +
+          "\n        " +
             _vm._s(
               _vm.$route.name === "Editar Cliente" ? "Editar" : "Cadastrar"
             ) +
-            " Cliente"
+            "\n        Cliente\n    "
         ),
       ]),
       _vm._v(" "),
@@ -1079,14 +1102,40 @@ var render = function () {
                           "validation-provider",
                           { attrs: { rules: "required" } },
                           [
-                            _c("v-select", {
+                            _c("v-text-field", {
                               staticClass: "cadastro__input",
                               attrs: {
-                                dark: "",
-                                dense: "",
-                                label: "Planos",
-                                items: _vm.planos,
+                                "error-messages": _vm.errors,
+                                placeholder: "Senha...",
+                                required: "",
+                                solo: "",
                               },
+                              model: {
+                                value: _vm.cliente.senha,
+                                callback: function ($$v) {
+                                  _vm.$set(_vm.cliente, "senha", $$v)
+                                },
+                                expression: "cliente.senha",
+                              },
+                            }),
+                          ],
+                          1
+                        ),
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "cadastro__grid--4" },
+                      [
+                        _c(
+                          "validation-provider",
+                          { attrs: { rules: "required" } },
+                          [
+                            _c("v-select", {
+                              staticClass: "cadastro__input",
+                              attrs: { dark: "", dense: "", label: "Planos" },
                               model: {
                                 value: _vm.cliente.plano,
                                 callback: function ($$v) {
@@ -1498,7 +1547,7 @@ var render = function () {
                                   ? "Editar"
                                   : "Cadastrar"
                               ) +
-                              " Cliente\n                "
+                              "\n                    Cliente\n                "
                           ),
                         ]),
                       ]

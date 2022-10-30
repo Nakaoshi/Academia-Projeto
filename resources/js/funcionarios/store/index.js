@@ -6,11 +6,17 @@ const store = new Vuex.Store({
         usuario: {
             data: { nome: "nakaoshi" },
             token: null,
+            gerente:null,
         },
+    },
+    mutations: {
+        verificarGerente: (state,payload)=>{
+            state.usuario.gerente = payload.gerente,
+            state.usuario.token = payload.token
+        }
     },
     getters: {},
     actions: {},
-    mutations: {},
     modules: {},
 });
 

@@ -71,7 +71,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -85,6 +84,17 @@ __webpack_require__.r(__webpack_exports__);
         senha: this.senha
       }
     };
+  },
+  methods: {
+    submit: function submit() {
+      var _this = this;
+
+      this.$axios.post("cliente/Auth", this.aluno).then(function (response) {
+        console.log(response); // localStorage.setItem('myauth_token', response.data)
+      })["catch"](function () {
+        _this.$swal("Erro!!", "Usuario Incorreto", "error");
+      });
+    }
   }
 });
 
@@ -312,11 +322,10 @@ var render = function () {
       _c(
         "form",
         {
-          attrs: { action: "" },
           on: {
             submit: function ($event) {
               $event.preventDefault()
-              return _vm.submit.apply(null, arguments)
+              return _vm.submit()
             },
           },
         },
@@ -410,11 +419,7 @@ var render = function () {
                         "v-btn",
                         {
                           staticClass: "btn__login",
-                          attrs: {
-                            type: "submit",
-                            color: "#f72585",
-                            to: { name: "Inicio" },
-                          },
+                          attrs: { type: "submit", color: "#f72585" },
                         },
                         [_c("h4", [_vm._v("Acessar")])]
                       ),

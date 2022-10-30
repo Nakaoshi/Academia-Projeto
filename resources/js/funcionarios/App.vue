@@ -8,26 +8,7 @@
 </template>
 <script>
 export default {
-    methods: {
-        // validate(){ //essa função é só caso o token ja venha do back direto
-        //     this.$axios.get().then((response)=>{
-        //         console.log(response);
-
-        //         if(response.data.status === "Token is Invalid"){
-        //             this.$router.push('/funcionarios')
-        //         }
-        //     })
-        // }
-    },
-    watch:{
-        verificaToken: function(){
-            const token = localStorage.getItem('myauth_token')
-            if(!token){
-                this.$router.push('/funcionarios')
-            
-        }
-        }
-    },
+    methods: {},
 };
 </script>
 <style>

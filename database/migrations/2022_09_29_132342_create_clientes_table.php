@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('nome', 130)->nullable(false);
             $table->string('sobrenome', 50)->nullable(false);
             $table->string('cpf', 14)->nullable(false)->unique();
+            $table->string('password')->nullable(false);
             $table->enum('genero',array('Homem','Mulher','Prefiro Não Declarar'));
             $table->string('dataNascimento')->nullable(false);
             $table->string('telefone', 14)->nullable(false);

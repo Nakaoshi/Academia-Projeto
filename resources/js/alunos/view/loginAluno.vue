@@ -3,7 +3,7 @@
         <div class="divisaoGeometrica" />
         <div class="loginCliente">
             <p class="login__font text__login">Alunos</p>
-            <form @submit.prevent="submit" action="">
+            <form @submit.prevent="submit()">
                 <validation-observer ref="observer">
                     <v-row>
                         <v-col cols="12">
@@ -46,7 +46,6 @@
                                 class="btn__login"
                                 type="submit"
                                 color="#f72585"
-                                :to="{ name: 'Inicio' }"
                             >
                                 <h4>Acessar</h4>
                             </v-btn>
@@ -73,6 +72,17 @@ export default {
             },
         };
     },
+    methods:{
+        submit(){
+            this.$axios.post(`cliente/Auth`,this.aluno)
+            .then((response)=>{
+                console.log(response)
+                // localStorage.setItem('myauth_token', response.data)
+            }).catch(()=>{
+                this.$swal("Erro!!", `Usuario Incorreto`, "error")
+            })
+        },
+    }
 };
 </script>
 

@@ -25,6 +25,7 @@ class ClienteFactory extends Factory
             'sobrenome' => $this->faker->lastName(50),
             'genero' => $gender,
             'dataNascimento'=>$faker->date(),
+            'password'=>$this->faker->password(),
             'cpf' =>  $faker->cpf(14),
             'telefone' => sprintf('(0%s)%s',$faker->areaCode, $faker->landline),
             'email' => $this->faker->email(),

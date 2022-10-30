@@ -308,6 +308,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -474,6 +497,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -520,6 +545,11 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
+  computed: {
+    coisas: function coisas() {
+      return this.$store.state;
+    }
+  },
   methods: {
     deletarCliente: function deletarCliente(id) {
       var _this = this;
@@ -555,7 +585,19 @@ __webpack_require__.r(__webpack_exports__);
 
     this.$axios.get("cliente/get").then(function (response) {
       _this2.clientes = response.data;
+    });
+    var token = localStorage.getItem("myauth_token");
+    this.$axios.get("/user", {
+      headers: {
+        Authorization: "Bearer " + token
+      }
+    }).then(function (response) {
       console.log(response);
+
+      _this2.$store.commit('verificarGerente', {
+        gerente: response.data.gerente,
+        token: localStorage.getItem('myauth_token')
+      });
     });
   }
 });
@@ -938,11 +980,11 @@ var render = function () {
     [
       _c("p", { staticClass: "cadastro__form--title" }, [
         _vm._v(
-          " " +
+          "\n        " +
             _vm._s(
               _vm.$route.name === "Editar Cliente" ? "Editar" : "Cadastrar"
             ) +
-            " Cliente"
+            "\n        Cliente\n    "
         ),
       ]),
       _vm._v(" "),
@@ -1188,14 +1230,40 @@ var render = function () {
                           "validation-provider",
                           { attrs: { rules: "required" } },
                           [
-                            _c("v-select", {
+                            _c("v-text-field", {
                               staticClass: "cadastro__input",
                               attrs: {
-                                dark: "",
-                                dense: "",
-                                label: "Planos",
-                                items: _vm.planos,
+                                "error-messages": _vm.errors,
+                                placeholder: "Senha...",
+                                required: "",
+                                solo: "",
                               },
+                              model: {
+                                value: _vm.cliente.senha,
+                                callback: function ($$v) {
+                                  _vm.$set(_vm.cliente, "senha", $$v)
+                                },
+                                expression: "cliente.senha",
+                              },
+                            }),
+                          ],
+                          1
+                        ),
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "cadastro__grid--4" },
+                      [
+                        _c(
+                          "validation-provider",
+                          { attrs: { rules: "required" } },
+                          [
+                            _c("v-select", {
+                              staticClass: "cadastro__input",
+                              attrs: { dark: "", dense: "", label: "Planos" },
                               model: {
                                 value: _vm.cliente.plano,
                                 callback: function ($$v) {
@@ -1607,7 +1675,7 @@ var render = function () {
                                   ? "Editar"
                                   : "Cadastrar"
                               ) +
-                              " Cliente\n                "
+                              "\n                    Cliente\n                "
                           ),
                         ]),
                       ]
@@ -1751,7 +1819,7 @@ var render = function () {
                 ],
                 1
               ),
-              _vm._v(" "),
+              _vm._v("\n        " + _vm._s(_vm.coisas) + "\n        "),
               _c("v-data-table", {
                 attrs: {
                   loading: "",

@@ -92,13 +92,22 @@ __webpack_require__.r(__webpack_exports__);
         email: this.email,
         password: this.password
       };
-      this.$axios.post("login", funcionario).then(function (response) {
-        localStorage.setItem('myauth_token', response.data.access_token);
-
-        _this.$router.push("/funcionarios/clientes");
+      this.$axios.post("cliente/Auth", funcionario).then(function (res) {
+        localStorage.setItem("myauth_token", res.data);
+      }).then(function () {
+        _this.$router.push({
+          name: "Clientes"
+        });
       })["catch"](function () {
         _this.$swal("Erro!!", "Usuario Incorreto", "error");
       });
+    }
+  },
+  created: function created() {
+    var token = localStorage.getItem("myauth_token");
+
+    if (token) {
+      localStorage.removeItem("myauth_token");
     }
   }
 });
@@ -329,7 +338,7 @@ var render = function () {
       _c(
         "form",
         {
-          attrs: { action: "" },
+          attrs: { method: "POST" },
           on: {
             submit: function ($event) {
               $event.stopPropagation()
