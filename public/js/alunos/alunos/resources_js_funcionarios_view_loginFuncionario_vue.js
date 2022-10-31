@@ -94,6 +94,7 @@ __webpack_require__.r(__webpack_exports__);
       };
       this.$axios.post("cliente/Auth", funcionario).then(function (res) {
         localStorage.setItem("myauth_token", res.data);
+        console.log(res.data);
       }).then(function () {
         _this.$router.push({
           name: "Clientes"

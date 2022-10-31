@@ -146,12 +146,13 @@ export default {
             });
         },
     },
-    mounted() {
-        this.$axios.get("cliente/get").then((response) => {
+   async mounted() {
+       await this.$axios.get("cliente/get").then((response) => {
             this.clientes = response.data;
         });
+        
         let token = localStorage.getItem("myauth_token");
-            this.$axios
+            await this.$axios
                 .get("/user", {
                     headers: { Authorization: "Bearer " + token },
                 })
