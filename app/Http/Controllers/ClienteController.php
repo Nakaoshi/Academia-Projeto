@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Cliente;
 use App\Models\Funcionario;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
@@ -16,32 +17,66 @@ class ClienteController extends Controller
         $email = $request->input('email');
         $password = $request->input('password');
 
+        $emailBD =  DB::table('funcionarios')->where('email',$email);
+        $passwordBD =  DB::table('funcionarios')->where('password',$password);
 
         $this->validate($request,[
             'email' => 'required',
             'password' => 'required',
         ]);
-        $user = Funcionario::where('email', $email)->first();
-        if (! $user || ! Hash::check($password, $user->password)) {
-            throw ValidationException::withMessages([
-                'email' => ['The provided credentials are incorrect.'],
-            ]);
-        }
+
+       // ---------------------------------------------------------------------------------------------------------------------/
+    // MODO QUE RETORNA USUARIO
+    // ---------------------------------------------------------------------------------------------------------------------/
 
         // if(Auth::attempt(['email'=>$email,'password'=>$password])){
-        //     $user = Auth::user('clientes');
+        //     $user = Auth::user();
         //     $token = $user->createToken('jwt');
             
         //     return response()->json($token->plainTextToken, 200);
         // }else{
-        //     return response()->json('nao', 404);
+        //     return response()->json('Não Logou', 404);
+
+        // response()->json([
+            //         'status' => 'success',
+            //         'user' => $user,
+            //         'authorisation' => [
+            //             'token' => $token,
+            //             'type' => 'bearer',
+            //         ]
+            //     ]);
         // };
 
+        // ---------------------------------------------------------------------------------------------------------------------/
+        // MODO QUE NAO RETORNA USUARIO, mas abre as senhas personalizadas
+        // ---------------------------------------------------------------------------------------------------------------------/
+
+
+        $user = DB::table('funcionarios')->where('email',$email)->where('password', $password)->first();
         
+        if (!$user) {
+            throw ValidationException::withMessages([
+                'email' => ['The provided credentials are incorrect.'],
+            ]);
+        }else{
+
+            $token = auth()->attempt();
+            
+            return response()->json([
+                'access_token' => $token,
+                'token_type' => 'bearer',
+                'expires_in' => auth()->factory()->getTTL() * 60 //sim vai ficar dando erro
+            ]);
+        }
+
     }
 
     public function clientelogout(){
         Auth::logout();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Usuario deslogado',
+        ]);
     }
 
     public function getCliente()

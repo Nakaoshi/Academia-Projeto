@@ -81,6 +81,7 @@ export default {
                 .post(`cliente/Auth`, funcionario)
                 .then((res) => {
                     localStorage.setItem("myauth_token", res.data);
+                    console.log(res.data)
                 })
                 .then(() => {
                     this.$router.push({ name: "Clientes" });
