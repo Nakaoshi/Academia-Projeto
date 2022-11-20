@@ -331,6 +331,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -340,14 +345,6 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       cliente: {},
-      endereco: {
-        rua: "",
-        casaNumero: "",
-        cidade: "",
-        estado: "",
-        complemento: "",
-        cep: ""
-      },
       generosDisponiveis: ["Homem", "Mulher", "Prefiro Não Declarar"],
       planos: ["Standard", "Fighter", "GoFighter"]
     };
@@ -364,8 +361,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.$swal("Erro", "".concat(error), "error");
       });
     }
-  },
-  mounted: function mounted() {}
+  }
 });
 
 /***/ }),
@@ -553,11 +549,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     };
   },
-  computed: {
-    coisas: function coisas() {
-      return this.$store.state;
-    }
-  },
   methods: {
     deletarCliente: function deletarCliente(id) {
       var _this = this;
@@ -569,7 +560,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         denyButtonText: "N\xE3o Deletar"
       }).then(function (result) {
         if (result.isConfirmed) {
-          _this.axios["delete"]("cliente/delete/".concat(id)).then(function (response) {
+          _this.$axios["delete"]("cliente/delete/".concat(id)).then(function (response) {
             var i = _this.clientes.map(function (item) {
               return item.id;
             }).indexOf(id);
@@ -597,14 +588,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
+              _context.prev = 0;
+              _context.next = 3;
               return _this2.$axios.get("cliente/get").then(function (response) {
                 _this2.clientes = response.data;
+                console.log(response);
               });
 
-            case 2:
+            case 3:
               token = localStorage.getItem("myauth_token");
-              _context.next = 5;
+              _context.next = 6;
               return _this2.$axios.get("/user", {
                 headers: {
                   Authorization: "Bearer " + token
@@ -612,18 +605,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               }).then(function (response) {
                 console.log(response);
 
-                _this2.$store.commit('verificarGerente', {
+                _this2.$store.commit("verificarGerente", {
                   gerente: response.data.gerente,
-                  token: localStorage.getItem('myauth_token')
+                  token: localStorage.getItem("myauth_token"),
+                  nome: response.data.name
                 });
               });
 
-            case 5:
+            case 6:
+              _context.next = 11;
+              break;
+
+            case 8:
+              _context.prev = 8;
+              _context.t0 = _context["catch"](0);
+              console.log(_context.t0);
+
+            case 11:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee);
+      }, _callee, null, [[0, 8]]);
     }))();
   }
 });
@@ -994,7 +997,6 @@ var render = function () {
     "form",
     {
       staticClass: "cadastro__form",
-      attrs: { method: "POST" },
       on: {
         submit: function ($event) {
           $event.stopPropagation()
@@ -1118,30 +1120,41 @@ var render = function () {
                       "div",
                       { staticClass: "cadastro__grid--4" },
                       [
-                        _c(
-                          "validation-provider",
-                          { attrs: { rules: "required" } },
-                          [
-                            _c("v-select", {
-                              staticClass: "cadastro__input",
-                              attrs: {
-                                color: "#ffffff",
-                                dark: "",
-                                dense: "",
-                                items: _vm.generosDisponiveis,
-                                label: "Genero",
-                              },
-                              model: {
-                                value: _vm.cliente.genero,
-                                callback: function ($$v) {
-                                  _vm.$set(_vm.cliente, "genero", $$v)
+                        _c("validation-provider", {
+                          attrs: { rules: "required" },
+                          scopedSlots: _vm._u(
+                            [
+                              {
+                                key: "default",
+                                fn: function (ref) {
+                                  var errors = ref.errors
+                                  return [
+                                    _c("v-select", {
+                                      staticClass: "cadastro__input",
+                                      attrs: {
+                                        color: "#ffffff",
+                                        dark: "",
+                                        dense: "",
+                                        "error-messages": errors,
+                                        items: _vm.generosDisponiveis,
+                                        label: "Genero",
+                                      },
+                                      model: {
+                                        value: _vm.cliente.genero,
+                                        callback: function ($$v) {
+                                          _vm.$set(_vm.cliente, "genero", $$v)
+                                        },
+                                        expression: "cliente.genero",
+                                      },
+                                    }),
+                                  ]
                                 },
-                                expression: "cliente.genero",
                               },
-                            }),
-                          ],
-                          1
-                        ),
+                            ],
+                            null,
+                            true
+                          ),
+                        }),
                       ],
                       1
                     ),
@@ -1252,29 +1265,39 @@ var render = function () {
                       "div",
                       { staticClass: "cadastro__grid--4" },
                       [
-                        _c(
-                          "validation-provider",
-                          { attrs: { rules: "required" } },
-                          [
-                            _c("v-text-field", {
-                              staticClass: "cadastro__input",
-                              attrs: {
-                                "error-messages": _vm.errors,
-                                placeholder: "Senha...",
-                                required: "",
-                                solo: "",
-                              },
-                              model: {
-                                value: _vm.cliente.senha,
-                                callback: function ($$v) {
-                                  _vm.$set(_vm.cliente, "senha", $$v)
+                        _c("validation-provider", {
+                          attrs: { rules: "required" },
+                          scopedSlots: _vm._u(
+                            [
+                              {
+                                key: "default",
+                                fn: function (ref) {
+                                  var errors = ref.errors
+                                  return [
+                                    _c("v-text-field", {
+                                      staticClass: "cadastro__input",
+                                      attrs: {
+                                        "error-messages": errors,
+                                        placeholder: "Senha...",
+                                        required: "",
+                                        solo: "",
+                                      },
+                                      model: {
+                                        value: _vm.cliente.senha,
+                                        callback: function ($$v) {
+                                          _vm.$set(_vm.cliente, "senha", $$v)
+                                        },
+                                        expression: "cliente.senha",
+                                      },
+                                    }),
+                                  ]
                                 },
-                                expression: "cliente.senha",
                               },
-                            }),
-                          ],
-                          1
-                        ),
+                            ],
+                            null,
+                            true
+                          ),
+                        }),
                       ],
                       1
                     ),
@@ -1283,24 +1306,40 @@ var render = function () {
                       "div",
                       { staticClass: "cadastro__grid--4" },
                       [
-                        _c(
-                          "validation-provider",
-                          { attrs: { rules: "required" } },
-                          [
-                            _c("v-select", {
-                              staticClass: "cadastro__input",
-                              attrs: { dark: "", dense: "", label: "Planos" },
-                              model: {
-                                value: _vm.cliente.plano,
-                                callback: function ($$v) {
-                                  _vm.$set(_vm.cliente, "plano", $$v)
+                        _c("validation-provider", {
+                          attrs: { rules: "required" },
+                          scopedSlots: _vm._u(
+                            [
+                              {
+                                key: "default",
+                                fn: function (ref) {
+                                  var errors = ref.errors
+                                  return [
+                                    _c("v-select", {
+                                      staticClass: "cadastro__input",
+                                      attrs: {
+                                        dark: "",
+                                        dense: "",
+                                        "error-messages": errors,
+                                        label: "Planos",
+                                        items: _vm.planos,
+                                      },
+                                      model: {
+                                        value: _vm.cliente.plano,
+                                        callback: function ($$v) {
+                                          _vm.$set(_vm.cliente, "plano", $$v)
+                                        },
+                                        expression: "cliente.plano",
+                                      },
+                                    }),
+                                  ]
                                 },
-                                expression: "cliente.plano",
                               },
-                            }),
-                          ],
-                          1
-                        ),
+                            ],
+                            null,
+                            true
+                          ),
+                        }),
                       ],
                       1
                     ),
@@ -1434,11 +1473,11 @@ var render = function () {
                                         solo: "",
                                       },
                                       model: {
-                                        value: _vm.endereco.rua,
+                                        value: _vm.cliente.rua,
                                         callback: function ($$v) {
-                                          _vm.$set(_vm.endereco, "rua", $$v)
+                                          _vm.$set(_vm.cliente, "rua", $$v)
                                         },
-                                        expression: "endereco.rua",
+                                        expression: "cliente.rua",
                                       },
                                     }),
                                   ]
@@ -1475,15 +1514,15 @@ var render = function () {
                                         solo: "",
                                       },
                                       model: {
-                                        value: _vm.endereco.casaNumero,
+                                        value: _vm.cliente.casaNumero,
                                         callback: function ($$v) {
                                           _vm.$set(
-                                            _vm.endereco,
+                                            _vm.cliente,
                                             "casaNumero",
                                             $$v
                                           )
                                         },
-                                        expression: "endereco.casaNumero",
+                                        expression: "cliente.casaNumero",
                                       },
                                     }),
                                   ]
@@ -1520,11 +1559,11 @@ var render = function () {
                                         solo: "",
                                       },
                                       model: {
-                                        value: _vm.endereco.cidade,
+                                        value: _vm.cliente.cidade,
                                         callback: function ($$v) {
-                                          _vm.$set(_vm.endereco, "cidade", $$v)
+                                          _vm.$set(_vm.cliente, "cidade", $$v)
                                         },
-                                        expression: "endereco.cidade",
+                                        expression: "cliente.cidade",
                                       },
                                     }),
                                   ]
@@ -1561,11 +1600,11 @@ var render = function () {
                                         solo: "",
                                       },
                                       model: {
-                                        value: _vm.endereco.estado,
+                                        value: _vm.cliente.estado,
                                         callback: function ($$v) {
-                                          _vm.$set(_vm.endereco, "estado", $$v)
+                                          _vm.$set(_vm.cliente, "estado", $$v)
                                         },
-                                        expression: "endereco.estado",
+                                        expression: "cliente.estado",
                                       },
                                     }),
                                   ]
@@ -1602,15 +1641,15 @@ var render = function () {
                                         solo: "",
                                       },
                                       model: {
-                                        value: _vm.endereco.complemento,
+                                        value: _vm.cliente.complemento,
                                         callback: function ($$v) {
                                           _vm.$set(
-                                            _vm.endereco,
+                                            _vm.cliente,
                                             "complemento",
                                             $$v
                                           )
                                         },
-                                        expression: "endereco.complemento",
+                                        expression: "cliente.complemento",
                                       },
                                     }),
                                   ]
@@ -1655,11 +1694,11 @@ var render = function () {
                                         solo: "",
                                       },
                                       model: {
-                                        value: _vm.endereco.cep,
+                                        value: _vm.cliente.cep,
                                         callback: function ($$v) {
-                                          _vm.$set(_vm.endereco, "cep", $$v)
+                                          _vm.$set(_vm.cliente, "cep", $$v)
                                         },
-                                        expression: "endereco.cep",
+                                        expression: "cliente.cep",
                                       },
                                     }),
                                   ]

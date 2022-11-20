@@ -24,14 +24,15 @@ class DatabaseSeeder extends Seeder
             'cpf'=>'333.333.333-33',
             'genero'=>'Homem',
             'cargo'=>'gerente',
+            'password'=>'Nakaoshi',
             'email' => 'gerente@gmail.com',
             'gerente'=> true,
         ]);
         \App\Models\User::factory(10)->create();
 
         \App\Models\User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'gerente@gmail.com',
+            'name' => 'Luiz Nakaoshi',
+            'email' => 'Nakaoshi@gmail.com',
             'gerente'=> true,
         ]);
     }

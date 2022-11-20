@@ -8,7 +8,11 @@
 </template>
 <script>
 export default {
-    methods: {},
+    data(){
+        return{
+            nome:this.$store.state.usuario.nome
+        }
+    },
 };
 </script>
 <style>

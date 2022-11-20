@@ -23,9 +23,15 @@ return new class extends Migration
             $table->string('password')->nullable(false);
             $table->enum('genero',array('Homem','Mulher','Prefiro Não Declarar'));
             $table->string('dataNascimento')->nullable(false);
-            $table->string('telefone', 14)->nullable(false);
+            $table->string('telefone', 15)->nullable(false);
             $table->string('email', 60);
             $table->enum('plano',array('Standard','Fighter','GoFighter','Sem Plano'))->default('Sem plano');
+            $table->string('rua')->nullable();
+            $table->integer('casaNumero')->nullable();
+            $table->string('cidade')->nullable();
+            $table->string('estado')->nullable();
+            $table->string('complemento')->nullable();
+            $table->string('cep')->nullable();
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
 

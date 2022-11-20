@@ -1171,11 +1171,11 @@ var render = function () {
                                           solo: "",
                                         },
                                         model: {
-                                          value: _vm.endereço.rua,
+                                          value: _vm.fornecedor.rua,
                                           callback: function ($$v) {
-                                            _vm.$set(_vm.endereço, "rua", $$v)
+                                            _vm.$set(_vm.fornecedor, "rua", $$v)
                                           },
-                                          expression: "endereço.rua",
+                                          expression: "fornecedor.rua",
                                         },
                                       }),
                                     ]
@@ -1212,15 +1212,15 @@ var render = function () {
                                           solo: "",
                                         },
                                         model: {
-                                          value: _vm.endereço.casaNumero,
+                                          value: _vm.fornecedor.casaNumero,
                                           callback: function ($$v) {
                                             _vm.$set(
-                                              _vm.endereço,
+                                              _vm.fornecedor,
                                               "casaNumero",
                                               $$v
                                             )
                                           },
-                                          expression: "endereço.casaNumero",
+                                          expression: "fornecedor.casaNumero",
                                         },
                                       }),
                                     ]
@@ -1257,15 +1257,15 @@ var render = function () {
                                           solo: "",
                                         },
                                         model: {
-                                          value: _vm.endereço.cidade,
+                                          value: _vm.fornecedor.cidade,
                                           callback: function ($$v) {
                                             _vm.$set(
-                                              _vm.endereço,
+                                              _vm.fornecedor,
                                               "cidade",
                                               $$v
                                             )
                                           },
-                                          expression: "endereço.cidade",
+                                          expression: "fornecedor.cidade",
                                         },
                                       }),
                                     ]
@@ -1302,15 +1302,15 @@ var render = function () {
                                           solo: "",
                                         },
                                         model: {
-                                          value: _vm.endereço.estado,
+                                          value: _vm.fornecedor.estado,
                                           callback: function ($$v) {
                                             _vm.$set(
-                                              _vm.endereço,
+                                              _vm.fornecedor,
                                               "estado",
                                               $$v
                                             )
                                           },
-                                          expression: "endereço.estado",
+                                          expression: "fornecedor.estado",
                                         },
                                       }),
                                     ]
@@ -1347,15 +1347,15 @@ var render = function () {
                                           solo: "",
                                         },
                                         model: {
-                                          value: _vm.endereço.complemento,
+                                          value: _vm.fornecedor.complemento,
                                           callback: function ($$v) {
                                             _vm.$set(
-                                              _vm.endereço,
+                                              _vm.fornecedor,
                                               "complemento",
                                               $$v
                                             )
                                           },
-                                          expression: "endereço.complemento",
+                                          expression: "fornecedor.complemento",
                                         },
                                       }),
                                     ]
@@ -1400,11 +1400,11 @@ var render = function () {
                                           solo: "",
                                         },
                                         model: {
-                                          value: _vm.endereço.cep,
+                                          value: _vm.fornecedor.cep,
                                           callback: function ($$v) {
-                                            _vm.$set(_vm.endereço, "cep", $$v)
+                                            _vm.$set(_vm.fornecedor, "cep", $$v)
                                           },
-                                          expression: "endereço.cep",
+                                          expression: "fornecedor.cep",
                                         },
                                       }),
                                     ]

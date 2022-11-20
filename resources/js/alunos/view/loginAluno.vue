@@ -3,7 +3,7 @@
         <div class="divisaoGeometrica" />
         <div class="loginCliente">
             <p class="login__font text__login">Alunos</p>
-            <form @submit.prevent="submit()">
+            <form @submit.prevent="submit()" method="POST">
                 <validation-observer ref="observer">
                     <v-row>
                         <v-col cols="12">
@@ -47,7 +47,7 @@
                                 type="submit"
                                 color="#f72585"
                             >
-                                <h4>Acessar</h4>
+                                Acessar
                             </v-btn>
                         </v-col>
                     </v-row>
@@ -66,30 +66,42 @@ export default {
     },
     data() {
         return {
-            aluno: {
-                email: this.email,
-                senha: this.senha,
-            },
+            email: "",
+            password: "",
         };
     },
-    methods:{
-        submit(){
-            this.$axios.post(`cliente/Auth`,this.aluno)
-            .then((response)=>{
-                console.log(response)
-                // localStorage.setItem('myauth_token', response.data)
-            }).catch(()=>{
-                this.$swal("Erro!!", `Usuario Incorreto`, "error")
-            })
+    methods: {
+        submit() {
+            var aluno = {
+                email: this.email,
+                senha: this.senha,
+            };
+            this.$axios
+                .post(`cliente/cliente`, aluno)
+                .then((response) => {
+                    console.log(response);
+                    localStorage.setItem("myauth_token", response.data);
+                }).then(() => {
+                    this.$router.push({ name: "Inicio Alunos" });
+                })
+                .catch(() => {
+                    this.$swal("Erro!!", `Usuario Incorreto`, "error");
+                });
         },
-    }
+    },
+    created() {
+        let token = localStorage.getItem("myauth_token");
+        if (token) {
+            localStorage.removeItem("myauth_token");
+        }
+    },
 };
 </script>
 
 <style lang="scss" scoped>
-    body{
-        @apply absolute w-full h-full;
-    }
+body {
+    @apply absolute w-full h-full;
+}
 .background__loginCliente {
     @apply flex justify-center items-center w-full h-full absolute overflow-hidden;
     background-image: url("../../../css/images/Banner__login.svg");
@@ -120,9 +132,8 @@ export default {
     width: 100%;
     font-weight: 300;
     line-height: 36px;
-    &>h4{
+    & > h4 {
         color: #ffffff;
-        
     }
 }
 </style>

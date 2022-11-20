@@ -26,4 +26,8 @@ class AutenticacaoController extends Controller
             ]);
         
     }
+    public function usuario()
+    {
+        return response()->json(auth()->user());
+    }
 }

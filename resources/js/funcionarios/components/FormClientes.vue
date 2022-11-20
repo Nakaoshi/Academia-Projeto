@@ -2,7 +2,6 @@
     <form
         class="cadastro__form"
         @submit.stop.prevent="FormAction()"
-        method="POST"
     >
         <p class="cadastro__form--title">
             {{
@@ -58,12 +57,14 @@
 
                     <!-- SELECT DO GENERO  -->
                     <div class="cadastro__grid--4">
-                        <validation-provider rules="required">
+                        <validation-provider rules="required" 
+                        v-slot="{ errors }">
                             <v-select
                                 color="#ffffff"
                                 dark
                                 dense
                                 class="cadastro__input"
+                                :error-messages="errors"
                                 :items="generosDisponiveis"
                                 v-model="cliente.genero"
                                 label="Genero"
@@ -110,7 +111,8 @@
 
                     <!-- SELECT DO Senha  -->
                     <div class="cadastro__grid--4">
-                        <validation-provider rules="required">
+                        <validation-provider rules="required"
+                        v-slot="{ errors }">
                             <v-text-field
                                 class="cadastro__input"
                                 v-model="cliente.senha"
@@ -124,12 +126,15 @@
                     
                     <!-- SELECT DO planos  -->
                     <div class="cadastro__grid--4">
-                        <validation-provider rules="required">
+                        <validation-provider rules="required"
+                        v-slot="{ errors }">
                             <v-select
                                 dark
                                 dense
                                 class="cadastro__input"
+                                :error-messages="errors"
                                 label="Planos"
+                                :items="planos"
                                 v-model="cliente.plano"
                             ></v-select>
                         </validation-provider>
@@ -192,7 +197,7 @@
                         >
                             <v-text-field
                                 class="cadastro__input"
-                                v-model="endereco.rua"
+                                v-model="cliente.rua"
                                 :error-messages="errors"
                                 placeholder="Rua...."
                                 required
@@ -209,7 +214,7 @@
                         >
                             <v-text-field
                                 class="cadastro__input"
-                                v-model="endereco.casaNumero"
+                                v-model="cliente.casaNumero"
                                 :error-messages="errors"
                                 placeholder="Numero......"
                                 required
@@ -227,7 +232,7 @@
                         >
                             <v-text-field
                                 class="cadastro__input"
-                                v-model="endereco.cidade"
+                                v-model="cliente.cidade"
                                 :error-messages="errors"
                                 placeholder="Cidade...."
                                 required
@@ -245,7 +250,7 @@
                         >
                             <v-text-field
                                 class="cadastro__input"
-                                v-model="endereco.estado"
+                                v-model="cliente.estado"
                                 :error-messages="errors"
                                 placeholder="Estado....."
                                 required
@@ -263,7 +268,7 @@
                         >
                             <v-text-field
                                 class="cadastro__input"
-                                v-model="endereco.complemento"
+                                v-model="cliente.complemento"
                                 :error-messages="errors"
                                 placeholder="Complemento...."
                                 required
@@ -282,7 +287,7 @@
                             <v-text-field
                                 class="cadastro__input"
                                 v-mask="'#####-###'"
-                                v-model="endereco.cep"
+                                v-model="cliente.cep"
                                 :error-messages="errors"
                                 placeholder="CEP"
                                 required
@@ -333,15 +338,6 @@ export default {
     data() {
         return {
             cliente: {},
-            endereco: {
-                rua: "",
-                casaNumero: "",
-                cidade: "",
-                estado: "",
-                complemento: "",
-                cep: "",
-            },
-
             generosDisponiveis: ["Homem", "Mulher", "Prefiro Não Declarar"],
             planos: ["Standard", "Fighter", "GoFighter"],
         };
@@ -364,7 +360,7 @@ export default {
                 });
         },
     },
-    mounted() {},
+    
 };
 </script>
 <style lang="scss">

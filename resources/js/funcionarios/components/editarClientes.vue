@@ -1,7 +1,15 @@
 <template>
-    <form class="cadastro__form" method="POST">
+    <div>
+        <form 
+        :data-app="true"
+        class="cadastro__form"
+        @submit.stop.prevent="updateCliente()"
+        method="POST"
+    >
         <p class="cadastro__form--title">
-            {{ $route.name === "Editar Cliente" ? "Editar" : "Cadastrar" }}
+            {{
+                $route.name === "Editar Cliente" ? "Editar" : "Cadastrar"
+            }}
             Cliente
         </p>
 
@@ -52,12 +60,14 @@
 
                     <!-- SELECT DO GENERO  -->
                     <div class="cadastro__grid--4">
-                        <validation-provider rules="required">
+                        <validation-provider rules="required" 
+                        v-slot="{ errors }">
                             <v-select
                                 color="#ffffff"
                                 dark
                                 dense
                                 class="cadastro__input"
+                                :error-messages="errors"
                                 :items="generosDisponiveis"
                                 v-model="cliente.genero"
                                 label="Genero"
@@ -102,13 +112,30 @@
                         </validation-provider>
                     </div>
 
+                    <!-- SELECT DO Senha  -->
+                    <div class="cadastro__grid--4">
+                        <validation-provider rules="required"
+                        v-slot="{ errors }">
+                            <v-text-field
+                                class="cadastro__input"
+                                v-model="cliente.password"
+                                :error-messages="errors"
+                                placeholder="Senha..."
+                                required
+                                solo
+                            ></v-text-field>
+                        </validation-provider>
+                    </div>
+                    
                     <!-- SELECT DO planos  -->
                     <div class="cadastro__grid--4">
-                        <validation-provider rules="required">
+                        <validation-provider rules="required"
+                        v-slot="{ errors }">
                             <v-select
                                 dark
                                 dense
                                 class="cadastro__input"
+                                :error-messages="errors"
                                 label="Planos"
                                 :items="planos"
                                 v-model="cliente.plano"
@@ -161,6 +188,120 @@
                 </div>
             </div>
 
+            <!-- endereço -->
+            <div>
+                <p class="cadastro__section--title">Endereço</p>
+                <div class="cadastro__grid">
+                    <!-- INPUT DA RUA -->
+                    <div class="cadastro__grid--10">
+                        <validation-provider
+                            v-slot="{ errors }"
+                            rules="required"
+                        >
+                            <v-text-field
+                                class="cadastro__input"
+                                v-model="cliente.rua"
+                                :error-messages="errors"
+                                placeholder="Rua...."
+                                required
+                                solo
+                            >
+                            </v-text-field>
+                        </validation-provider>
+                    </div>
+                    <!-- INPUT DO NUMERO DA CASA -->
+                    <div class="cadastro__grid--2">
+                        <validation-provider
+                            v-slot="{ errors }"
+                            rules="required"
+                        >
+                            <v-text-field
+                                class="cadastro__input"
+                                v-model="cliente.casaNumero"
+                                :error-messages="errors"
+                                placeholder="Numero......"
+                                required
+                                solo
+                            >
+                            </v-text-field>
+                        </validation-provider>
+                    </div>
+
+                    <!--INPUT DA CIDADE-->
+                    <div class="cadastro__grid--3">
+                        <validation-provider
+                            v-slot="{ errors }"
+                            rules="required"
+                        >
+                            <v-text-field
+                                class="cadastro__input"
+                                v-model="cliente.cidade"
+                                :error-messages="errors"
+                                placeholder="Cidade...."
+                                required
+                                solo
+                            >
+                            </v-text-field>
+                        </validation-provider>
+                    </div>
+
+                    <!--INPUT DA estado-->
+                    <div class="cadastro__grid--3">
+                        <validation-provider
+                            v-slot="{ errors }"
+                            rules="required"
+                        >
+                            <v-text-field
+                                class="cadastro__input"
+                                v-model="cliente.estado"
+                                :error-messages="errors"
+                                placeholder="Estado....."
+                                required
+                                solo
+                            >
+                            </v-text-field>
+                        </validation-provider>
+                    </div>
+
+                    <!--INPUT DA Complemento-->
+                    <div class="cadastro__grid--3">
+                        <validation-provider
+                            v-slot="{ errors }"
+                            rules="required"
+                        >
+                            <v-text-field
+                                class="cadastro__input"
+                                v-model="cliente.complemento"
+                                :error-messages="errors"
+                                placeholder="Complemento...."
+                                required
+                                solo
+                            >
+                            </v-text-field>
+                        </validation-provider>
+                    </div>
+
+                    <!--INPUT DA CEP -->
+                    <div class="cadastro__grid--3">
+                        <validation-provider
+                            v-slot="{ errors }"
+                            rules="required"
+                        >
+                            <v-text-field
+                                class="cadastro__input"
+                                v-mask="'#####-###'"
+                                v-model="cliente.cep"
+                                :error-messages="errors"
+                                placeholder="CEP"
+                                required
+                                solo
+                            >
+                            </v-text-field>
+                        </validation-provider>
+                    </div>
+                </div>
+            </div>
+
             <!-- botao de cadastrar -->
             <div class="cadastro__btn">
                 <v-btn
@@ -169,7 +310,7 @@
                     min-width="180"
                     min-height="50"
                     color="#f72585"
-                    @click="updatePost()"
+                    type="submit"
                 >
                     <p class="cadastro__btn--cadastrar">
                         {{
@@ -183,6 +324,7 @@
             </div>
         </validation-observer>
     </form>
+    </div>
 </template>
 
 <script>
@@ -194,17 +336,12 @@ import {
     setInteractionMode,
 } from "vee-validate";
 export default {
-    components: {
-        ValidationObserver,
-        ValidationProvider,
-        FormClientes,
-    },
-    data() {
-        return {
-            cliente: {},
+    data(){
+        return{
+            cliente:{},
             generosDisponiveis: ["Homem", "Mulher", "Prefiro Não Declarar"],
-            planos: ["Standard", "Fighter", "GoFighter"],
-        };
+            planos: ["Standard", "Fighter", "GoFighter", "Sem Plano"],
+        }
     },
     beforeCreate() {
         this.axios
@@ -214,9 +351,8 @@ export default {
                 console.log(response.data);
             });
     },
-    created() {},
     methods: {
-        updatePost() {
+        updateCliente() {
             this.$axios
                 .put(`cliente/update/${this.$route.params.id}`, this.cliente)
                 .then((response) => {
@@ -228,6 +364,11 @@ export default {
                     this.$router.push({ name: "Clientes" });
                 });
         },
+    },
+    components: {
+        ValidationObserver,
+        ValidationProvider,
+        FormClientes,
     },
 };
 </script>

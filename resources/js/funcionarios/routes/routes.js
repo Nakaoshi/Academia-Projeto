@@ -53,8 +53,10 @@ const routes = [
         beforeEnter: Guard.auth,
     },
     {
-        path: "/ajuda",
-        name: "Ajuda",
+        path: "/funcionarios/RH/editar/:id",
+        name: "Editar Funcionario",
+        component: () => import("../components/editarFuncionario.vue"),
+        beforeEnter: Guard.auth,
     },
     // ---------------------------------------------------------------------------------------------------------------------/
     // aviso para caso a rota não exista, vulgo erro 404

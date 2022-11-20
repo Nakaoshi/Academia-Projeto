@@ -17,7 +17,7 @@ class ClienteFactory extends Factory
     public function definition()
     {
         require_once 'vendor/autoload.php';
-
+        $plano =$this->faker->randomElement(["Standard", "Fighter", "GoFighter","Sem Plano"]);
         $gender = $this->faker->randomElement($array = array('Homem','Mulher','Prefiro Não Declarar'));
         $faker = \Faker\Factory::create('pt_BR');
         return [
@@ -27,8 +27,16 @@ class ClienteFactory extends Factory
             'dataNascimento'=>$faker->date(),
             'password'=>$this->faker->password(),
             'cpf' =>  $faker->cpf(14),
-            'telefone' => sprintf('(0%s)%s',$faker->areaCode, $faker->landline),
+            'telefone' => $faker->cellphoneNumber(),
+            'plano'=>$plano,
             'email' => $this->faker->email(),
+            'rua'=>$this->faker->address(),
+            'casaNumero'=>$this->faker->buildingNumber(),
+            'cidade'=>$this->faker->city(),
+            'estado'=>$this->faker->state(),
+            'complemento'=>$this->faker->streetAddress(),
+            'cep'=>$this->faker->randomNumber(8, true)
+            
 
         ];
     }

@@ -21,7 +21,17 @@ class Funcionario extends Model implements JWTSubject
         'cargo',
         'salario',
         'telefone',
-        'email'
+        'email',
+        'rua',
+        'casaNumero',
+        'cidade',
+        'estado',
+        'complemento',
+        'cep'
+    ];
+    protected $hidden = [
+        'create_at',
+        'updated_at'
     ];
 
     public function getAuthPassword() {

@@ -331,6 +331,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -340,14 +345,6 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       cliente: {},
-      endereco: {
-        rua: "",
-        casaNumero: "",
-        cidade: "",
-        estado: "",
-        complemento: "",
-        cep: ""
-      },
       generosDisponiveis: ["Homem", "Mulher", "Prefiro Não Declarar"],
       planos: ["Standard", "Fighter", "GoFighter"]
     };
@@ -364,8 +361,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.$swal("Erro", "".concat(error), "error");
       });
     }
-  },
-  mounted: function mounted() {}
+  }
 });
 
 /***/ }),
@@ -569,19 +565,156 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {
-    ValidationObserver: vee_validate__WEBPACK_IMPORTED_MODULE_1__.ValidationObserver,
-    ValidationProvider: vee_validate__WEBPACK_IMPORTED_MODULE_1__.ValidationProvider,
-    FormClientes: _FormClientes_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
-  },
   data: function data() {
     return {
       cliente: {},
       generosDisponiveis: ["Homem", "Mulher", "Prefiro Não Declarar"],
-      planos: ["Standard", "Fighter", "GoFighter"]
+      planos: ["Standard", "Fighter", "GoFighter", "Sem Plano"]
     };
   },
   beforeCreate: function beforeCreate() {
@@ -592,9 +725,8 @@ __webpack_require__.r(__webpack_exports__);
       console.log(response.data);
     });
   },
-  created: function created() {},
   methods: {
-    updatePost: function updatePost() {
+    updateCliente: function updateCliente() {
       var _this2 = this;
 
       this.$axios.put("cliente/update/".concat(this.$route.params.id), this.cliente).then(function (response) {
@@ -609,6 +741,11 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     }
+  },
+  components: {
+    ValidationObserver: vee_validate__WEBPACK_IMPORTED_MODULE_1__.ValidationObserver,
+    ValidationProvider: vee_validate__WEBPACK_IMPORTED_MODULE_1__.ValidationProvider,
+    FormClientes: _FormClientes_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
 });
 
@@ -840,7 +977,6 @@ var render = function () {
     "form",
     {
       staticClass: "cadastro__form",
-      attrs: { method: "POST" },
       on: {
         submit: function ($event) {
           $event.stopPropagation()
@@ -964,30 +1100,41 @@ var render = function () {
                       "div",
                       { staticClass: "cadastro__grid--4" },
                       [
-                        _c(
-                          "validation-provider",
-                          { attrs: { rules: "required" } },
-                          [
-                            _c("v-select", {
-                              staticClass: "cadastro__input",
-                              attrs: {
-                                color: "#ffffff",
-                                dark: "",
-                                dense: "",
-                                items: _vm.generosDisponiveis,
-                                label: "Genero",
-                              },
-                              model: {
-                                value: _vm.cliente.genero,
-                                callback: function ($$v) {
-                                  _vm.$set(_vm.cliente, "genero", $$v)
+                        _c("validation-provider", {
+                          attrs: { rules: "required" },
+                          scopedSlots: _vm._u(
+                            [
+                              {
+                                key: "default",
+                                fn: function (ref) {
+                                  var errors = ref.errors
+                                  return [
+                                    _c("v-select", {
+                                      staticClass: "cadastro__input",
+                                      attrs: {
+                                        color: "#ffffff",
+                                        dark: "",
+                                        dense: "",
+                                        "error-messages": errors,
+                                        items: _vm.generosDisponiveis,
+                                        label: "Genero",
+                                      },
+                                      model: {
+                                        value: _vm.cliente.genero,
+                                        callback: function ($$v) {
+                                          _vm.$set(_vm.cliente, "genero", $$v)
+                                        },
+                                        expression: "cliente.genero",
+                                      },
+                                    }),
+                                  ]
                                 },
-                                expression: "cliente.genero",
                               },
-                            }),
-                          ],
-                          1
-                        ),
+                            ],
+                            null,
+                            true
+                          ),
+                        }),
                       ],
                       1
                     ),
@@ -1098,29 +1245,39 @@ var render = function () {
                       "div",
                       { staticClass: "cadastro__grid--4" },
                       [
-                        _c(
-                          "validation-provider",
-                          { attrs: { rules: "required" } },
-                          [
-                            _c("v-text-field", {
-                              staticClass: "cadastro__input",
-                              attrs: {
-                                "error-messages": _vm.errors,
-                                placeholder: "Senha...",
-                                required: "",
-                                solo: "",
-                              },
-                              model: {
-                                value: _vm.cliente.senha,
-                                callback: function ($$v) {
-                                  _vm.$set(_vm.cliente, "senha", $$v)
+                        _c("validation-provider", {
+                          attrs: { rules: "required" },
+                          scopedSlots: _vm._u(
+                            [
+                              {
+                                key: "default",
+                                fn: function (ref) {
+                                  var errors = ref.errors
+                                  return [
+                                    _c("v-text-field", {
+                                      staticClass: "cadastro__input",
+                                      attrs: {
+                                        "error-messages": errors,
+                                        placeholder: "Senha...",
+                                        required: "",
+                                        solo: "",
+                                      },
+                                      model: {
+                                        value: _vm.cliente.senha,
+                                        callback: function ($$v) {
+                                          _vm.$set(_vm.cliente, "senha", $$v)
+                                        },
+                                        expression: "cliente.senha",
+                                      },
+                                    }),
+                                  ]
                                 },
-                                expression: "cliente.senha",
                               },
-                            }),
-                          ],
-                          1
-                        ),
+                            ],
+                            null,
+                            true
+                          ),
+                        }),
                       ],
                       1
                     ),
@@ -1129,24 +1286,40 @@ var render = function () {
                       "div",
                       { staticClass: "cadastro__grid--4" },
                       [
-                        _c(
-                          "validation-provider",
-                          { attrs: { rules: "required" } },
-                          [
-                            _c("v-select", {
-                              staticClass: "cadastro__input",
-                              attrs: { dark: "", dense: "", label: "Planos" },
-                              model: {
-                                value: _vm.cliente.plano,
-                                callback: function ($$v) {
-                                  _vm.$set(_vm.cliente, "plano", $$v)
+                        _c("validation-provider", {
+                          attrs: { rules: "required" },
+                          scopedSlots: _vm._u(
+                            [
+                              {
+                                key: "default",
+                                fn: function (ref) {
+                                  var errors = ref.errors
+                                  return [
+                                    _c("v-select", {
+                                      staticClass: "cadastro__input",
+                                      attrs: {
+                                        dark: "",
+                                        dense: "",
+                                        "error-messages": errors,
+                                        label: "Planos",
+                                        items: _vm.planos,
+                                      },
+                                      model: {
+                                        value: _vm.cliente.plano,
+                                        callback: function ($$v) {
+                                          _vm.$set(_vm.cliente, "plano", $$v)
+                                        },
+                                        expression: "cliente.plano",
+                                      },
+                                    }),
+                                  ]
                                 },
-                                expression: "cliente.plano",
                               },
-                            }),
-                          ],
-                          1
-                        ),
+                            ],
+                            null,
+                            true
+                          ),
+                        }),
                       ],
                       1
                     ),
@@ -1280,11 +1453,11 @@ var render = function () {
                                         solo: "",
                                       },
                                       model: {
-                                        value: _vm.endereco.rua,
+                                        value: _vm.cliente.rua,
                                         callback: function ($$v) {
-                                          _vm.$set(_vm.endereco, "rua", $$v)
+                                          _vm.$set(_vm.cliente, "rua", $$v)
                                         },
-                                        expression: "endereco.rua",
+                                        expression: "cliente.rua",
                                       },
                                     }),
                                   ]
@@ -1321,15 +1494,15 @@ var render = function () {
                                         solo: "",
                                       },
                                       model: {
-                                        value: _vm.endereco.casaNumero,
+                                        value: _vm.cliente.casaNumero,
                                         callback: function ($$v) {
                                           _vm.$set(
-                                            _vm.endereco,
+                                            _vm.cliente,
                                             "casaNumero",
                                             $$v
                                           )
                                         },
-                                        expression: "endereco.casaNumero",
+                                        expression: "cliente.casaNumero",
                                       },
                                     }),
                                   ]
@@ -1366,11 +1539,11 @@ var render = function () {
                                         solo: "",
                                       },
                                       model: {
-                                        value: _vm.endereco.cidade,
+                                        value: _vm.cliente.cidade,
                                         callback: function ($$v) {
-                                          _vm.$set(_vm.endereco, "cidade", $$v)
+                                          _vm.$set(_vm.cliente, "cidade", $$v)
                                         },
-                                        expression: "endereco.cidade",
+                                        expression: "cliente.cidade",
                                       },
                                     }),
                                   ]
@@ -1407,11 +1580,11 @@ var render = function () {
                                         solo: "",
                                       },
                                       model: {
-                                        value: _vm.endereco.estado,
+                                        value: _vm.cliente.estado,
                                         callback: function ($$v) {
-                                          _vm.$set(_vm.endereco, "estado", $$v)
+                                          _vm.$set(_vm.cliente, "estado", $$v)
                                         },
-                                        expression: "endereco.estado",
+                                        expression: "cliente.estado",
                                       },
                                     }),
                                   ]
@@ -1448,15 +1621,15 @@ var render = function () {
                                         solo: "",
                                       },
                                       model: {
-                                        value: _vm.endereco.complemento,
+                                        value: _vm.cliente.complemento,
                                         callback: function ($$v) {
                                           _vm.$set(
-                                            _vm.endereco,
+                                            _vm.cliente,
                                             "complemento",
                                             $$v
                                           )
                                         },
-                                        expression: "endereco.complemento",
+                                        expression: "cliente.complemento",
                                       },
                                     }),
                                   ]
@@ -1501,11 +1674,11 @@ var render = function () {
                                         solo: "",
                                       },
                                       model: {
-                                        value: _vm.endereco.cep,
+                                        value: _vm.cliente.cep,
                                         callback: function ($$v) {
-                                          _vm.$set(_vm.endereco, "cep", $$v)
+                                          _vm.$set(_vm.cliente, "cep", $$v)
                                         },
-                                        expression: "endereco.cep",
+                                        expression: "cliente.cep",
                                       },
                                     }),
                                   ]
@@ -1586,431 +1759,780 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "form",
-    { staticClass: "cadastro__form", attrs: { method: "POST" } },
-    [
-      _c("p", { staticClass: "cadastro__form--title" }, [
-        _vm._v(
-          "\n        " +
-            _vm._s(
-              _vm.$route.name === "Editar Cliente" ? "Editar" : "Cadastrar"
-            ) +
-            "\n        Cliente\n    "
-        ),
-      ]),
-      _vm._v(" "),
-      _c("validation-observer", {
-        staticClass: "cadastro__form--inputs",
-        scopedSlots: _vm._u([
-          {
-            key: "default",
-            fn: function (ref) {
-              var invalid = ref.invalid
-              return [
-                _c("div", [
-                  _c("p", { staticClass: "cadastro__section--title" }, [
-                    _vm._v("Dados Pessoais"),
+  return _c("div", [
+    _c(
+      "form",
+      {
+        staticClass: "cadastro__form",
+        attrs: { "data-app": true, method: "POST" },
+        on: {
+          submit: function ($event) {
+            $event.stopPropagation()
+            $event.preventDefault()
+            return _vm.updateCliente()
+          },
+        },
+      },
+      [
+        _c("p", { staticClass: "cadastro__form--title" }, [
+          _vm._v(
+            "\n        " +
+              _vm._s(
+                _vm.$route.name === "Editar Cliente" ? "Editar" : "Cadastrar"
+              ) +
+              "\n        Cliente\n    "
+          ),
+        ]),
+        _vm._v(" "),
+        _c("validation-observer", {
+          staticClass: "cadastro__form--inputs",
+          scopedSlots: _vm._u([
+            {
+              key: "default",
+              fn: function (ref) {
+                var invalid = ref.invalid
+                return [
+                  _c("div", [
+                    _c("p", { staticClass: "cadastro__section--title" }, [
+                      _vm._v("Dados Pessoais"),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "cadastro__grid" }, [
+                      _c(
+                        "div",
+                        { staticClass: "cadastro__grid--7" },
+                        [
+                          _c("validation-provider", {
+                            attrs: { name: "Name", rules: "required|max:10" },
+                            scopedSlots: _vm._u(
+                              [
+                                {
+                                  key: "default",
+                                  fn: function (ref) {
+                                    var errors = ref.errors
+                                    return [
+                                      _c("v-text-field", {
+                                        staticClass: "cadastro__input",
+                                        attrs: {
+                                          "error-messages": errors,
+                                          placeholder: "Nome....",
+                                          required: "",
+                                          solo: "",
+                                        },
+                                        model: {
+                                          value: _vm.cliente.nome,
+                                          callback: function ($$v) {
+                                            _vm.$set(_vm.cliente, "nome", $$v)
+                                          },
+                                          expression: "cliente.nome",
+                                        },
+                                      }),
+                                    ]
+                                  },
+                                },
+                              ],
+                              null,
+                              true
+                            ),
+                          }),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "cadastro__grid--5" },
+                        [
+                          _c("validation-provider", {
+                            attrs: { name: "Name", rules: "required|max:10" },
+                            scopedSlots: _vm._u(
+                              [
+                                {
+                                  key: "default",
+                                  fn: function (ref) {
+                                    var errors = ref.errors
+                                    return [
+                                      _c("v-text-field", {
+                                        staticClass: "cadastro__input",
+                                        attrs: {
+                                          "error-messages": errors,
+                                          placeholder: "Sobrenome....",
+                                          required: "",
+                                          solo: "",
+                                        },
+                                        model: {
+                                          value: _vm.cliente.sobrenome,
+                                          callback: function ($$v) {
+                                            _vm.$set(
+                                              _vm.cliente,
+                                              "sobrenome",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "cliente.sobrenome",
+                                        },
+                                      }),
+                                    ]
+                                  },
+                                },
+                              ],
+                              null,
+                              true
+                            ),
+                          }),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "cadastro__grid--4" },
+                        [
+                          _c("validation-provider", {
+                            attrs: { rules: "required" },
+                            scopedSlots: _vm._u(
+                              [
+                                {
+                                  key: "default",
+                                  fn: function (ref) {
+                                    var errors = ref.errors
+                                    return [
+                                      _c("v-select", {
+                                        staticClass: "cadastro__input",
+                                        attrs: {
+                                          color: "#ffffff",
+                                          dark: "",
+                                          dense: "",
+                                          "error-messages": errors,
+                                          items: _vm.generosDisponiveis,
+                                          label: "Genero",
+                                        },
+                                        model: {
+                                          value: _vm.cliente.genero,
+                                          callback: function ($$v) {
+                                            _vm.$set(_vm.cliente, "genero", $$v)
+                                          },
+                                          expression: "cliente.genero",
+                                        },
+                                      }),
+                                    ]
+                                  },
+                                },
+                              ],
+                              null,
+                              true
+                            ),
+                          }),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "cadastro__grid--4" },
+                        [
+                          _c("validation-provider", {
+                            attrs: { rules: "required" },
+                            scopedSlots: _vm._u(
+                              [
+                                {
+                                  key: "default",
+                                  fn: function (ref) {
+                                    var errors = ref.errors
+                                    return [
+                                      _c("v-text-field", {
+                                        directives: [
+                                          {
+                                            name: "mask",
+                                            rawName: "v-mask",
+                                            value: "##-##-####",
+                                            expression: "'##-##-####'",
+                                          },
+                                        ],
+                                        staticClass: "cadastro__input",
+                                        attrs: {
+                                          "error-messages": errors,
+                                          placeholder: "Data de Nascimento",
+                                          required: "",
+                                          solo: "",
+                                        },
+                                        model: {
+                                          value: _vm.cliente.dataNascimento,
+                                          callback: function ($$v) {
+                                            _vm.$set(
+                                              _vm.cliente,
+                                              "dataNascimento",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "cliente.dataNascimento",
+                                        },
+                                      }),
+                                    ]
+                                  },
+                                },
+                              ],
+                              null,
+                              true
+                            ),
+                          }),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "cadastro__grid--4" },
+                        [
+                          _c("validation-provider", {
+                            attrs: { rules: "required" },
+                            scopedSlots: _vm._u(
+                              [
+                                {
+                                  key: "default",
+                                  fn: function (ref) {
+                                    var errors = ref.errors
+                                    return [
+                                      _c("v-text-field", {
+                                        directives: [
+                                          {
+                                            name: "mask",
+                                            rawName: "v-mask",
+                                            value: "###.###.###-##",
+                                            expression: "'###.###.###-##'",
+                                          },
+                                        ],
+                                        staticClass: "cadastro__input",
+                                        attrs: {
+                                          "error-messages": errors,
+                                          placeholder: "CPF.....",
+                                          required: "",
+                                          solo: "",
+                                        },
+                                        model: {
+                                          value: _vm.cliente.cpf,
+                                          callback: function ($$v) {
+                                            _vm.$set(_vm.cliente, "cpf", $$v)
+                                          },
+                                          expression: "cliente.cpf",
+                                        },
+                                      }),
+                                    ]
+                                  },
+                                },
+                              ],
+                              null,
+                              true
+                            ),
+                          }),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "cadastro__grid--4" },
+                        [
+                          _c("validation-provider", {
+                            attrs: { rules: "required" },
+                            scopedSlots: _vm._u(
+                              [
+                                {
+                                  key: "default",
+                                  fn: function (ref) {
+                                    var errors = ref.errors
+                                    return [
+                                      _c("v-text-field", {
+                                        staticClass: "cadastro__input",
+                                        attrs: {
+                                          "error-messages": errors,
+                                          placeholder: "Senha...",
+                                          required: "",
+                                          solo: "",
+                                        },
+                                        model: {
+                                          value: _vm.cliente.password,
+                                          callback: function ($$v) {
+                                            _vm.$set(
+                                              _vm.cliente,
+                                              "password",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "cliente.password",
+                                        },
+                                      }),
+                                    ]
+                                  },
+                                },
+                              ],
+                              null,
+                              true
+                            ),
+                          }),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "cadastro__grid--4" },
+                        [
+                          _c("validation-provider", {
+                            attrs: { rules: "required" },
+                            scopedSlots: _vm._u(
+                              [
+                                {
+                                  key: "default",
+                                  fn: function (ref) {
+                                    var errors = ref.errors
+                                    return [
+                                      _c("v-select", {
+                                        staticClass: "cadastro__input",
+                                        attrs: {
+                                          dark: "",
+                                          dense: "",
+                                          "error-messages": errors,
+                                          label: "Planos",
+                                          items: _vm.planos,
+                                        },
+                                        model: {
+                                          value: _vm.cliente.plano,
+                                          callback: function ($$v) {
+                                            _vm.$set(_vm.cliente, "plano", $$v)
+                                          },
+                                          expression: "cliente.plano",
+                                        },
+                                      }),
+                                    ]
+                                  },
+                                },
+                              ],
+                              null,
+                              true
+                            ),
+                          }),
+                        ],
+                        1
+                      ),
+                    ]),
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "cadastro__grid" }, [
-                    _c(
-                      "div",
-                      { staticClass: "cadastro__grid--7" },
-                      [
-                        _c("validation-provider", {
-                          attrs: { name: "Name", rules: "required|max:10" },
-                          scopedSlots: _vm._u(
-                            [
-                              {
-                                key: "default",
-                                fn: function (ref) {
-                                  var errors = ref.errors
-                                  return [
-                                    _c("v-text-field", {
-                                      staticClass: "cadastro__input",
-                                      attrs: {
-                                        "error-messages": errors,
-                                        placeholder: "Nome....",
-                                        required: "",
-                                        solo: "",
-                                      },
-                                      model: {
-                                        value: _vm.cliente.nome,
-                                        callback: function ($$v) {
-                                          _vm.$set(_vm.cliente, "nome", $$v)
-                                        },
-                                        expression: "cliente.nome",
-                                      },
-                                    }),
-                                  ]
-                                },
-                              },
-                            ],
-                            null,
-                            true
-                          ),
-                        }),
-                      ],
-                      1
-                    ),
+                  _c("div", [
+                    _c("p", { staticClass: "cadastro__section--title" }, [
+                      _vm._v("Dados de Contato"),
+                    ]),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "cadastro__grid--5" },
-                      [
-                        _c("validation-provider", {
-                          attrs: { name: "Name", rules: "required|max:10" },
-                          scopedSlots: _vm._u(
-                            [
-                              {
-                                key: "default",
-                                fn: function (ref) {
-                                  var errors = ref.errors
-                                  return [
-                                    _c("v-text-field", {
-                                      staticClass: "cadastro__input",
-                                      attrs: {
-                                        "error-messages": errors,
-                                        placeholder: "Sobrenome....",
-                                        required: "",
-                                        solo: "",
-                                      },
-                                      model: {
-                                        value: _vm.cliente.sobrenome,
-                                        callback: function ($$v) {
-                                          _vm.$set(
-                                            _vm.cliente,
-                                            "sobrenome",
-                                            $$v
-                                          )
+                    _c("div", { staticClass: "cadastro__grid" }, [
+                      _c(
+                        "div",
+                        { staticClass: "cadastro__grid--6" },
+                        [
+                          _c("validation-provider", {
+                            attrs: { rules: "required" },
+                            scopedSlots: _vm._u(
+                              [
+                                {
+                                  key: "default",
+                                  fn: function (ref) {
+                                    var errors = ref.errors
+                                    return [
+                                      _c("v-text-field", {
+                                        directives: [
+                                          {
+                                            name: "mask",
+                                            rawName: "v-mask",
+                                            value: "(##)#####-####",
+                                            expression: "'(##)#####-####'",
+                                          },
+                                        ],
+                                        staticClass: "cadastro__input",
+                                        attrs: {
+                                          "error-messages": errors,
+                                          placeholder: "Telefone.....",
+                                          required: "",
+                                          solo: "",
                                         },
-                                        expression: "cliente.sobrenome",
-                                      },
-                                    }),
-                                  ]
-                                },
-                              },
-                            ],
-                            null,
-                            true
-                          ),
-                        }),
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "cadastro__grid--4" },
-                      [
-                        _c(
-                          "validation-provider",
-                          { attrs: { rules: "required" } },
-                          [
-                            _c("v-select", {
-                              staticClass: "cadastro__input",
-                              attrs: {
-                                color: "#ffffff",
-                                dark: "",
-                                dense: "",
-                                items: _vm.generosDisponiveis,
-                                label: "Genero",
-                              },
-                              model: {
-                                value: _vm.cliente.genero,
-                                callback: function ($$v) {
-                                  _vm.$set(_vm.cliente, "genero", $$v)
-                                },
-                                expression: "cliente.genero",
-                              },
-                            }),
-                          ],
-                          1
-                        ),
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "cadastro__grid--4" },
-                      [
-                        _c("validation-provider", {
-                          attrs: { rules: "required" },
-                          scopedSlots: _vm._u(
-                            [
-                              {
-                                key: "default",
-                                fn: function (ref) {
-                                  var errors = ref.errors
-                                  return [
-                                    _c("v-text-field", {
-                                      directives: [
-                                        {
-                                          name: "mask",
-                                          rawName: "v-mask",
-                                          value: "##-##-####",
-                                          expression: "'##-##-####'",
+                                        model: {
+                                          value: _vm.cliente.telefone,
+                                          callback: function ($$v) {
+                                            _vm.$set(
+                                              _vm.cliente,
+                                              "telefone",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "cliente.telefone",
                                         },
-                                      ],
-                                      staticClass: "cadastro__input",
-                                      attrs: {
-                                        "error-messages": errors,
-                                        placeholder: "Data de Nascimento",
-                                        required: "",
-                                        solo: "",
-                                      },
-                                      model: {
-                                        value: _vm.cliente.dataNascimento,
-                                        callback: function ($$v) {
-                                          _vm.$set(
-                                            _vm.cliente,
-                                            "dataNascimento",
-                                            $$v
-                                          )
-                                        },
-                                        expression: "cliente.dataNascimento",
-                                      },
-                                    }),
-                                  ]
+                                      }),
+                                    ]
+                                  },
                                 },
-                              },
-                            ],
-                            null,
-                            true
-                          ),
-                        }),
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "cadastro__grid--4" },
-                      [
-                        _c("validation-provider", {
-                          attrs: { rules: "required" },
-                          scopedSlots: _vm._u(
-                            [
-                              {
-                                key: "default",
-                                fn: function (ref) {
-                                  var errors = ref.errors
-                                  return [
-                                    _c("v-text-field", {
-                                      directives: [
-                                        {
-                                          name: "mask",
-                                          rawName: "v-mask",
-                                          value: "###.###.###-##",
-                                          expression: "'###.###.###-##'",
+                              ],
+                              null,
+                              true
+                            ),
+                          }),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "cadastro__grid--6" },
+                        [
+                          _c("validation-provider", {
+                            attrs: { rules: "required|email" },
+                            scopedSlots: _vm._u(
+                              [
+                                {
+                                  key: "default",
+                                  fn: function (ref) {
+                                    var errors = ref.errors
+                                    return [
+                                      _c("v-text-field", {
+                                        staticClass: "cadastro__input",
+                                        attrs: {
+                                          type: "email",
+                                          "error-messages": errors,
+                                          placeholder: "email....",
+                                          required: "",
+                                          solo: "",
                                         },
-                                      ],
-                                      staticClass: "cadastro__input",
-                                      attrs: {
-                                        "error-messages": errors,
-                                        placeholder: "CPF.....",
-                                        required: "",
-                                        solo: "",
-                                      },
-                                      model: {
-                                        value: _vm.cliente.cpf,
-                                        callback: function ($$v) {
-                                          _vm.$set(_vm.cliente, "cpf", $$v)
+                                        model: {
+                                          value: _vm.cliente.email,
+                                          callback: function ($$v) {
+                                            _vm.$set(_vm.cliente, "email", $$v)
+                                          },
+                                          expression: "cliente.email",
                                         },
-                                        expression: "cliente.cpf",
-                                      },
-                                    }),
-                                  ]
+                                      }),
+                                    ]
+                                  },
                                 },
-                              },
-                            ],
-                            null,
-                            true
-                          ),
-                        }),
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "cadastro__grid--4" },
-                      [
-                        _c(
-                          "validation-provider",
-                          { attrs: { rules: "required" } },
-                          [
-                            _c("v-select", {
-                              staticClass: "cadastro__input",
-                              attrs: {
-                                dark: "",
-                                dense: "",
-                                label: "Planos",
-                                items: _vm.planos,
-                              },
-                              model: {
-                                value: _vm.cliente.plano,
-                                callback: function ($$v) {
-                                  _vm.$set(_vm.cliente, "plano", $$v)
-                                },
-                                expression: "cliente.plano",
-                              },
-                            }),
-                          ],
-                          1
-                        ),
-                      ],
-                      1
-                    ),
-                  ]),
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c("p", { staticClass: "cadastro__section--title" }, [
-                    _vm._v("Dados de Contato"),
+                              ],
+                              null,
+                              true
+                            ),
+                          }),
+                        ],
+                        1
+                      ),
+                    ]),
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "cadastro__grid" }, [
-                    _c(
-                      "div",
-                      { staticClass: "cadastro__grid--6" },
-                      [
-                        _c("validation-provider", {
-                          attrs: { rules: "required" },
-                          scopedSlots: _vm._u(
-                            [
-                              {
-                                key: "default",
-                                fn: function (ref) {
-                                  var errors = ref.errors
-                                  return [
-                                    _c("v-text-field", {
-                                      directives: [
-                                        {
-                                          name: "mask",
-                                          rawName: "v-mask",
-                                          value: "(##)#####-####",
-                                          expression: "'(##)#####-####'",
-                                        },
-                                      ],
-                                      staticClass: "cadastro__input",
-                                      attrs: {
-                                        "error-messages": errors,
-                                        placeholder: "Telefone.....",
-                                        required: "",
-                                        solo: "",
-                                      },
-                                      model: {
-                                        value: _vm.cliente.telefone,
-                                        callback: function ($$v) {
-                                          _vm.$set(_vm.cliente, "telefone", $$v)
-                                        },
-                                        expression: "cliente.telefone",
-                                      },
-                                    }),
-                                  ]
-                                },
-                              },
-                            ],
-                            null,
-                            true
-                          ),
-                        }),
-                      ],
-                      1
-                    ),
+                  _c("div", [
+                    _c("p", { staticClass: "cadastro__section--title" }, [
+                      _vm._v("Endereço"),
+                    ]),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "cadastro__grid--6" },
-                      [
-                        _c("validation-provider", {
-                          attrs: { rules: "required|email" },
-                          scopedSlots: _vm._u(
-                            [
-                              {
-                                key: "default",
-                                fn: function (ref) {
-                                  var errors = ref.errors
-                                  return [
-                                    _c("v-text-field", {
-                                      staticClass: "cadastro__input",
-                                      attrs: {
-                                        type: "email",
-                                        "error-messages": errors,
-                                        placeholder: "email....",
-                                        required: "",
-                                        solo: "",
-                                      },
-                                      model: {
-                                        value: _vm.cliente.email,
-                                        callback: function ($$v) {
-                                          _vm.$set(_vm.cliente, "email", $$v)
+                    _c("div", { staticClass: "cadastro__grid" }, [
+                      _c(
+                        "div",
+                        { staticClass: "cadastro__grid--10" },
+                        [
+                          _c("validation-provider", {
+                            attrs: { rules: "required" },
+                            scopedSlots: _vm._u(
+                              [
+                                {
+                                  key: "default",
+                                  fn: function (ref) {
+                                    var errors = ref.errors
+                                    return [
+                                      _c("v-text-field", {
+                                        staticClass: "cadastro__input",
+                                        attrs: {
+                                          "error-messages": errors,
+                                          placeholder: "Rua....",
+                                          required: "",
+                                          solo: "",
                                         },
-                                        expression: "cliente.email",
-                                      },
-                                    }),
-                                  ]
+                                        model: {
+                                          value: _vm.cliente.rua,
+                                          callback: function ($$v) {
+                                            _vm.$set(_vm.cliente, "rua", $$v)
+                                          },
+                                          expression: "cliente.rua",
+                                        },
+                                      }),
+                                    ]
+                                  },
                                 },
-                              },
-                            ],
-                            null,
-                            true
-                          ),
-                        }),
-                      ],
-                      1
-                    ),
+                              ],
+                              null,
+                              true
+                            ),
+                          }),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "cadastro__grid--2" },
+                        [
+                          _c("validation-provider", {
+                            attrs: { rules: "required" },
+                            scopedSlots: _vm._u(
+                              [
+                                {
+                                  key: "default",
+                                  fn: function (ref) {
+                                    var errors = ref.errors
+                                    return [
+                                      _c("v-text-field", {
+                                        staticClass: "cadastro__input",
+                                        attrs: {
+                                          "error-messages": errors,
+                                          placeholder: "Numero......",
+                                          required: "",
+                                          solo: "",
+                                        },
+                                        model: {
+                                          value: _vm.cliente.casaNumero,
+                                          callback: function ($$v) {
+                                            _vm.$set(
+                                              _vm.cliente,
+                                              "casaNumero",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "cliente.casaNumero",
+                                        },
+                                      }),
+                                    ]
+                                  },
+                                },
+                              ],
+                              null,
+                              true
+                            ),
+                          }),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "cadastro__grid--3" },
+                        [
+                          _c("validation-provider", {
+                            attrs: { rules: "required" },
+                            scopedSlots: _vm._u(
+                              [
+                                {
+                                  key: "default",
+                                  fn: function (ref) {
+                                    var errors = ref.errors
+                                    return [
+                                      _c("v-text-field", {
+                                        staticClass: "cadastro__input",
+                                        attrs: {
+                                          "error-messages": errors,
+                                          placeholder: "Cidade....",
+                                          required: "",
+                                          solo: "",
+                                        },
+                                        model: {
+                                          value: _vm.cliente.cidade,
+                                          callback: function ($$v) {
+                                            _vm.$set(_vm.cliente, "cidade", $$v)
+                                          },
+                                          expression: "cliente.cidade",
+                                        },
+                                      }),
+                                    ]
+                                  },
+                                },
+                              ],
+                              null,
+                              true
+                            ),
+                          }),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "cadastro__grid--3" },
+                        [
+                          _c("validation-provider", {
+                            attrs: { rules: "required" },
+                            scopedSlots: _vm._u(
+                              [
+                                {
+                                  key: "default",
+                                  fn: function (ref) {
+                                    var errors = ref.errors
+                                    return [
+                                      _c("v-text-field", {
+                                        staticClass: "cadastro__input",
+                                        attrs: {
+                                          "error-messages": errors,
+                                          placeholder: "Estado.....",
+                                          required: "",
+                                          solo: "",
+                                        },
+                                        model: {
+                                          value: _vm.cliente.estado,
+                                          callback: function ($$v) {
+                                            _vm.$set(_vm.cliente, "estado", $$v)
+                                          },
+                                          expression: "cliente.estado",
+                                        },
+                                      }),
+                                    ]
+                                  },
+                                },
+                              ],
+                              null,
+                              true
+                            ),
+                          }),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "cadastro__grid--3" },
+                        [
+                          _c("validation-provider", {
+                            attrs: { rules: "required" },
+                            scopedSlots: _vm._u(
+                              [
+                                {
+                                  key: "default",
+                                  fn: function (ref) {
+                                    var errors = ref.errors
+                                    return [
+                                      _c("v-text-field", {
+                                        staticClass: "cadastro__input",
+                                        attrs: {
+                                          "error-messages": errors,
+                                          placeholder: "Complemento....",
+                                          required: "",
+                                          solo: "",
+                                        },
+                                        model: {
+                                          value: _vm.cliente.complemento,
+                                          callback: function ($$v) {
+                                            _vm.$set(
+                                              _vm.cliente,
+                                              "complemento",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "cliente.complemento",
+                                        },
+                                      }),
+                                    ]
+                                  },
+                                },
+                              ],
+                              null,
+                              true
+                            ),
+                          }),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "cadastro__grid--3" },
+                        [
+                          _c("validation-provider", {
+                            attrs: { rules: "required" },
+                            scopedSlots: _vm._u(
+                              [
+                                {
+                                  key: "default",
+                                  fn: function (ref) {
+                                    var errors = ref.errors
+                                    return [
+                                      _c("v-text-field", {
+                                        directives: [
+                                          {
+                                            name: "mask",
+                                            rawName: "v-mask",
+                                            value: "#####-###",
+                                            expression: "'#####-###'",
+                                          },
+                                        ],
+                                        staticClass: "cadastro__input",
+                                        attrs: {
+                                          "error-messages": errors,
+                                          placeholder: "CEP",
+                                          required: "",
+                                          solo: "",
+                                        },
+                                        model: {
+                                          value: _vm.cliente.cep,
+                                          callback: function ($$v) {
+                                            _vm.$set(_vm.cliente, "cep", $$v)
+                                          },
+                                          expression: "cliente.cep",
+                                        },
+                                      }),
+                                    ]
+                                  },
+                                },
+                              ],
+                              null,
+                              true
+                            ),
+                          }),
+                        ],
+                        1
+                      ),
+                    ]),
                   ]),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "cadastro__btn" },
-                  [
-                    _c(
-                      "v-btn",
-                      {
-                        staticClass: "cadastro__btn--button",
-                        attrs: {
-                          disabled: invalid,
-                          "min-width": "180",
-                          "min-height": "50",
-                          color: "#f72585",
-                        },
-                        on: {
-                          click: function ($event) {
-                            return _vm.updatePost()
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "cadastro__btn" },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "cadastro__btn--button",
+                          attrs: {
+                            disabled: invalid,
+                            "min-width": "180",
+                            "min-height": "50",
+                            color: "#f72585",
+                            type: "submit",
                           },
                         },
-                      },
-                      [
-                        _c("p", { staticClass: "cadastro__btn--cadastrar" }, [
-                          _vm._v(
-                            "\n                    " +
-                              _vm._s(
-                                _vm.$route.name === "Editar Cliente"
-                                  ? "Editar"
-                                  : "Cadastrar"
-                              ) +
-                              "\n                    Cliente\n                "
-                          ),
-                        ]),
-                      ]
-                    ),
-                  ],
-                  1
-                ),
-              ]
+                        [
+                          _c("p", { staticClass: "cadastro__btn--cadastrar" }, [
+                            _vm._v(
+                              "\n                    " +
+                                _vm._s(
+                                  _vm.$route.name === "Editar Cliente"
+                                    ? "Editar"
+                                    : "Cadastrar"
+                                ) +
+                                "\n                    Cliente\n                "
+                            ),
+                          ]),
+                        ]
+                      ),
+                    ],
+                    1
+                  ),
+                ]
+              },
             },
-          },
-        ]),
-      }),
-    ],
-    1
-  )
+          ]),
+        }),
+      ],
+      1
+    ),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

@@ -16,7 +16,7 @@
                     class="tabela__busca"
                 ></v-text-field>
             </v-card-title>
-            {{coisas}}
+            {{ coisas }}
             <v-data-table
                 loading
                 loading-text="Carregando......Aguarde"
@@ -76,7 +76,7 @@
 
 <script>
 import { mdiMagnify, mdiYahoo } from "@mdi/js";
-import mapGetters from 'vuex';
+import mapGetters from "vuex";
 import ModalClientes from "../components/modalClientes.vue";
 export default {
     components: { ModalClientes },
@@ -113,11 +113,6 @@ export default {
             },
         };
     },
-    computed:{
-        coisas(){
-            return this.$store.state
-        }
-    },
     methods: {
         deletarCliente(id) {
             this.$swal({
@@ -127,7 +122,7 @@ export default {
                 denyButtonText: `Não Deletar`,
             }).then((result) => {
                 if (result.isConfirmed) {
-                    this.axios
+                    this.$axios
                         .delete(`cliente/delete/${id}`)
                         .then((response) => {
                             let i = this.clientes
@@ -146,23 +141,32 @@ export default {
             });
         },
     },
-   async mounted() {
-       await this.$axios.get("cliente/get").then((response) => {
-            this.clientes = response.data;
-        });
-        
+    async mounted() {
+       try{
+        await this.$axios
+            .get("cliente/get")
+            .then((response) => {
+                this.clientes = response.data;
+
+                console.log(response)
+            });
+
         let token = localStorage.getItem("myauth_token");
-            await this.$axios
-                .get("/user", {
-                    headers: { Authorization: "Bearer " + token },
-                })
-                .then((response) => {
-                    console.log(response);
-                    this.$store.commit('verificarGerente',{
-                        gerente: response.data.gerente,
-                        token: localStorage.getItem('myauth_token')
-                    })
+         await this.$axios
+            .get("/user", {
+                headers: { Authorization: "Bearer " + token },
+            })
+            .then((response) => {
+                console.log(response);
+                this.$store.commit("verificarGerente", {
+                    gerente: response.data.gerente,
+                    token: localStorage.getItem("myauth_token"),
+                    nome: response.data.name
                 });
+            });
+       }catch(error){
+        console.log(error)
+       }
     },
 };
 </script>

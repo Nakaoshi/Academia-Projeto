@@ -28,9 +28,15 @@ class FuncionarioFactory extends Factory
             'cargo' => $this->faker->jobTitle(30),
             'password'=>$this->faker->password(),
             'gerente' => false,
-            'salario' => $this->faker->randomDigitNot(5),
-            'telefone' => sprintf('(0%s) %s', $faker->areaCode, $faker->landline),
+            'salario' => $this->faker->randomNumber(5,true),
+            'telefone' => $faker->cellphoneNumber(),
             'email' => $this->faker->email(),
+            'rua'=>$this->faker->address(),
+            'casaNumero'=>$this->faker->buildingNumber(),
+            'cidade'=>$this->faker->city(),
+            'estado'=>$this->faker->state(),
+            'complemento'=>$this->faker->streetAddress(),
+            'cep'=>$this->faker->randomNumber(8, true)
 
         ];
     }

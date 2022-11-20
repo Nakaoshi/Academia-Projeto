@@ -1,29 +1,34 @@
 <template>
-    <div class="cadastro">
-        <form class="cadastro__form" @submit.prevent="EnviarDados()">
+    <div>
+        <form class="cadastro__form" @submit.prevent="updateFuncionario()" :data-app="true">
             <p class="cadastro__form--title">
                 {{
-                    $route.name === "Editar Cliente" ? "Editar" : "Cadastrar"
+                    $route.name === "Editar Funcionario"
+                        ? "Editar"
+                        : "Cadastrar"
                 }}
-                Fornecedores
+                Funcionario
             </p>
-            <validation-observer class="cadastro__form--inputs" v-slot="{ invalid }">
+            <validation-observer
+                class="cadastro__form--inputs"
+                v-slot="{ invalid }"
+            >
                 <!-- dados pessoais -->
                 <div>
-                    <p class="cadastro__section--title">Dados Gerais</p>
+                    <p class="cadastro__section--title">Dados Pessoais</p>
                     <div class="cadastro__grid">
-                        <!-- INPUT FANTASIA  -->
-                        <div class="cadastro__grid--6">
+                        <!-- INPUT DO NOME  -->
+                        <div class="cadastro__grid--7">
                             <validation-provider
                                 v-slot="{ errors }"
-                                name="fantasia"
-                                rules="required"
+                                name="Name"
+                                rules="required|max:10"
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="fornecedor.nomeFantasia"
+                                    v-model="funcionario.nome"
                                     :error-messages="errors"
-                                    placeholder="Fantasia...."
+                                    label="Nome...."
                                     required
                                     solo
                                 >
@@ -31,43 +36,113 @@
                             </validation-provider>
                         </div>
 
-                        <!-- INPUT DA RAZAO SOCIAL  -->
-
-                        <div class="cadastro__grid--6">
+                        <!-- INPUT DO SALARIO  -->
+                        <div class="cadastro__grid--5">
                             <validation-provider
                                 v-slot="{ errors }"
-                                name="Razão Social"
+                                name="Name"
                                 rules="required"
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="fornecedor.razaoSocial"
+                                    v-model="funcionario.sobrenome"
                                     :error-messages="errors"
-                                    placeholder="Razão Social....."
+                                    label="Sobrenome...."
                                     required
                                     solo
                                 ></v-text-field>
                             </validation-provider>
                         </div>
 
-                        <!-- INPUT CNPJ  -->
-                        <div class="cadastro__grid--4">
+                        <!-- INPUT DO CPF  -->
+                        <div class="cadastro__grid--5">
                             <validation-provider
                                 v-slot="{ errors }"
-                                rules="required|max:18"
+                                rules="required"
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-mask="'##.###.###/####-##'"
-                                    v-model="fornecedor.cnpj"
+                                    v-mask="'###.###.###-##'"
+                                    v-model="funcionario.cpf"
                                     :error-messages="errors"
-                                    placeholder="CNPJ....."
+                                    label="CPF...."
+                                    required
+                                    solo
+                                ></v-text-field>
+                            </validation-provider>
+                        </div>
+
+
+                        <!-- INPUT CARGO -->
+                        <div class="cadastro__grid--6">
+                            <validation-provider
+                                v-slot="{ errors }"
+                                rules="required"
+                            >
+                                <v-text-field
+                                    class="cadastro__input"
+                                    v-model="funcionario.cargo"
+                                    :error-messages="errors"
+                                    label="Cargo....."
+                                    required
+                                    solo
+                                ></v-text-field>
+                            </validation-provider>
+                        </div>
+
+                        <!-- INPUT SALARIO -->
+                        <div class="cadastro__grid--6">
+                            <validation-provider
+                                v-slot="{ errors }"
+                                rules="required"
+                            >
+                                <v-text-field
+                                    class="cadastro__input"
+                                    v-model="funcionario.salario"
+                                    :error-messages="errors"
+                                    label="Salário....."
+                                    required
+                                    solo
+                                ></v-text-field>
+                            </validation-provider>
+                        </div>
+
+                        <!-- INPUT senha -->
+                        <div class="cadastro__grid--6">
+                            <validation-provider
+                                v-slot="{ errors }"
+                                rules="required"
+                            >
+                                <v-text-field
+                                    class="cadastro__input"
+                                    v-model="funcionario.password"
+                                    :error-messages="errors"
+                                    label="Senha....."
                                     required
                                     solo
                                 ></v-text-field>
                             </validation-provider>
                         </div>
                     </div>
+                    
+                        <!-- SELECT DO GENERO  -->
+                        <div class="cadastro__grid--2">
+                            <validation-provider
+                                v-slot="{ errors }"
+                                rules="required"
+                            >
+                                <v-select
+                                    color="#ffffff"
+                                    dark
+                                    dense
+                                    class="cadastro__input"
+                                    :error-messages="errors"
+                                    :items="generosDisponiveis"
+                                    v-model="funcionario.genero"
+                                    label="Genero"
+                                ></v-select>
+                            </validation-provider>
+                        </div>
                 </div>
 
                 <!-- dados de contato -->
@@ -83,9 +158,9 @@
                                 <v-text-field
                                     class="cadastro__input"
                                     v-mask="'(##)#####-####'"
-                                    v-model="fornecedor.telefone"
+                                    v-model="funcionario.telefone"
                                     :error-messages="errors"
-                                    placeholder="Telefone....."
+                                    label="Telefone....."
                                     required
                                     solo
                                 >
@@ -100,9 +175,9 @@
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="fornecedor.email"
+                                    v-model="funcionario.email"
                                     :error-messages="errors"
-                                    placeholder="email...."
+                                    label="email...."
                                     required
                                     solo
                                 >
@@ -124,9 +199,9 @@
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="fornecedor.rua"
+                                    v-model="funcionario.rua"
                                     :error-messages="errors"
-                                    placeholder="Rua...."
+                                    label="Rua...."
                                     required
                                     solo
                                 >
@@ -138,12 +213,13 @@
                             <validation-provider
                                 v-slot="{ errors }"
                                 rules="required"
+                                name="numeroCasa"
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="fornecedor.casaNumero"
+                                    v-model="funcionario.casaNumero"
                                     :error-messages="errors"
-                                    placeholder="Numero......"
+                                    label="Numero......"
                                     required
                                     solo
                                 >
@@ -156,12 +232,13 @@
                             <validation-provider
                                 v-slot="{ errors }"
                                 rules="required"
+                                name="cidade"
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="fornecedor.cidade"
+                                    v-model="funcionario.cidade"
                                     :error-messages="errors"
-                                    placeholder="Cidade...."
+                                    label="Cidade...."
                                     required
                                     solo
                                 >
@@ -174,12 +251,13 @@
                             <validation-provider
                                 v-slot="{ errors }"
                                 rules="required"
+                                name="estado"
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="fornecedor.estado"
+                                    v-model="funcionario.estado"
                                     :error-messages="errors"
-                                    placeholder="Estado....."
+                                    label="Estado....."
                                     required
                                     solo
                                 >
@@ -192,12 +270,13 @@
                             <validation-provider
                                 v-slot="{ errors }"
                                 rules="required"
+                                name="complemento"
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="fornecedor.complemento"
+                                    v-model="funcionario.complemento"
                                     :error-messages="errors"
-                                    placeholder="Complemento...."
+                                    label="Complemento...."
                                     required
                                     solo
                                 >
@@ -210,13 +289,14 @@
                             <validation-provider
                                 v-slot="{ errors }"
                                 rules="required"
+                                name="cep"
                             >
                                 <v-text-field
                                     class="cadastro__input"
                                     v-mask="'#####-###'"
-                                    v-model="fornecedor.cep"
+                                    v-model="funcionario.cep"
                                     :error-messages="errors"
-                                    placeholder="CEP"
+                                    label="CEP"
                                     required
                                     solo
                                 >
@@ -227,7 +307,7 @@
                 </div>
 
                 <!-- botao de cadastrar -->
-                <div class="flex justify-end">
+                <div class="flex justify-center">
                     <v-btn
                         :disabled="invalid"
                         min-width="180"
@@ -237,11 +317,11 @@
                     >
                         <p class="cadastro__btn--cadastrar">
                             {{
-                                $route.name === "Editar Cliente"
+                                $route.name === "Editar Funcionario"
                                     ? "Editar"
                                     : "Cadastrar"
                             }}
-                            Fornecedor
+                            Funcionario
                         </p>
                     </v-btn>
                 </div>
@@ -249,6 +329,7 @@
         </form>
     </div>
 </template>
+
 <script>
 import {
     extend,
@@ -256,139 +337,45 @@ import {
     ValidationProvider,
     setInteractionMode,
 } from "vee-validate";
-
+import FormFuncionarios from "./FormFuncionarios.vue";
 export default {
     components: {
         ValidationObserver,
         ValidationProvider,
+        FormFuncionarios,
     },
     data() {
         return {
-            fornecedor: {},
-            endereço: {
-                rua: "",
-                casaNumero: "",
-                cidade: "",
-                estado: "",
-                complemento: "",
-                cep: "",
-            },
+            funcionario: {},
+            generosDisponiveis: ["Homem", "Mulher", "Prefiro Não Declarar"],
         };
     },
+    beforeCreate() {
+        this.axios
+            .get(`funcionario/editar/${this.$route.params.id}`)
+            .then((response) => {
+                this.funcionario = response.data;
+                console.log(response.data);
+            });
+    },
     methods: {
-        EnviarDados() {
+        updateFuncionario() {
             this.$axios
-                .post("fornecedores/create", this.fornecedor)
-                .then(() => {
-                    this.$swal(
-                        "Fornecedor Criado!!",
-                        "Fornecedor foi adicionado a base de dados com sucesso",
-                        "success"
-                    ).then(() => {
-                        this.$router.go();
+                .put(
+                    `funcionario/update/${this.$route.params.id}`,
+                    this.funcionario
+                )
+                .then((response) => {
+                    this.$swal({
+                        title: "Sucesso!!",
+                        text: "funcionario atualizado com sucesso",
+                        icon: "success",
                     });
-                })
-                .catch((error) => {
-                    this.$swal("Erro", `${error}`, "error");
+                    this.$router.push({ name: "RH" });
                 });
         },
     },
 };
 </script>
-<style lang="scss">
-@import "../../../css/app.css";
-@import "../../../sass/variables.scss";
-.cadastro {
-    @apply px-14;
-    background-color: $preto;
-    padding: 1rem;
 
-    //formulario
-    &__form {
-        margin: 1rem;
-        padding: 14px;
-        height: 100vh;
-        background-color: rgba(229, 229, 229, 0.1);
-        border-radius: 18px;
-    }
-    //grid dos inputs
-    &__grid {
-        @apply grid grid-cols-12 gap-4;
-        &--1 {
-            @apply col-span-1;
-            @media screen and (max-width: 768px) {
-                @apply col-span-12;
-            }
-        }
-        &--2 {
-            @apply col-span-2;
-            @media screen and (max-width: 768px) {
-                @apply col-span-12;
-            }
-        }
-        &--3 {
-            @apply col-span-3;
-            @media screen and (max-width: 768px) {
-                @apply col-span-12;
-            }
-        }
-        &--4 {
-            @apply col-span-4;
-            @media screen and (max-width: 768px) {
-                @apply col-span-12;
-            }
-        }
-        &--5 {
-            @apply col-span-5;
-            @media screen and (max-width: 768px) {
-                @apply col-span-12;
-            }
-        }
-        &--6 {
-            @apply col-span-6;
-            @media screen and (max-width: 768px) {
-                @apply col-span-12;
-            }
-        }
-        &--7 {
-            @apply col-span-7;
-            @media screen and (max-width: 768px) {
-                @apply col-span-12;
-            }
-        }
-        &--8 {
-            @apply col-span-8;
-            @media screen and (max-width: 768px) {
-                @apply col-span-12;
-            }
-        }
-        &--9 {
-            @apply col-span-9;
-            @media screen and (max-width: 768px) {
-                @apply col-span-12;
-            }
-        }
-        &--10 {
-            @apply col-span-10;
-            @media screen and (max-width: 768px) {
-                @apply col-span-12;
-            }
-        }
-        &--11 {
-            @apply col-span-11;
-            @media screen and (max-width: 768px) {
-                @apply col-span-12;
-            }
-        }
-        &--12 {
-            @apply col-span-12;
-            @media screen and (max-width: 768px) {
-                @apply col-span-12;
-            }
-        }
-    }
-    @media screen and (max-width: 768px) {
-        @apply px-0;
-    }
-}
-</style>
+<style></style>

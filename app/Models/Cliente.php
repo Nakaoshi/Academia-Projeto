@@ -21,7 +21,18 @@ class Cliente extends Model implements JWTSubject
         'dataNascimento',
         'telefone',
         'email',
-        'plano'
+        'plano',
+        'rua',
+        'casaNumero',
+        'cidade',
+        'estado',
+        'complemento',
+        'cep'
+    ];
+
+    protected $hidden =[
+        'create_at',
+        'updated_at'
     ];
     public function getAuthPassword() {
         return $this->password;

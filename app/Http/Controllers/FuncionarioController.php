@@ -11,22 +11,37 @@ use Illuminate\Validation\ValidationException;
 class FuncionarioController extends Controller
 
 {
-    public function Auth(Request $request){
+    public function AutenticacaoFuncionario(Request $request){
+
         $email = $request->input('email');
-        $password = $request->input('passoword');
+        $password = $request->input('password');
 
         $this->validate($request,[
-            $email => ['required','email'],
-            $password => ['required'],
+            'email' => 'required',
+            'password' => 'required',
         ]);
 
-        if(Auth::attempt(['email'=>$request->input('email'),'password'=>$request->input('password')])){
-            $funcionarios = Auth::user();
-            $token = $funcionarios->createToken('jwt');
-            return response()->json($token, 200);
+       // ---------------------------------------------------------------------------------------------------------------------/
+    // MODO QUE RETORNA USUARIO
+    // ---------------------------------------------------------------------------------------------------------------------/
+
+        if(Auth::attempt(['email'=>$email,'password'=>$password])){
+            $user = Auth::user();
+            $token = $user->createToken('jwt');
+            
+            return response()->json($token->plainTextToken, 200);
         }else{
-            return response()->json('Nao Logou', 404);
-        };
+            return response()->json('Não Logou', 404);
+
+        }
+    }
+
+    public function clientelogout(){
+        Auth::logout();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Usuario deslogado',
+        ]);
     }
 
     public function getFuncionarios()
@@ -47,7 +62,13 @@ class FuncionarioController extends Controller
             'cargo'=> $request->input('cargo'),
             'salario'=> $request->input('salario'),
             'telefone'=> $request->input('telefone'),
-            'email'=> $request->input('email')
+            'email'=> $request->input('email'),
+            'rua'=>$request->input('rua'),
+            'casaNumero'=>$request->input('casaNumero'),
+            'complemento'=>$request->input('cidade'),
+            'cidade'=>$request->input('estado'),
+            'estado'=>$request->input('complemento'),
+            'cep'=>$request->input('cep'),
             
         ]);
         $funcionario->save();
