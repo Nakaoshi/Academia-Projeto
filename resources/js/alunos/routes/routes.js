@@ -7,7 +7,7 @@ const routes = [
     },
     {
         path: "/alunos/inicio",
-        name: "Inicio",
+        name: "Inicio Alunos",
         component: () => import("../view/Perfil.vue"),
     },
     {

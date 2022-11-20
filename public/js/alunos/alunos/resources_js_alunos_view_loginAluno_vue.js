@@ -79,21 +79,35 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      aluno: {
-        email: this.email,
-        senha: this.senha
-      }
+      email: "",
+      password: ""
     };
   },
   methods: {
     submit: function submit() {
       var _this = this;
 
-      this.$axios.post("cliente/Auth", this.aluno).then(function (response) {
-        console.log(response); // localStorage.setItem('myauth_token', response.data)
+      var aluno = {
+        email: this.email,
+        senha: this.senha
+      };
+      this.$axios.post("cliente/cliente", aluno).then(function (response) {
+        console.log(response);
+        localStorage.setItem("myauth_token", response.data);
+      }).then(function () {
+        _this.$router.push({
+          name: "Inicio Alunos"
+        });
       })["catch"](function () {
         _this.$swal("Erro!!", "Usuario Incorreto", "error");
       });
+    }
+  },
+  created: function created() {
+    var token = localStorage.getItem("myauth_token");
+
+    if (token) {
+      localStorage.removeItem("myauth_token");
     }
   }
 });
@@ -322,6 +336,7 @@ var render = function () {
       _c(
         "form",
         {
+          attrs: { method: "POST" },
           on: {
             submit: function ($event) {
               $event.preventDefault()
@@ -421,7 +436,11 @@ var render = function () {
                           staticClass: "btn__login",
                           attrs: { type: "submit", color: "#f72585" },
                         },
-                        [_c("h4", [_vm._v("Acessar")])]
+                        [
+                          _vm._v(
+                            "\n                            Acessar\n                        "
+                          ),
+                        ]
                       ),
                     ],
                     1

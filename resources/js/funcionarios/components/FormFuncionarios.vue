@@ -1,8 +1,12 @@
 <template>
     <div class="cadastro">
-        <form class="cadastro__form">
-            <p class="cadastro__form--title">Cadastro De Clientes</p>
-            <validation-observer class="cadastro__form--inputs">
+        <form class="cadastro__form" @submit.stop.prevent="EnviarDados()">
+            <p class="cadastro__form--title">{{
+                $route.name === "Editar Funcionario" ? "Editar" : "Cadastrar"
+            }}
+             Funcionario</p>
+            <validation-observer class="cadastro__form--inputs" 
+            v-slot="{ invalid }">
                 <!-- dados pessoais -->
                 <div>
                     <p class="cadastro__section--title">Dados Pessoais</p>
@@ -16,7 +20,7 @@
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="funcionario.dadosPessoais.nome"
+                                    v-model="funcionario.nome"
                                     :error-messages="errors"
                                     placeholder="Nome...."
                                     required
@@ -26,18 +30,16 @@
                             </validation-provider>
                         </div>
 
-                        <!-- INPUT DO SOBRENOME  -->
+                        <!-- INPUT DO SALARIO  -->
                         <div class="cadastro__grid--5">
                             <validation-provider
                                 v-slot="{ errors }"
                                 name="Name"
-                                rules="required|max:10"
+                                rules="required"
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="
-                                        funcionario.dadosPessoais.sobrenome
-                                    "
+                                    v-model="funcionario.sobrenome"
                                     :error-messages="errors"
                                     placeholder="Sobrenome...."
                                     required
@@ -46,59 +48,45 @@
                             </validation-provider>
                         </div>
 
+
+                        <!-- INPUT DO CPF  -->
+                        <div class="cadastro__grid--5">
+                            <validation-provider
+                            v-slot="{ errors }"
+                            rules="required"
+                        >
+                                <v-text-field
+                                    class="cadastro__input"
+                                    v-mask="'###.###.###-##'"
+                                    v-model="funcionario.cpf"
+                                    :error-messages="errors"
+                                    placeholder="CPF...."
+                                    required
+                                    solo
+                                ></v-text-field>
+                            </validation-provider>
+                        </div>
+
                         <!-- SELECT DO GENERO  -->
                         <div class="cadastro__grid--4">
-                            <validation-provider rules="required">
+                            <validation-provider
+                            v-slot="{ errors }"
+                            rules="required"
+                        >
                                 <v-select
                                     color="#ffffff"
                                     dark
+                                    dense
                                     class="cadastro__input"
-                                    :items="this.items"
-                                    v-model="funcionario.dadosContato.genero"
+                                    :error-messages="errors"
+                                    :items="generosDisponiveis"
+                                    v-model="funcionario.genero"
                                     label="Genero"
                                 ></v-select>
                             </validation-provider>
                         </div>
 
-                        <!-- INPUT DA DATA DE NASCIMENTO  -->
-
-                        <div class="cadastro__grid--4">
-                            <validation-provider
-                                v-slot="{ errors }"
-                                rules="required"
-                            >
-                                <v-text-field
-                                    class="cadastro__input"
-                                    v-mask="'##/##/####'"
-                                    v-model="
-                                        funcionario.dadosPessoais.nascimento
-                                    "
-                                    :error-messages="errors"
-                                    placeholder="Data de Nascimento"
-                                    required
-                                    solo
-                                ></v-text-field>
-                            </validation-provider>
-                        </div>
-
-                        <!-- INPUT CPF  -->
-                        <div class="cadastro__grid--4">
-                            <validation-provider
-                                v-slot="{ errors }"
-                                rules="required"
-                            >
-                                <v-text-field
-                                    class="cadastro__input"
-                                    v-mask="'###.###.###-##'"
-                                    v-model="funcionario.dadosPessoais.cpf"
-                                    :error-messages="errors"
-                                    placeholder="CPF....."
-                                    required
-                                    solo
-                                ></v-text-field>
-                            </validation-provider>
-                        </div>
-
+                
                         <!-- INPUT CARGO -->
                         <div class="cadastro__grid--6">
                             <validation-provider
@@ -107,7 +95,7 @@
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="funcionario.dadosPessoais.cargo"
+                                    v-model="funcionario.cargo"
                                     :error-messages="errors"
                                     placeholder="Cargo....."
                                     required
@@ -124,7 +112,7 @@
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="funcionario.dadosPessoais.salario"
+                                    v-model="funcionario.salario"
                                     :error-messages="errors"
                                     placeholder="Salário....."
                                     required
@@ -141,7 +129,7 @@
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="funcionario.dadosPessoais.senha"
+                                    v-model="funcionario.password"
                                     :error-messages="errors"
                                     placeholder="Senha....."
                                     required
@@ -165,7 +153,7 @@
                                 <v-text-field
                                     class="cadastro__input"
                                     v-mask="'(##)#####-####'"
-                                    v-model="funcionario.dadosContato.telefone"
+                                    v-model="funcionario.telefone"
                                     :error-messages="errors"
                                     placeholder="Telefone....."
                                     required
@@ -182,7 +170,7 @@
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="funcionario.dadosContato.email"
+                                    v-model="funcionario.email"
                                     :error-messages="errors"
                                     placeholder="email...."
                                     required
@@ -206,7 +194,7 @@
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="funcionario.endereço.rua"
+                                    v-model="funcionario.rua"
                                     :error-messages="errors"
                                     placeholder="Rua...."
                                     required
@@ -224,7 +212,7 @@
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="funcionario.endereço.casaNumero"
+                                    v-model="funcionario.casaNumero"
                                     :error-messages="errors"
                                     placeholder="Numero......"
                                     required
@@ -243,7 +231,7 @@
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="funcionario.endereço.cidade"
+                                    v-model="funcionario.cidade"
                                     :error-messages="errors"
                                     placeholder="Cidade...."
                                     required
@@ -262,7 +250,7 @@
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="funcionario.endereço.estado"
+                                    v-model="funcionario.estado"
                                     :error-messages="errors"
                                     placeholder="Estado....."
                                     required
@@ -281,7 +269,7 @@
                             >
                                 <v-text-field
                                     class="cadastro__input"
-                                    v-model="funcionario.endereço.complemento"
+                                    v-model="funcionario.complemento"
                                     :error-messages="errors"
                                     placeholder="Complemento...."
                                     required
@@ -301,7 +289,7 @@
                                 <v-text-field
                                     class="cadastro__input"
                                     v-mask="'#####-###'"
-                                    v-model="funcionario.endereço.cep"
+                                    v-model="funcionario.cep"
                                     :error-messages="errors"
                                     placeholder="CEP"
                                     required
@@ -320,11 +308,16 @@
                         min-width="180"
                         min-height="50"
                         color="#f72585"
-                        @submit="EnviarDados()"
+                        type="submit"
                     >
-                        <p class="cadastro__btn--cadastrar">
-                            Cadastrar funcionario
-                        </p>
+                    <p class="cadastro__btn--cadastrar">
+                        {{
+                            $route.name === "Editar Funcionario"
+                                ? "Editar"
+                                : "Cadastrar"
+                        }}
+                        Funcionario
+                    </p>
                     </v-btn>
                 </div>
             </validation-observer>
@@ -346,44 +339,22 @@ export default {
     },
     data() {
         return {
-            funcionario: {
-                dadosPessoais: {
-                    nome: "",
-                    sobrenome: "",
-                    genero: "",
-                    nascimento: "",
-                    cpf: "",
-                    cargo: "",
-                    salario: "",
-                    senha:'',
-                },
-                dadosContato: {
-                    telefone: "",
-                    email: "",
-                },
-                endereço: {
-                    rua: "",
-                    casaNumero: "",
-                    cidade: "",
-                    estado: "",
-                    complemento: "",
-                    cep: "",
-                },
-            },
-
-            items: ["Homem", "Mulher", "Prefiro Não Declarar"],
+            funcionario: {},
+            generosDisponiveis: ["Homem", "Mulher", "Prefiro Não Declarar"],
         };
     },
-    methods: {
+    methods:{
         EnviarDados() {
             console.log(this.funcionario);
-            // this.$swal("Sucesso", "Cliente Cadastrado com Sucesso", "success");
-            // // $axios.post("", this.funcionario).then(() => {});
-            this.$router.push("/funcionarios/clientes");
+            this.$axios.post("funcionario/create", this.funcionario).then(() => {
+                this.$swal(
+                    "Sucesso",
+                    "Cliente Cadastrado com Sucesso",
+                    "success"
+                );
+            });
+            this.$router.go();
         },
-    },
-    mounted(){
-        this.EnviarDados()
     }
 };
 </script>

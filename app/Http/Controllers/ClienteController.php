@@ -6,72 +6,35 @@ use Illuminate\Http\Request;
 use App\Models\Cliente;
 use App\Models\Funcionario;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
 
 class ClienteController extends Controller
 {
-    public function AutenticaCliente(Request $request){
+
+    public function AutenticaCliente(Request $request)
+    {
 
         $email = $request->input('email');
         $password = $request->input('password');
 
-        $emailBD =  DB::table('funcionarios')->where('email',$email);
-        $passwordBD =  DB::table('funcionarios')->where('password',$password);
-
-        $this->validate($request,[
+        $this->validate($request, [
             'email' => 'required',
             'password' => 'required',
         ]);
 
-       // ---------------------------------------------------------------------------------------------------------------------/
-    // MODO QUE RETORNA USUARIO
-    // ---------------------------------------------------------------------------------------------------------------------/
+        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+            $user = Auth::user();
+            $token = $user->createToken('jwt');
 
-        // if(Auth::attempt(['email'=>$email,'password'=>$password])){
-        //     $user = Auth::user();
-        //     $token = $user->createToken('jwt');
-            
-        //     return response()->json($token->plainTextToken, 200);
-        // }else{
-        //     return response()->json('Não Logou', 404);
-
-        // response()->json([
-            //         'status' => 'success',
-            //         'user' => $user,
-            //         'authorisation' => [
-            //             'token' => $token,
-            //             'type' => 'bearer',
-            //         ]
-            //     ]);
-        // };
-
-        // ---------------------------------------------------------------------------------------------------------------------/
-        // MODO QUE NAO RETORNA USUARIO, mas abre as senhas personalizadas
-        // ---------------------------------------------------------------------------------------------------------------------/
-
-
-        $user = DB::table('funcionarios')->where('email',$email)->where('password', $password)->first();
-        
-        if (!$user) {
-            throw ValidationException::withMessages([
-                'email' => ['The provided credentials are incorrect.'],
-            ]);
-        }else{
-
-            $token = auth()->attempt();
-            
-            return response()->json([
-                'access_token' => $token,
-                'token_type' => 'bearer',
-                'expires_in' => auth()->factory()->getTTL() * 60 //sim vai ficar dando erro
-            ]);
+            return response()->json($token->plainTextToken, 200);
+        } else {
+            return response()->json('Não Logou', 404);
         }
-
     }
 
-    public function clientelogout(){
+
+    public function clientelogout()
+    {
         Auth::logout();
         return response()->json([
             'status' => 'success',
@@ -79,43 +42,58 @@ class ClienteController extends Controller
         ]);
     }
 
+    /*--------------------------------------------------------------
+    pega todos os registros do banco de dados de clientes
+    -----------------------------------------------------------------*/
     public function getCliente()
     {
         $clientes = Cliente::all()->toArray();
-        return array_reverse($clientes);      
+        return array_reverse($clientes);
     }
 
 
+    /*--------------------------------------------------------------
+    Cria usuarios na tabela de clientes
+    -----------------------------------------------------------------*/
+
     public function createCliente(Request $request)
     {
-        
+
         $cliente = Cliente::create([
             'nome' => $request->input('nome'),
-            'sobrenome'=> $request->input('sobrenome'),
-            'cpf'=> $request->input('cpf'),
-            'genero'=> $request->input('genero'),
-            'password'=>Hash::make($request->input('password')),
-            'dataNascimento'=> $request->input('dataNascimento'),
-            'telefone'=> $request->input('telefone'),
-            'email'=> $request->input('email'),
-            'plano'=> $request->input('plano')
+            'sobrenome' => $request->input('sobrenome'),
+            'cpf' => $request->input('cpf'),
+            'genero' => $request->input('genero'),
+            'password' => Hash::make($request->input('password')),
+            'dataNascimento' => $request->input('dataNascimento'),
+            'telefone' => $request->input('telefone'),
+            'email' => $request->input('email'),
+            'plano' => $request->input('plano'),
+            'rua' => $request->input('rua'),
+            'casaNumero' => $request->input('casaNumero'),
+            'complemento' => $request->input('cidade'),
+            'cidade' => $request->input('estado'),
+            'estado' => $request->input('complemento'),
+            'cep' => $request->input('cep'),
         ]);
         $cliente = Cliente::where('email', $request->email)->first();
 
-        if (isset($cliente->id)) {
-            return response()->json(['error' => 'Usuario já existe'], 401);
-        }
+
         $cliente->save();
         return response()->json('cliente Criado');
     }
 
-
+    /*--------------------------------------------------------------
+    chama o cliente especifico pelo id
+    -----------------------------------------------------------------*/
     public function EditCliente($id)
     {
         $cliente = Cliente::find($id);
         return response()->json($cliente);
     }
-
+    /*--------------------------------------------------------------
+        atualiza o usuario editado
+    -----------------------------------------------------------------*/
 
     public function updateCliente($id, Request $request)
     {
@@ -124,7 +102,9 @@ class ClienteController extends Controller
         return response()->json('cliente Atualizado');
     }
 
-
+    /*--------------------------------------------------------------
+    deleta o usuario da tabela de clientes
+    -----------------------------------------------------------------*/
     public function deleteCliente($id)
     {
         $cliente = Cliente::find($id);

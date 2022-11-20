@@ -13,7 +13,6 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    
     /**
      * The attributes that are mass assignable.
      *

@@ -16,7 +16,13 @@ class Fornecedor extends Model implements JWTSubject
         'nomeFantasia',
         'razaoSocial',
         'telefone',
-        'email'
+        'email',
+        'rua',
+        'casaNumero',
+        'cidade',
+        'estado',
+        'complemento',
+        'cep'
     ];
     public function getJWTIdentifier()
     {

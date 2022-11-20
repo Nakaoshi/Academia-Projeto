@@ -1,253 +1,257 @@
 <template>
-    <form class="cadastro__form">
-        <p class="cadastro__form--title">
-            {{ $route.name === "Editar Fornecedor" ? "Editar" : "Cadastrar" }}
-            Fornecedor
-        </p>
-
-        <validation-observer class="cadastro__form--inputs" v-slot="{ invalid }">
-            <!-- dados pessoais -->
-            <div>
-                <p class="cadastro__section--title">Dados Gerais</p>
-                <div class="cadastro__grid">
-                    <!-- INPUT FANTASIA  -->
-                    <div class="cadastro__grid--6">
-                        <validation-provider
-                            v-slot="{ errors }"
-                            name="fantasia"
-                            rules="required"
-                        >
-                            <v-text-field
-                                class="cadastro__input"
-                                v-model="fornecedor.nomeFantasia"
-                                :error-messages="errors"
-                                placeholder="Fantasia...."
-                                required
-                                solo
+    <div>
+        <form class="cadastro__form" @submit.prevent="updateFornecedor()">
+            <p class="cadastro__form--title">
+                {{
+                    $route.name === "Editar Fornecedor" ? "Editar" : "Cadastrar"
+                }}
+                Fornecedores
+            </p>
+            <validation-observer class="cadastro__form--inputs" v-slot="{ invalid }">
+                <!-- dados pessoais -->
+                <div>
+                    <p class="cadastro__section--title">Dados Gerais</p>
+                    <div class="cadastro__grid">
+                        <!-- INPUT FANTASIA  -->
+                        <div class="cadastro__grid--6">
+                            <validation-provider
+                                v-slot="{ errors }"
+                                name="fantasia"
+                                rules="required"
                             >
-                            </v-text-field>
-                        </validation-provider>
-                    </div>
+                                <v-text-field
+                                    class="cadastro__input"
+                                    v-model="fornecedor.nomeFantasia"
+                                    :error-messages="errors"
+                                    placeholder="Fantasia...."
+                                    required
+                                    solo
+                                >
+                                </v-text-field>
+                            </validation-provider>
+                        </div>
 
-                    <!-- INPUT DA RAZAO SOCIAL  -->
+                        <!-- INPUT DA RAZAO SOCIAL  -->
 
-                    <div class="cadastro__grid--6">
-                        <validation-provider
-                            v-slot="{ errors }"
-                            name="Razão Social"
-                            rules="required"
-                        >
-                            <v-text-field
-                                class="cadastro__input"
-                                v-model="fornecedor.razaoSocial"
-                                :error-messages="errors"
-                                placeholder="Razão Social....."
-                                required
-                                solo
-                            ></v-text-field>
-                        </validation-provider>
-                    </div>
+                        <div class="cadastro__grid--6">
+                            <validation-provider
+                                v-slot="{ errors }"
+                                name="Razão Social"
+                                rules="required"
+                            >
+                                <v-text-field
+                                    class="cadastro__input"
+                                    v-model="fornecedor.razaoSocial"
+                                    :error-messages="errors"
+                                    placeholder="Razão Social....."
+                                    required
+                                    solo
+                                ></v-text-field>
+                            </validation-provider>
+                        </div>
 
-                    <!-- INPUT CNPJ  -->
-                    <div class="cadastro__grid--4">
-                        <validation-provider
-                            v-slot="{ errors }"
-                            rules="required|max:18"
-                        >
-                            <v-text-field
-                                class="cadastro__input"
-                                v-mask="'##.###.###/####-##'"
-                                v-model="fornecedor.cnpj"
-                                :error-messages="errors"
-                                placeholder="CNPJ....."
-                                required
-                                solo
-                            ></v-text-field>
-                        </validation-provider>
+                        <!-- INPUT CNPJ  -->
+                        <div class="cadastro__grid--4">
+                            <validation-provider
+                                v-slot="{ errors }"
+                                rules="required|max:18"
+                            >
+                                <v-text-field
+                                    class="cadastro__input"
+                                    v-mask="'##.###.###/####-##'"
+                                    v-model="fornecedor.cnpj"
+                                    :error-messages="errors"
+                                    placeholder="CNPJ....."
+                                    required
+                                    solo
+                                ></v-text-field>
+                            </validation-provider>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- dados de contato -->
-            <div>
-                <p class="cadastro__section--title">Dados de Contato</p>
-                <div class="cadastro__grid">
-                    <!-- INPUT DO TELEFONE  -->
-                    <div class="cadastro__grid--6">
-                        <validation-provider
-                            v-slot="{ errors }"
-                            rules="required"
-                        >
-                            <v-text-field
-                                class="cadastro__input"
-                                v-mask="'(##)#####-####'"
-                                v-model="fornecedor.telefone"
-                                :error-messages="errors"
-                                placeholder="Telefone....."
-                                required
-                                solo
+                <!-- dados de contato -->
+                <div>
+                    <p class="cadastro__section--title">Dados de Contato</p>
+                    <div class="cadastro__grid">
+                        <!-- INPUT DO TELEFONE  -->
+                        <div class="cadastro__grid--6">
+                            <validation-provider
+                                v-slot="{ errors }"
+                                rules="required"
                             >
-                            </v-text-field>
-                        </validation-provider>
-                    </div>
-                    <!-- INPUT DO EMAIL  -->
-                    <div class="cadastro__grid--6">
-                        <validation-provider
-                            v-slot="{ errors }"
-                            rules="required|email"
-                        >
-                            <v-text-field
-                                class="cadastro__input"
-                                v-model="fornecedor.email"
-                                :error-messages="errors"
-                                placeholder="email...."
-                                required
-                                solo
+                                <v-text-field
+                                    class="cadastro__input"
+                                    v-mask="'(##)#####-####'"
+                                    v-model="fornecedor.telefone"
+                                    :error-messages="errors"
+                                    placeholder="Telefone....."
+                                    required
+                                    solo
+                                >
+                                </v-text-field>
+                            </validation-provider>
+                        </div>
+                        <!-- INPUT DO EMAIL  -->
+                        <div class="cadastro__grid--6">
+                            <validation-provider
+                                v-slot="{ errors }"
+                                rules="required|email"
                             >
-                            </v-text-field>
-                        </validation-provider>
+                                <v-text-field
+                                    class="cadastro__input"
+                                    v-model="fornecedor.email"
+                                    :error-messages="errors"
+                                    placeholder="email...."
+                                    required
+                                    solo
+                                >
+                                </v-text-field>
+                            </validation-provider>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- endereço -->
-            <!-- <div>
-                <p class="cadastro__section--title">Endereço</p>
-                <div class="cadastro__grid">
-                    INPUT DA RUA
-                    <div class="cadastro__grid--10">
-                        <validation-provider
-                            v-slot="{ errors }"
-                            rules="required"
-                        >
-                            <v-text-field
-                                class="cadastro__input"
-                                v-model="endereço.rua"
-                                :error-messages="errors"
-                                placeholder="Rua...."
-                                required
-                                solo
+                <!-- endereço -->
+                <div>
+                    <p class="cadastro__section--title">Endereço</p>
+                    <div class="cadastro__grid">
+                        <!-- INPUT DA RUA -->
+                        <div class="cadastro__grid--10">
+                            <validation-provider
+                                v-slot="{ errors }"
+                                rules="required"
                             >
-                            </v-text-field>
-                        </validation-provider>
-                    </div>
-                    INPUT DO NUMERO DA CASA
-                    <div class="cadastro__grid--2">
-                        <validation-provider
-                            v-slot="{ errors }"
-                            rules="required"
-                        >
-                            <v-text-field
-                                class="cadastro__input"
-                                v-model="endereço.casaNumero"
-                                :error-messages="errors"
-                                placeholder="Numero......"
-                                required
-                                solo
+                                <v-text-field
+                                    class="cadastro__input"
+                                    v-model="fornecedor.rua"
+                                    :error-messages="errors"
+                                    placeholder="Rua...."
+                                    required
+                                    solo
+                                >
+                                </v-text-field>
+                            </validation-provider>
+                        </div>
+                        <!-- INPUT DO NUMERO DA CASA -->
+                        <div class="cadastro__grid--2">
+                            <validation-provider
+                                v-slot="{ errors }"
+                                rules="required"
                             >
-                            </v-text-field>
-                        </validation-provider>
-                    </div>
+                                <v-text-field
+                                    class="cadastro__input"
+                                    v-model="fornecedor.casaNumero"
+                                    :error-messages="errors"
+                                    placeholder="Numero......"
+                                    required
+                                    solo
+                                >
+                                </v-text-field>
+                            </validation-provider>
+                        </div>
 
-                    INPUT DA CIDADE
-                    <div class="cadastro__grid--3">
-                        <validation-provider
-                            v-slot="{ errors }"
-                            rules="required"
-                        >
-                            <v-text-field
-                                class="cadastro__input"
-                                v-model="endereço.cidade"
-                                :error-messages="errors"
-                                placeholder="Cidade...."
-                                required
-                                solo
+                        <!--INPUT DA CIDADE-->
+                        <div class="cadastro__grid--3">
+                            <validation-provider
+                                v-slot="{ errors }"
+                                rules="required"
                             >
-                            </v-text-field>
-                        </validation-provider>
-                    </div>
+                                <v-text-field
+                                    class="cadastro__input"
+                                    v-model="fornecedor.cidade"
+                                    :error-messages="errors"
+                                    placeholder="Cidade...."
+                                    required
+                                    solo
+                                >
+                                </v-text-field>
+                            </validation-provider>
+                        </div>
 
-                    INPUT DA estado
-                    <div class="cadastro__grid--3">
-                        <validation-provider
-                            v-slot="{ errors }"
-                            rules="required"
-                        >
-                            <v-text-field
-                                class="cadastro__input"
-                                v-model="endereço.estado"
-                                :error-messages="errors"
-                                placeholder="Estado....."
-                                required
-                                solo
+                        <!--INPUT DA estado-->
+                        <div class="cadastro__grid--3">
+                            <validation-provider
+                                v-slot="{ errors }"
+                                rules="required"
                             >
-                            </v-text-field>
-                        </validation-provider>
-                    </div>
+                                <v-text-field
+                                    class="cadastro__input"
+                                    v-model="fornecedor.estado"
+                                    :error-messages="errors"
+                                    placeholder="Estado....."
+                                    required
+                                    solo
+                                >
+                                </v-text-field>
+                            </validation-provider>
+                        </div>
 
-                    INPUT DA Complemento
-                    <div class="cadastro__grid--3">
-                        <validation-provider
-                            v-slot="{ errors }"
-                            rules="required"
-                        >
-                            <v-text-field
-                                class="cadastro__input"
-                                v-model="endereço.complemento"
-                                :error-messages="errors"
-                                placeholder="Complemento...."
-                                required
-                                solo
+                        <!--INPUT DA Complemento-->
+                        <div class="cadastro__grid--3">
+                            <validation-provider
+                                v-slot="{ errors }"
+                                rules="required"
                             >
-                            </v-text-field>
-                        </validation-provider>
-                    </div>
+                                <v-text-field
+                                    class="cadastro__input"
+                                    v-model="fornecedor.complemento"
+                                    :error-messages="errors"
+                                    placeholder="Complemento...."
+                                    required
+                                    solo
+                                >
+                                </v-text-field>
+                            </validation-provider>
+                        </div>
 
-                    INPUT DA CEP
-                    <div class="cadastro__grid--3">
-                        <validation-provider
-                            v-slot="{ errors }"
-                            rules="required"
-                        >
-                            <v-text-field
-                                class="cadastro__input"
-                                v-mask="'#####-###'"
-                                v-model="endereço.cep"
-                                :error-messages="errors"
-                                placeholder="CEP"
-                                required
-                                solo
+                        <!--INPUT DA CEP -->
+                        <div class="cadastro__grid--3">
+                            <validation-provider
+                                v-slot="{ errors }"
+                                rules="required"
                             >
-                            </v-text-field>
-                        </validation-provider>
+                                <v-text-field
+                                    class="cadastro__input"
+                                    v-mask="'#####-###'"
+                                    v-model="fornecedor.cep"
+                                    :error-messages="errors"
+                                    placeholder="CEP"
+                                    required
+                                    solo
+                                >
+                                </v-text-field>
+                            </validation-provider>
+                        </div>
                     </div>
                 </div>
-            </div> -->
 
-            <!-- botao de cadastrar -->
-            <div class="flex justify-end">
-                <v-btn
-                    :disabled="invalid"
-                    min-width="180"
-                    min-height="50"
-                    color="#f72585"
-                    @click="updatePost()"
-                >
-                    <p class="cadastro__btn--cadastrar">
-                        {{
-                            $route.name === "Editar Fornecedor"
-                                ? "Editar"
-                                : "Cadastrar"
-                        }}
-                        Fornecedor
-                    </p>
-                </v-btn>
-            </div>
-        </validation-observer>
-    </form>
+                <!-- botao de cadastrar -->
+                <div class="flex justify-end">
+                    <v-btn
+                        :disabled="invalid"
+                        min-width="180"
+                        min-height="50"
+                        color="#f72585"
+                        type="submit"
+                    >
+                        <p class="cadastro__btn--cadastrar">
+                            {{
+                                $route.name === "Editar Fornecedor"
+                                    ? "Editar"
+                                    : "Cadastrar"
+                            }}
+                            Fornecedor
+                        </p>
+                    </v-btn>
+                </div>
+            </validation-observer>
+        </form>
+    </div>
 </template>
 
 <script>
+import FormFornecedores from "./FormFornecedores.vue";
 import {
     extend,
     ValidationObserver,
@@ -256,6 +260,7 @@ import {
 } from "vee-validate";
 export default {
     components: {
+        FormFornecedores,
         ValidationObserver,
         ValidationProvider,
     },
@@ -276,7 +281,7 @@ export default {
     },
     created() {},
     methods: {
-        updatePost() {
+        updateFornecedor() {
             this.$axios
                 .put(`fornecedores/update/${this.$route.params.id}`, this.fornecedor)
                 .then((response) => {

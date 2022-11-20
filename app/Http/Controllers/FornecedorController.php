@@ -19,7 +19,13 @@ class FornecedorController extends Controller
             'nomeFantasia'=> $request->input('nomeFantasia'),
             'razaoSocial'=> $request->input('razaoSocial'),
             'telefone'=> $request->input('telefone'),
-            'email'=> $request->input('email')
+            'email'=> $request->input('email'),
+            'rua'=>$request->input('rua'),
+            'casaNumero'=>$request->input('casaNumero'),
+            'complemento'=>$request->input('cidade'),
+            'cidade'=>$request->input('estado'),
+            'estado'=>$request->input('complemento'),
+            'cep'=>$request->input('cep'),
             
         ]);
         $fornecedor->save();

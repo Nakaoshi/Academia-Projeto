@@ -26,13 +26,10 @@
                                 <p>RH</p>
                             </router-link>
 
-                            <!-- botao de Ajuda  -->
-                            <router-link :to="{ name: 'Ajuda' }">
-                                <p>Ajuda</p>
-                            </router-link>
+                            
                         </div>
-
                         <!-- botão de logout  -->
+                        <h1 class="usuario__nome">{{nomeUsuario}}</h1>
                         <div>
                             <v-btn icon>
                                 <v-icon
@@ -143,7 +140,7 @@ export default {
     computed:{
         gerente(){
             return this.$store.state.usuario.gerente
-        }
+        },
     },
     methods: {
            
@@ -164,6 +161,13 @@ export default {
 @import "../../sass/variables.scss";
 .navbar__desktop--links {
     @apply flex justify-between;
+}
+
+.usuario{
+    &__nome{
+        font-size: 1rem;
+        color: #f7f7f7;
+    }
 }
 .navbar__desktop--links a p {
     font-style: italic;

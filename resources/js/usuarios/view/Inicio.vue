@@ -32,16 +32,21 @@
             </div>
 
             <v-container class="space-y-6 lg:space-y-14">
-                <!-- card Muay Thai -->
+                <!-- 
+                -------------------------------------------------    
+                    card Muay Thai
+                -------------------------------------------------
+                -->
                 <v-card class="academia__card" flat raised>
-                    <v-row>
+                    <v-row justify="center" align="center">
                         <v-col
                             sm="12"
                             md="12"
                             lg="6"
                             class="academia__card--image"
+                            
                         >
-                            <v-img :src="images.locais.salaMuay">
+                            <v-img :src="images.locais.salaMuay" >
                                 <template v-slot:placeholder>
                                     <v-row
                                         class="fill-height ma-0"
@@ -116,7 +121,11 @@
                     </v-row>
                 </v-card>
 
-                <!-- card boxe -->
+                <!--
+                --------------------------------------------------
+                    card boxe
+                -------------------------------------------------
+                -->
                 <v-card class="academia__card" outlined flat>
                     <v-row class="academia__card--boxe">
                         <v-col sm="12" lg="6" class="academia__card--image">
@@ -194,7 +203,11 @@
                     </v-row>
                 </v-card>
 
-                <!-- card judo  -->
+                <!-- 
+                -------------------------------------------------------
+                    card judo
+                -------------------------------------------------------
+                -->
                 <v-card class="academia__card" outlined flat>
                     <v-row>
                         <v-col sm="12" lg="6" class="academia__card--image">
@@ -630,36 +643,9 @@ export default {
         };
     },
     methods: {
-        // submit() {
-        //     var data = {
-        //         nome: this.info.nome,
-        //         email: this.info.email,
-        //         descricao: this.info.descricao,
-        //     };
-        //     this.$axios
-        //         .post("faleConosco", data)
-        //         .then((response) => {
-        //             console.log(response);
-        //             localStorage.setItem("token", response.data.acess_token);
-        //         })
-        //         .catch((error) => {
-        //             console.log(error);
-        //         });
-        //     // this.$swal("Sucesso", "Dados Enviados!!!", "success");
-        // },
-       
-        scrollMeTo(refName) {
-            var element = this.$refs[refName];
-            element.scrollIntoView({ behavior: 'smooth' });
-        }
-    },
-
-    computed: {
-        anoAtual() {
-            data = new Date().getFullYear();
-
-            return data;
-        },
+       enviarDados(){
+        this.$swal("Email Salvo!!!entraremos em contato em breve", "", "success")
+       }
     },
 };
 </script>
@@ -708,12 +694,17 @@ export default {
 }
 
 .academia {
+
     &__card {
         overflow: hidden;
         border: none;
         outline: none;
         border-radius: 25px;
-
+        &--image{
+            @media (min-width:1850px){
+                @apply flex justify-center items-center;
+            }
+        }
         &--title {
             font-style: italic;
             font-weight: 700;

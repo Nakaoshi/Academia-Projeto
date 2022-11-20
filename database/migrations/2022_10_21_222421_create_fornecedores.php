@@ -20,6 +20,12 @@ return new class extends Migration
             $table->string('razaoSocial',60)->nullable(false);
             $table->string('telefone',14)->nullable(false);
             $table->string('email', 60);
+            $table->string('rua')->nullable();
+            $table->integer('casaNumero')->nullable();
+            $table->string('cidade')->nullable();
+            $table->string('estado')->nullable();
+            $table->string('complemento')->nullable();
+            $table->string('cep')->nullable();
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
         });

@@ -35,8 +35,8 @@ Vue.use(VueMask);
 import VueAxios from "vue-axios";
 import axios from "axios";
 axios.defaults.baseURL = 'http://127.0.0.1:8000/api/';
-axios.defaults.headers.common['Authorization'] = `bearer ${localStorage.getItem('myauth_token')}`
-axios.defaults.withCredentials = true;
+// axios.defaults.headers.common['Authorization'] = `bearer ${localStorage.getItem('myauth_token')}`
+// axios.defaults.withCredentials = true;
 Vue.prototype.$axios = axios;
 Vue.use(VueAxios, axios);
 // ---------------------------------------------------------------------------------------------------------------------/
@@ -53,8 +53,8 @@ const router = new VueRouter({
         return { x: 0, y: 0 };
     },
 });
-router.beforeEach((to, from, next) => {
-    localStorage.setItem("route", to.name)
+router.beforeEach(async(to, from, next) => {
+    await store.restored
     next();
 });
 // ---------------------------------------------------------------------------------------------------------------------/

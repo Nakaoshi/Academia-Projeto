@@ -1,5 +1,6 @@
 const mix = require("laravel-mix");
 const path = require("path");
+
 mix.js("resources/js/alunos/alunos.js", "public/js/alunos/alunos.js")
     .js("resources/js/usuarios/usuarios.js", "public/js/usuarios/usuarios.js")
     .js(

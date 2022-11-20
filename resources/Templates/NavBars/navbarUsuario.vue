@@ -24,7 +24,6 @@
                                 <v-btn
                                 href="#Modalidades"
                                     text
-                                    @click="goto('Modalidades')"
                                 >
                                 Modalidades
                                 </v-btn>
@@ -63,10 +62,9 @@
                                     <v-btn
                                         color="#F72585"
                                         class="btn__matricula depressed"
+                                        @click="AlertaInscrições()"
                                     >
-                                        <p class="button__txt--font">
                                             MATRICULE-SE
-                                        </p>
                                     </v-btn>
                                 </v-card>
                             </div>
@@ -104,9 +102,12 @@
                                         {{ icons.mdiHome }}
                                     </v-icon>
                                 </v-list-item-icon>
-                                <router-link to="/inicio">
-                                    <p>Inicio</p>
-                                </router-link>
+                                <v-btn
+                                href="#Inicio"
+                                    text
+                                >
+                                Inicio
+                                </v-btn>
                             </v-list-item>
 
                             <!-- Modalidade  -->
@@ -116,9 +117,12 @@
                                         {{ icons.mdiFencing }}
                                     </v-icon>
                                 </v-list-item-icon>
-                                <router-link to="/modalidades">
-                                    <p>Modalidades</p>
-                                </router-link>
+                                <v-btn
+                                href="#Modalidades"
+                                    text
+                                >
+                                Modalidades
+                                </v-btn>
                             </v-list-item>
 
                             <!-- area do aluno  -->
@@ -128,10 +132,14 @@
                                         {{ icons.mdiAccountSchoolOutline }}
                                     </v-icon>
                                 </v-list-item-icon>
-                                <router-link to="/area-do-aluno">
-                                    <p>Área do Aluno</p>
-                                </router-link>
+                                <v-btn text @click="alunos">
+                                    Área do Aluno
+                                </v-btn>
                             </v-list-item>
+
+
+
+
                             <!-- a academia  -->
                             <v-list-item>
                                 <v-list-item-icon>
@@ -139,10 +147,16 @@
                                         {{ icons.mdiHomeCity }}
                                     </v-icon>
                                 </v-list-item-icon>
-                                <router-link to="/academia">
-                                    <p>A Academia</p>
-                                </router-link>
+                                <v-btn
+                                href="#Academia"
+                                    text
+                                >
+                                Academia
+                                </v-btn>
                             </v-list-item>
+
+
+
                             <!--sobre nós  -->
                             <v-list-item>
                                 <v-list-item-icon>
@@ -150,21 +164,24 @@
                                         {{ icons.mdiAccountGroup }}
                                     </v-icon>
                                 </v-list-item-icon>
-                                <router-link to="/sobrenos">
-                                    <p>Sobre Nós</p>
-                                </router-link>
+                                <v-btn
+                                href="#SobreNos"
+                                    text
+                                >
+                                Sobre Nós
+                                </v-btn>
                             </v-list-item>
+
+
+
+                            
                             <!-- botão de matricula  -->
                             <v-list-item>
                                 <v-card class="mx-auto">
-                                    <v-btn color="#F72585" class="depressed">
-                                        <router-link to="/cadastro-aluno">
-                                            <p
-                                                class="button__txt--font white--text"
-                                            >
+                                    <v-btn color="#F72585" class="depressed" @click="AlertaInscrições">
+                                           
                                                 MATRICULE-SE
-                                            </p>
-                                        </router-link>
+                                            
                                     </v-btn>
                                 </v-card>
                             </v-list-item>
@@ -205,15 +222,19 @@ export default {
         };
     },
     methods: {
-        //função para os links de ancora
-
-        goto(refName) {
-            var el = this.$refs[refName];
-            scrollTo(el);
-        },
         alunos(){
             location.assign("/alunos")
         },
+        AlertaInscrições(){
+            this.$swal({
+                title:"Inscrições Presenciais Apenas",
+                text:"Vá até o endereço referido no sobre nós!!",
+                imageUrl:logo,
+                imageWidth:400,
+                imageHeight:200,
+
+            })
+        }
     },
 };
 </script>

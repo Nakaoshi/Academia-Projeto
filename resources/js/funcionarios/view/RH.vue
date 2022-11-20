@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="tabela">
-            <p class="cadastro__form--title clientes">RECURSOS HUMANOS</p>
+            <p class="cadastro__form--title funcionarios">RECURSOS HUMANOS</p>
             <v-card-title>
                 <v-spacer></v-spacer>
                 <v-text-field
@@ -20,15 +20,15 @@
                 loading
                 loading-text="Carregando......Aguarde"
                 :headers="headers"
-                :items="this.clientes"
+                :items="this.funcionarios"
                 :search="search"
                 hide-default-footer
                 mobile
             >
                 <!-- sim, se você ta no VS code, o template vai ficar dando erro sabe se la o porque  -->
-                <template v-slot:item.action="{ items }">
+                <template #item.action="{ item }">
                     <v-menu offset-y>
-                        <template v-slot:activator="{ on, attrs }">
+                        <template #activator="{ on, attrs }">
                             <v-btn
                                 color="#f72585"
                                 dark
@@ -41,25 +41,36 @@
                         <v-list>
                             <v-list-item>
                                 <v-btn color="#f72585" class="tabela__btn" small
+                                
+                                @click="ExcluirFunc(item.id)"
                                     >Deletar</v-btn
                                 >
                             </v-list-item>
                             <v-list-item>
-                                <v-btn color="#f72585" class="tabela__btn" small
-                                    >Editar</v-btn
+                                <router-link
+                                    :to="{
+                                        name: 'Editar Funcionario',
+                                        params: { id: item.id },
+                                    }"
                                 >
+                                    <v-btn
+                                        color="#f72585"
+                                        class="tabela__btn"
+                                        small
+                                        >Editar</v-btn
+                                    >
+                                </router-link>
                             </v-list-item>
                         </v-list>
                     </v-menu>
                 </template>
             </v-data-table>
-            <ModalFuncionarios />
+            <modal-funcionarios />
         </div>
     </div>
 </template>
 
 <script>
-import axios from "axios";
 import { mdiMagnify } from "@mdi/js";
 import ModalFuncionarios from "../components/modalFuncionarios.vue";
 export default {
@@ -68,30 +79,57 @@ export default {
             search: "",
             headers: [
                 {
-                    text: "Funcionario",
+                    text: "Id",
                     align: "start",
-                    sortable: false,
-                    value: "name",
+                    value: "id",
                 },
                 {
-                    text: "DT.Nascimento",
-                    value: "mass",
+                    text: "Nome",
+                    value: "nome",
                     align: "center",
                     class: "texto",
                 },
-                { text: "CPF", value: "eye_color", align: "center" },
-                { text: "Telefone", value: "height", align: "center" },
-                { text: "Cargo", value: "gender", align: "center" },
+                { text: "Email", value: "email", align: "center" },
+                { text: "Telefone", value: "telefone", align: "center" },
+                { text: "Endereço", value: "rua", align: "center" },
+                { text: "Cargo", value: "cargo", align: "center" },
                 { value: "action", align: "center" },
             ],
-            clientes: [],
+            funcionarios: [],
             mdiMagnify,
         };
     },
     methods: {
+        ExcluirFunc(id) {
+            this.$swal({
+                title: "Quer mesmo Excluir?",
+                showDenyButton: true,
+                confirmButtonText: "Deletar",
+                denyButtonText: `Não Deletar`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.$axios
+                        .delete(`funcionario/delete/${id}`)
+                        .then((response) => {
+                            let i = this.funcionarios
+                                .map((item) => item.id)
+                                .indexOf(id);
+                            this.funcionarios.splice(i, 1);
+                            this.$swal({
+                                title: "funcionario deletado com sucesso!!!",
+                                text: "",
+                                icon: "success",
+                            });
+                        });
+                } else if (result.isDenied) {
+                    this.$swal(`O usuario não foi deletado`, "", "");
+                }
+            });
+        },
         getData() {
-            axios.get("https://swapi.dev/api/people/").then((response) => {
-                this.clientes = response.data.results;
+            this.$axios.get("funcionario/get").then((response) => {
+                this.funcionarios = response.data;
+                console.log(this.funcionarios)
             });
         },
     },

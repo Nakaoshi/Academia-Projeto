@@ -37,22 +37,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     // ---------------------------------------------------------------------------------------------------------------------/
 
         Route::group(['prefix'=>'cliente'],function(){
-            // Route::post('Auth',[ClienteController::class, 'AutenticaCliente'])->name('AutenticacaoCliente');
-            Route::post('Auth',function(Request $request){
-                $request->validate([
-                    'email' => 'required',
-                    'password' => 'required',
-                    'device_name' => 'required',
-                ]);
-             
-                $user = User::where('email', $request->email)->first();
-             
-                if (! $user || ! Hash::check($request->password, $user->password)) {
-                    throw ValidationException::withMessages([
-                        'email' => ['The provided credentials are incorrect.'],
-                    ]);
-                }
-            })->name('AutenticacaoCliente');
+            Route::post('Auth',[ClienteController::class, 'AutenticaCliente'])->name('AutenticacaoCliente');
             Route::post('logout',[ClienteController::class, 'clientelogout']);
             Route::get('get',[ClienteController::class,'getCliente']);
             Route::post('/create',[ClienteController::class,'createCliente']);
@@ -66,9 +51,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     // ---------------------------------------------------------------------------------------------------------------------/
     // Rotas dos funcionarios
     // ---------------------------------------------------------------------------------------------------------------------/
-        Route::group(['prefix'=>'funcionario'],function() {
+        Route::group(['prefix'=>'funcionario'],function() { 
             Route::post('Auth',[FuncionarioController::class, 'Auth']);
-            Route::get('get',[FuncionarioController::class,'getFuncionarios']);
+            Route::get('/get',[FuncionarioController::class,'getFuncionarios']);
             Route::post('/create',[FuncionarioController::class,'createFuncionario']);
             Route::get('/editar/{id}',[FuncionarioController::class,'editFuncionario']);
             Route::put('/update/{id}',[FuncionarioController::class,'updateFuncionario']);
