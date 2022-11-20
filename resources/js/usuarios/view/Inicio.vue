@@ -350,7 +350,7 @@
 
                                 <div class="pacote__card--content">
                                     <v-card-title class="pacote__card--title">
-                                        Standard
+                                        GoFighter
                                     </v-card-title>
 
                                     <v-card-text class="pacote__card--text">
@@ -382,7 +382,7 @@
 
                                 <div class="pacote__card--content">
                                     <v-card-title class="pacote__card--title">
-                                        Standard
+                                        Fighter
                                     </v-card-title>
 
                                     <v-card-text class="pacote__card--text">
