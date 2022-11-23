@@ -66,12 +66,7 @@
                                 Sala Muay Thai
                             </v-card-title>
                             <v-card-text class="academia__card--text my-3">
-                                Não acredite em algo simplesmente porque ouviu.
-                                Não acredite em algo simplesmente porque todos
-                                falam a respeito. Não acredite em algo
-                                simplesmente porque está escrito em seus livros
-                                religiosos. Não acredite em algo só porque seus
-                                professores e mestres dizem que é verdade.
+                                com espaço amplo e arejado, nossa sala de muay thai vem com mais de 300m² e iluminado com tatames de esponja de 20cm de espessura 
                             </v-card-text>
 
                             <v-divider class="my-3 bg-red-600"></v-divider>
@@ -99,9 +94,9 @@
                                     btn-rounded-border-radius
                                 >
                                     <p class="academia__button--text">
-                                        EQUIPAMENTOS
+                                        AR
                                     </p>
-                                    <p class="academia__button--text">NOVOS</p>
+                                    <p class="academia__button--text">CONDICIONADO</p>
                                 </v-btn>
 
                                 <v-btn
@@ -113,7 +108,7 @@
                                     btn-rounded-border-radius
                                 >
                                     <p class="academia__button--text">
-                                        AULAS DIÁRIAS
+                                        AULAS SEMANAIS
                                     </p>
                                 </v-btn>
                             </v-card-actions>
@@ -149,12 +144,7 @@
                                 >Sala Boxe</v-card-title
                             >
                             <v-card-text class="academia__card--text my-3">
-                                Não acredite em algo simplesmente porque ouviu.
-                                Não acredite em algo simplesmente porque todos
-                                falam a respeito. Não acredite em algo
-                                simplesmente porque está escrito em seus livros
-                                religiosos. Não acredite em algo só porque seus
-                                professores e mestres dizem que é verdade.
+                                equipada com um ringue de 40m², piso reforçado com esponja de 20cm de espessura em uma base de marmore bem iluminada e com sacos de pancada isolados e extendidos feitos a base de couro trocado todo o mês 
                             </v-card-text>
 
                             <v-divider class="my-3 bg-red-600"></v-divider>
@@ -182,7 +172,7 @@
                                     btn-rounded-border-radius
                                 >
                                     <p class="academia__button--text">
-                                        EQUIPAMENTOS NOVOS
+                                        QUALIDADE
                                     </p>
                                 </v-btn>
 
@@ -195,7 +185,7 @@
                                     btn-rounded-border-radius
                                 >
                                     <p class="academia__button--text">
-                                        AULAS DIÁRIAS
+                                        AULAS 4X NA SEMANA
                                     </p>
                                 </v-btn>
                             </v-card-actions>
@@ -231,12 +221,7 @@
                                 >Sala Judô</v-card-title
                             >
                             <v-card-text class="academia__card--text my-3">
-                                Não acredite em algo simplesmente porque ouviu.
-                                Não acredite em algo simplesmente porque todos
-                                falam a respeito. Não acredite em algo
-                                simplesmente porque está escrito em seus livros
-                                religiosos. Não acredite em algo só porque seus
-                                professores e mestres dizem que é verdade.
+                                a sala de 200m² coberta por um tatame de 25cm de espessura, ar condicionado regulado dependendo do dia, arte voltada ao judo e kimonos fornecidos pela propria instituição feitos de lã 
                             </v-card-text>
 
                             <v-divider class="my-3 bg-red-600"></v-divider>
@@ -264,7 +249,7 @@
                                     btn-rounded-border-radius
                                 >
                                     <p class="academia__button--text">
-                                        EQUIPAMENTOS NOVOS
+                                        FAIXAS PERSONALIZADAS
                                     </p>
                                 </v-btn>
 

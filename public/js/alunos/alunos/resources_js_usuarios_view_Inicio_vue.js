@@ -818,21 +818,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -16598,7 +16583,7 @@ var render = function () {
                           { staticClass: "academia__card--text my-3" },
                           [
                             _vm._v(
-                              "\n                            Não acredite em algo simplesmente porque ouviu.\n                            Não acredite em algo simplesmente porque todos\n                            falam a respeito. Não acredite em algo\n                            simplesmente porque está escrito em seus livros\n                            religiosos. Não acredite em algo só porque seus\n                            professores e mestres dizem que é verdade.\n                        "
+                              "\n                            com espaço amplo e arejado, nossa sala de muay thai vem com mais de 300m² e iluminado com tatames de esponja de 20cm de espessura \n                        "
                             ),
                           ]
                         ),
@@ -16652,7 +16637,7 @@ var render = function () {
                                   { staticClass: "academia__button--text" },
                                   [
                                     _vm._v(
-                                      "\n                                    EQUIPAMENTOS\n                                "
+                                      "\n                                    AR\n                                "
                                     ),
                                   ]
                                 ),
@@ -16660,7 +16645,7 @@ var render = function () {
                                 _c(
                                   "p",
                                   { staticClass: "academia__button--text" },
-                                  [_vm._v("NOVOS")]
+                                  [_vm._v("CONDICIONADO")]
                                 ),
                               ]
                             ),
@@ -16683,7 +16668,7 @@ var render = function () {
                                   { staticClass: "academia__button--text" },
                                   [
                                     _vm._v(
-                                      "\n                                    AULAS DIÁRIAS\n                                "
+                                      "\n                                    AULAS SEMANAIS\n                                "
                                     ),
                                   ]
                                 ),
@@ -16771,7 +16756,7 @@ var render = function () {
                           { staticClass: "academia__card--text my-3" },
                           [
                             _vm._v(
-                              "\n                            Não acredite em algo simplesmente porque ouviu.\n                            Não acredite em algo simplesmente porque todos\n                            falam a respeito. Não acredite em algo\n                            simplesmente porque está escrito em seus livros\n                            religiosos. Não acredite em algo só porque seus\n                            professores e mestres dizem que é verdade.\n                        "
+                              "\n                            equipada com um ringue de 40m², piso reforçado com esponja de 20cm de espessura em uma base de marmore bem iluminada e com sacos de pancada isolados e extendidos feitos a base de couro trocado todo o mês \n                        "
                             ),
                           ]
                         ),
@@ -16825,7 +16810,7 @@ var render = function () {
                                   { staticClass: "academia__button--text" },
                                   [
                                     _vm._v(
-                                      "\n                                    EQUIPAMENTOS NOVOS\n                                "
+                                      "\n                                    QUALIDADE\n                                "
                                     ),
                                   ]
                                 ),
@@ -16850,7 +16835,7 @@ var render = function () {
                                   { staticClass: "academia__button--text" },
                                   [
                                     _vm._v(
-                                      "\n                                    AULAS DIÁRIAS\n                                "
+                                      "\n                                    AULAS 4X NA SEMANA\n                                "
                                     ),
                                   ]
                                 ),
@@ -16937,7 +16922,7 @@ var render = function () {
                           { staticClass: "academia__card--text my-3" },
                           [
                             _vm._v(
-                              "\n                            Não acredite em algo simplesmente porque ouviu.\n                            Não acredite em algo simplesmente porque todos\n                            falam a respeito. Não acredite em algo\n                            simplesmente porque está escrito em seus livros\n                            religiosos. Não acredite em algo só porque seus\n                            professores e mestres dizem que é verdade.\n                        "
+                              "\n                            a sala de 200m² coberta por um tatame de 25cm de espessura, ar condicionado regulado dependendo do dia, arte voltada ao judo e kimonos fornecidos pela propria instituição feitos de lã \n                        "
                             ),
                           ]
                         ),
@@ -16991,7 +16976,7 @@ var render = function () {
                                   { staticClass: "academia__button--text" },
                                   [
                                     _vm._v(
-                                      "\n                                    EQUIPAMENTOS NOVOS\n                                "
+                                      "\n                                    FAIXAS PERSONALIZADAS\n                                "
                                     ),
                                   ]
                                 ),
@@ -17190,7 +17175,7 @@ var render = function () {
                                   { staticClass: "pacote__card--title" },
                                   [
                                     _vm._v(
-                                      "\n                                    Standard\n                                "
+                                      "\n                                    GoFighter\n                                "
                                     ),
                                   ]
                                 ),
@@ -17270,7 +17255,7 @@ var render = function () {
                                   { staticClass: "pacote__card--title" },
                                   [
                                     _vm._v(
-                                      "\n                                    Standard\n                                "
+                                      "\n                                    Fighter\n                                "
                                     ),
                                   ]
                                 ),
