@@ -178,7 +178,7 @@
                             <!-- botão de matricula  -->
                             <v-list-item>
                                 <v-card class="mx-auto">
-                                    <v-btn color="#F72585" class="depressed" @click="AlertaInscrições">
+                                    <v-btn color="#F72585" class="depressed" @click="AlertaInscrições()">
                                            
                                                 MATRICULE-SE
                                             
